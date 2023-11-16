@@ -1,16 +1,11 @@
-import ShapeImage from '../images/PageStatictics/_shape.png';
-import Vector200Image from '../images/PageStatictics/Component1_Vector_200.png';
-import Vector2001Image from '../images/PageStatictics/Component1_Vector_200_1.png';
-import Vector2002Image from '../images/PageStatictics/Component1_Vector_200_2.png';
-import Vector2003Image from '../images/PageStatictics/Component1_Vector_200_3.png';
-import FreeIconScrabble7880Image from '../images/PageStatictics/Component1_free_icon_scrabble_7880465_1.png';
+import ShapeImage from '../images/ImgStatictics/_shape.png';
+import Vector200Image from '../images/ImgStatictics/Component1_Vector_200.png';
+import Vector2001Image from '../images/ImgStatictics/Component1_Vector_200_1.png';
+import Vector2002Image from '../images/ImgStatictics/Component1_Vector_200_2.png';
+import Vector2003Image from '../images/ImgStatictics/Component1_Vector_200_3.png';
+import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-
-//import Link from "next/link";
-
-// const pages = [
-//     {href:'/', name:'Home'}
-// ];
+import { Link } from 'react-router-dom';
 
 import {
     Property1Default,
@@ -89,6 +84,7 @@ import {
   } from './StyleStatistics';
 
 export default function Statistics(props: StProps): JSX.Element { 
+  
   return (
     <Property1Default className={props.className}>
       <TopBar>
@@ -191,16 +187,20 @@ export default function Statistics(props: StProps): JSX.Element {
           <Title12>{`Домой`}</Title12>
         </Tab3>
         <Tab4>
-          <FreeIconScrabble7880
-            src={FreeIconScrabble7880Image}
-            loading="lazy"
-            alt={'free-icon-scrabble-7880465 1'}
-          />
-          <Title13>{`Редактор слов`}</Title13>
+          <Link to="/get_word_editor">
+            <FreeIconScrabble7880
+              src={FreeIconScrabble7880Image}
+              loading="lazy"
+              alt={'free-icon-scrabble-7880465 1'}
+            />
+            <Title13>{`Редактор слов`}</Title13>
+          </Link>
         </Tab4>
         <Tab5>
-          <Icon6>{`⚙️`}</Icon6>
-          <Title14>{`Настройки`}</Title14>
+          <Link to="/get_settings">
+            <Icon6>{`⚙️`}</Icon6>
+            <Title14>{`Настройки`}</Title14>
+          </Link>
         </Tab5>
       </BottomNav>
     </Property1Default>
