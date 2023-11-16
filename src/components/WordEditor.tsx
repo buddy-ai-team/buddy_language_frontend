@@ -1,12 +1,13 @@
-import ShapeImage from '../images/PageWordEditor/_shape.png';
-import DallE20231113161302CImage from '../images/PageWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2.png';
-import DallE20231113161302C1Image from '../images/PageWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2_1.png';
-import Vector200Image from '../images/PageWordEditor/_Vector_200.png';
-import DallE20231113161302C2Image from '../images/PageWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2_2.png';
-import Vector2001Image from '../images/PageWordEditor/_Vector_200_1.png';
-import DallE20231113161302C3Image from '../images/PageWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2_3.png';
-import Vector2002Image from '../images/PageWordEditor/_Vector_200_2.png';
+import ShapeImage from '../images/ImgWordEditor/_shape.png';
+import DallE20231113161302CImage from '../images/ImgWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2.png';
+import DallE20231113161302C1Image from '../images/ImgWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2_1.png';
+import Vector200Image from '../images/ImgWordEditor/_Vector_200.png';
+import DallE20231113161302C2Image from '../images/ImgWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2_2.png';
+import Vector2001Image from '../images/ImgWordEditor/_Vector_200_1.png';
+import DallE20231113161302C3Image from '../images/ImgWordEditor/_DALL_E_2023_11_13_16_13_02_Create_a_character_named_Buddy_Language_PhotoRoom_2_3.png';
+import Vector2002Image from '../images/ImgWordEditor/_Vector_200_2.png';
 import { StProps } from '../types';
+import { Link } from 'react-router-dom';
 
 import {
     Property1Default,
@@ -76,9 +77,11 @@ export default function WordEditor(props: StProps): JSX.Element {
       <Property1Default className={props.className}>
         <TopBar>
           <Content>
-            <IcLeft>
-              <Shape src={ShapeImage} loading="lazy" alt={'shape'} />
-            </IcLeft>
+            <Link to="/">
+              <IcLeft>
+                <Shape src={ShapeImage} loading="lazy" alt={'shape'} />
+              </IcLeft>
+            </Link>
             <Title>{`Редактор слов`}</Title>
             <IconButtons>
               <DallE20231113161302C
