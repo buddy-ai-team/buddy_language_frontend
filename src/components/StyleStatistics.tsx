@@ -1,36 +1,46 @@
 import { styled } from '@mui/material/styles';
 
 export const Property1Default = styled('div')({
-    backgroundColor: `rgba(255, 255, 255, 1)`,
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
     isolation: `isolate`,
-    flexDirection: `column`,
+    flexDirection: `row`,
     width: '100%',
+    height: `734px`,
     justifyContent: `flex-start`,
-    alignItems: `center`,
+    alignItems: `flex-start`,
     padding: `0px`,
     boxSizing: `border-box`,
-    height: 'auto',
 });
-  
+
 export const TopBar = styled('div')({
-    backgroundColor: `rgba(255, 255, 255, 1)`,
+    backgroundColor: `rgba(0, 20, 52, 1)`,
     boxShadow: `0px 0px 6px rgba(0, 0, 0, 0.12)`,
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
-    flexDirection: `column`,
+    flexDirection: `row`,
     justifyContent: `flex-start`,
     alignItems: `flex-start`,
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
     margin: `0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `0px`,
 });
-  
+
+/*export const TopBar1 = styled('div') ({
+    alignSelf: `stretch`,
+    width: `360px`,
+    position: `absolute`,
+    left: `0px`,
+    top: `0px`,
+});*/
+
 export const Content = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -44,7 +54,7 @@ export const Content = styled('div')({
     alignSelf: `stretch`,
     margin: `0px`,
 });
-  
+
 export const IcLeft = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -59,7 +69,7 @@ export const IcLeft = styled('div')({
     height: `24px`,
     margin: `0px`,
 });
-  
+
 export const Shape = styled('img')({
     height: `18px`,
     width: `10px`,
@@ -67,24 +77,7 @@ export const Shape = styled('img')({
     left: `7px`,
     top: `3px`,
 });
-  
-export const Title = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `24px`,
-    textTransform: `none`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
+
 export const IconButtons = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -97,8 +90,8 @@ export const IconButtons = styled('div')({
     boxSizing: `border-box`,
     margin: `0px 0px 0px 8px`,
 });
-  
-export const Icon1 = styled('div')({
+
+export const Icon7 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -114,11 +107,28 @@ export const Icon1 = styled('div')({
     width: `24px`,
     margin: `0px`,
 });
+
+export const Title15 = styled('div')({
+    textAlign: `center`,
+    whiteSpace: `pre-wrap`,
+    fontSynthesis: `none`,
+    color: `rgba(0, 20, 52, 1)`,
+    fontStyle: `normal`,
+    fontFamily: `Roboto`,
+    fontWeight: `400`,
+    fontSize: `12px`,
+    letterSpacing: `0px`,
+    textDecoration: `none`,
+    lineHeight: `16px`,
+    textTransform: `none`,
+    alignSelf: `stretch`,
+    margin: `0px`,
+});
   
 export const TabGroup = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `row`,
     justifyContent: `flex-start`,
@@ -126,12 +136,15 @@ export const TabGroup = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `104px`,
     overflow: `hidden`,
 });
   
 export const Tab = styled('div')({
-    border: `1px solid rgba(0, 0, 0, 0.1)`,
+    backgroundColor: `rgba(177, 188, 205, 1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
     display: `flex`,
@@ -145,11 +158,11 @@ export const Tab = styled('div')({
     margin: `0px`,
 });
   
-export const Title1 = styled('div')({
+export const Title = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -163,7 +176,41 @@ export const Title1 = styled('div')({
 });
   
 export const Tab1 = styled('div')({
-    border: `1px solid rgba(0, 0, 0, 0.1)`,
+    backgroundColor: `rgba(177, 188, 205, 1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
+    boxSizing: `border-box`,
+    borderRadius: `6px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    padding: `8px`,
+    flex: `1`,
+    margin: `0px 0px 0px 8px`,
+});
+  
+export const Title1 = styled('div')({
+    textAlign: `center`,
+    whiteSpace: `pre-wrap`,
+    fontSynthesis: `none`,
+    color: `rgba(0, 20, 52, 1)`,
+    fontStyle: `normal`,
+    fontFamily: `Roboto`,
+    fontWeight: `400`,
+    fontSize: `12px`,
+    letterSpacing: `0px`,
+    textDecoration: `none`,
+    lineHeight: `16px`,
+    textTransform: `none`,
+    alignSelf: `stretch`,
+    margin: `0px`,
+});
+  
+export const Tab2 = styled('div')({
+    backgroundColor: `rgba(177, 188, 205, 1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
     display: `flex`,
@@ -181,39 +228,7 @@ export const Title2 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `12px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `16px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const Tab2 = styled('div')({
-    border: `1px solid rgba(0, 0, 0, 0.1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const Title3 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -229,7 +244,7 @@ export const Title3 = styled('div')({
 export const SectionTitle = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `row`,
     justifyContent: `flex-start`,
@@ -237,7 +252,9 @@ export const SectionTitle = styled('div')({
     padding: `16px 12px 0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `148px`,
 });
   
 export const Text = styled('div')({
@@ -254,7 +271,7 @@ export const Text = styled('div')({
     margin: `0px`,
 });
   
-export const Title4 = styled('div')({
+export const Title3 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -274,7 +291,7 @@ export const Title4 = styled('div')({
 export const List = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `column`,
     justifyContent: `center`,
@@ -282,7 +299,9 @@ export const List = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `200px`,
     overflow: `hidden`,
 });
   
@@ -301,7 +320,7 @@ export const Row = styled('div')({
 });
   
 export const Metric = styled('div')({
-    border: `1px solid rgba(0, 0, 0, 0.1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
     display: `flex`,
@@ -316,11 +335,11 @@ export const Metric = styled('div')({
     overflow: `hidden`,
 });
   
-export const Title5 = styled('div')({
+export const Title4 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 0.5)`,
+    color: `rgba(177, 188, 205, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -337,7 +356,7 @@ export const Data = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -353,7 +372,7 @@ export const Data = styled('div')({
 export const SectionTitle1 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `row`,
     justifyContent: `flex-start`,
@@ -361,7 +380,9 @@ export const SectionTitle1 = styled('div')({
     padding: `16px 12px 0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `288px`,
 });
   
 export const Text1 = styled('div')({
@@ -378,7 +399,7 @@ export const Text1 = styled('div')({
     margin: `0px`,
 });
   
-export const Title6 = styled('div')({
+export const Title5 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -398,7 +419,7 @@ export const Title6 = styled('div')({
 export const List1 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `column`,
     justifyContent: `center`,
@@ -406,7 +427,9 @@ export const List1 = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `340px`,
     overflow: `hidden`,
 });
   
@@ -425,7 +448,7 @@ export const Row1 = styled('div')({
 });
   
 export const Metric1 = styled('div')({
-    border: `1px solid rgba(0, 0, 0, 0.1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
     display: `flex`,
@@ -440,11 +463,11 @@ export const Metric1 = styled('div')({
     overflow: `hidden`,
 });
   
-export const Title7 = styled('div')({
+export const Title6 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 0.5)`,
+    color: `rgba(177, 188, 205, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -461,7 +484,7 @@ export const Data1 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -475,7 +498,7 @@ export const Data1 = styled('div')({
 });
   
 export const Metric2 = styled('div')({
-    border: `1px solid rgba(0, 0, 0, 0.1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
     display: `flex`,
@@ -490,11 +513,11 @@ export const Metric2 = styled('div')({
     overflow: `hidden`,
 });
   
-export const Title8 = styled('div')({
+export const Title7 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 0.5)`,
+    color: `rgba(177, 188, 205, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -511,7 +534,7 @@ export const Data2 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -527,7 +550,7 @@ export const Data2 = styled('div')({
 export const List2 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `column`,
     justifyContent: `center`,
@@ -535,7 +558,9 @@ export const List2 = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `448px`,
 });
   
 export const Item = styled('div')({
@@ -553,7 +578,7 @@ export const Item = styled('div')({
 });
   
 export const Frame = styled('div')({
-    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+    backgroundColor: `rgba(177, 188, 205, 1)`,
     borderRadius: `16px`,
     display: `flex`,
     position: `relative`,
@@ -568,7 +593,7 @@ export const Frame = styled('div')({
     margin: `0px`,
 });
   
-export const Icon2 = styled('div')({
+export const Icon1 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -602,11 +627,11 @@ export const Frame427318906 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Title9 = styled('div')({
+export const Title8 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -623,7 +648,7 @@ export const Subtitle = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -659,7 +684,7 @@ export const Item1 = styled('div')({
 });
   
 export const Frame1 = styled('div')({
-    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+    backgroundColor: `rgba(177, 188, 205, 1)`,
     borderRadius: `16px`,
     display: `flex`,
     position: `relative`,
@@ -674,7 +699,7 @@ export const Frame1 = styled('div')({
     margin: `0px`,
 });
   
-export const Icon3 = styled('div')({
+export const Icon2 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -708,11 +733,11 @@ export const Frame4273189061 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Title10 = styled('div')({
+export const Title9 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -729,7 +754,7 @@ export const Subtitle1 = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -764,7 +789,7 @@ export const Item2 = styled('div')({
 });
   
 export const Frame2 = styled('div')({
-    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+    backgroundColor: `rgba(177, 188, 205, 1)`,
     borderRadius: `16px`,
     display: `flex`,
     position: `relative`,
@@ -779,7 +804,7 @@ export const Frame2 = styled('div')({
     margin: `0px`,
 });
   
-export const Icon4 = styled('div')({
+export const Icon3 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -813,11 +838,11 @@ export const Frame4273189062 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Title11 = styled('div')({
+export const Title10 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -834,7 +859,7 @@ export const Subtitle2 = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -869,7 +894,7 @@ export const Item3 = styled('div')({
 });
   
 export const Frame3 = styled('div')({
-    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+    backgroundColor: `rgba(177, 188, 205, 1)`,
     borderRadius: `16px`,
     display: `flex`,
     position: `relative`,
@@ -884,7 +909,7 @@ export const Frame3 = styled('div')({
     margin: `0px`,
 });
   
-export const Icon5 = styled('div')({
+export const Icon4 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -918,11 +943,11 @@ export const Frame4273189063 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Title12 = styled('div')({
+export const Title11 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -939,7 +964,7 @@ export const Subtitle3 = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(0, 20, 52, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `500`,
@@ -960,11 +985,11 @@ export const Vector2003 = styled('img')({
 });
   
 export const BottomNav = styled('div')({
-    backgroundColor: `rgba(255, 255, 255, 1)`,
+    backgroundColor: `rgba(0, 20, 52, 1)`,
     boxShadow: `0px 0px 6px rgba(0, 0, 0, 0.12)`,
     borderRadius: `0px`,
     display: `flex`,
-    position: `relative`,
+    position: `absolute`,
     isolation: `isolate`,
     flexDirection: `row`,
     justifyContent: `flex-start`,
@@ -972,7 +997,9 @@ export const BottomNav = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    width: `360px`,
+    left: `0px`,
+    top: `684px`,
     overflow: `hidden`,
 });
   
@@ -990,7 +1017,7 @@ export const Tab3 = styled('div')({
     margin: `0px`,
 });
   
-export const Icon6 = styled('div')({
+export const Icon5 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -1007,11 +1034,11 @@ export const Icon6 = styled('div')({
     margin: `0px`,
 });
   
-export const Title13 = styled('div')({
+export const Title12 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(230, 252, 255, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -1046,11 +1073,11 @@ export const FreeIconScrabble7880 = styled('img')({
     margin: `0px`,
 });
   
-export const Title14 = styled('div')({
+export const Title13 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(230, 252, 255, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
@@ -1077,7 +1104,7 @@ export const Tab5 = styled('div')({
     margin: `0px`,
 });
   
-export const Icon7 = styled('div')({
+export const Icon6 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -1091,14 +1118,14 @@ export const Icon7 = styled('div')({
     lineHeight: `28px`,
     textTransform: `none`,
     width: `28px`,
-    margin: `0px`,
+    margin: `0px`
 });
   
-export const Title15 = styled('div')({
+export const Title14 = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
+    color: `rgba(230, 252, 255, 1)`,
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
