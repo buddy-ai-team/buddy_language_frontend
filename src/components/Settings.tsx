@@ -5,7 +5,6 @@ import Vector2001Image from '../images/ImgSetting/Component1_Vector_200_1.png';
 import Vector2002Image from '../images/ImgSetting/Component1_Vector_200_2.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import Divider from '@mui/material/Divider';
 
 import {
   Property1Default,
@@ -108,7 +107,7 @@ export default function Settings(props: StProps): JSX.Element {
           <Frame427318906>
             <Title2>{`Голосовой вариант 1`}</Title2>
           </Frame427318906>
-          <Divider />
+          <Vector2002 src={Vector2002Image} loading="lazy" alt={'Vector 200'} />
         </Item>
         <Item1>
           <Frame1>
