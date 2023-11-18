@@ -98,7 +98,7 @@ export const IconButtons = styled('div')({ // одинаковое
     margin: `0px 0px 0px 8px`,
 });
 
-export const DallE20231113161302C = styled('img')({
+export const IconRobot = styled('img')({
     height: `44px`,
     width: `43px`,
     margin: `0px`,
@@ -119,7 +119,7 @@ export const TabGroup = styled('div')({
     overflow: `hidden`,
 });
 
-export const Tab = styled('div')({
+export const ButtonList = styled('div')({
     backgroundColor: `rgba(177, 188, 205, 1)`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
@@ -131,11 +131,11 @@ export const Tab = styled('div')({
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `8px`,
-    width: `96px`,
+    flex: `1`,
     margin: `0px`,
 });
 
-export const Title1 = styled('div')({
+export const TitleButtons = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -152,7 +152,7 @@ export const Title1 = styled('div')({
     margin: `0px`,
 });
 
-export const Tab1 = styled('div')({
+export const ButtonImport = styled('div')({
     backgroundColor: `rgba(177, 188, 205, 1)`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
@@ -164,28 +164,11 @@ export const Tab1 = styled('div')({
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `8px`,
-    width: `96px`,
+    flex: `1`,
     margin: `0px 0px 0px 8px`,
 });
 
-export const Title2 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `12px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `16px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-
-export const Tab2 = styled('div')({
+export const ButtonSearch = styled('div')({
     backgroundColor: `rgba(177, 188, 205, 1)`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
@@ -197,25 +180,8 @@ export const Tab2 = styled('div')({
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `8px`,
-    width: `96px`,
+    flex: `1`,
     margin: `0px 0px 0px 8px`,
-});
-
-export const Title3 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `12px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `16px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
 });
 
 export const List = styled('div')({
@@ -246,7 +212,7 @@ export const Item = styled('div')({ // одинаковое
     margin: `0px`,
 });
 
-export const Frame427318906 = styled('div')({
+export const FirstWordInList = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -294,7 +260,7 @@ export const Subtitle = styled('div')({
     margin: `0px`,
 });
 
-export const Subtitle1 = styled('div')({
+export const Status = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -324,7 +290,7 @@ export const IconButtons1 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
 
-export const DallE20231113161302C1 = styled('img')({
+export const IconRobotLearningWords = styled('img')({
     height: `30px`,
     width: `29px`,
     margin: `0px`,
@@ -352,7 +318,7 @@ export const Item1 = styled('div')({ // одинаковое
     margin: `0px`,
 });
 
-export const Frame4273189061 = styled('div')({
+export const SecondWordInList = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -400,23 +366,6 @@ export const Subtitle2 = styled('div')({
     margin: `0px`,
 });
 
-export const Subtitle3 = styled('div')({
-    textAlign: `right`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    width: `90px`,
-    margin: `0px 0px 0px 8px`,
-});
-
 export const IconButtons2 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -428,12 +377,6 @@ export const IconButtons2 = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     margin: `0px 0px 0px 8px`,
-});
-
-export const DallE20231113161302C2 = styled('img')({
-    height: `30px`,
-    width: `29px`,
-    margin: `0px`,
 });
 
 export const Vector2001 = styled('img')({
@@ -458,7 +401,7 @@ export const Item2 = styled('div')({ // одинаковое
     margin: `0px`,
 });
 
-export const Frame4273189062 = styled('div')({
+export const ThirdWordInList = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -506,23 +449,6 @@ export const Subtitle4 = styled('div')({
     margin: `0px`,
 });
 
-export const Subtitle5 = styled('div')({
-    textAlign: `right`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    width: `90px`,
-    margin: `0px 0px 0px 8px`,
-});
-
 export const IconButtons3 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -534,12 +460,6 @@ export const IconButtons3 = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     margin: `0px 0px 0px 8px`,
-});
-
-export const DallE20231113161302C3 = styled('img')({
-    height: `30px`,
-    width: `29px`,
-    margin: `0px`,
 });
 
 export const Vector2002 = styled('img')({

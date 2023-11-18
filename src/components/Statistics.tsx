@@ -1,4 +1,5 @@
-import ShapeImage from '../images/ImgStatictics/_shape.png';
+import Arrow from '../images/Img/Arrow.png';
+import Robot from '../images/Img/Robot.png';
 import Vector200Image from '../images/ImgStatictics/Component1_Vector_200.png';
 import Vector2001Image from '../images/ImgStatictics/Component1_Vector_200_1.png';
 import Vector2002Image from '../images/ImgStatictics/Component1_Vector_200_2.png';
@@ -11,12 +12,10 @@ import {
     Property1Default,
     TopBar,
     TabGroup,
-    Tab,
-    Title,
-    Tab1,
-    Title1,
-    Tab2,
-    Title2,
+    ButtonMessages,
+    TitleButtons,
+    ButtonWords,
+    ButtonProgress,
     SectionTitle,
     Text,
     Title3,
@@ -79,8 +78,8 @@ import {
     IcLeft,
     Shape,
     IconButtons,
-    Icon7,
-    Title15 // доделать
+    IconRobot,
+    Title15
   } from './StyleStatistics';
 
 export default function Statistics(props: StProps): JSX.Element { 
@@ -90,24 +89,28 @@ export default function Statistics(props: StProps): JSX.Element {
       <TopBar>
         <Content>
           <IcLeft>
-            <Shape src={ShapeImage} loading="lazy" alt={'shape'} />
+            <Shape src={Arrow} loading="lazy" alt={'Arrow'} />
           </IcLeft>
           <Title15>{`Статистика`}</Title15>
           <IconButtons>
-            <Icon7>{`😃`}</Icon7>
+            <IconRobot
+                  src={Robot}
+                  loading="lazy"
+                  alt={ 'Robot Icon' }
+                />
           </IconButtons>
         </Content>
       </TopBar>
       <TabGroup>
-        <Tab>
-          <Title>{`Сообщения`}</Title>
-        </Tab>
-        <Tab1>
-          <Title1>{`Слова`}</Title1>
-        </Tab1>
-        <Tab2>
-          <Title2>{`Достижения`}</Title2>
-        </Tab2>
+        <ButtonMessages>
+          <TitleButtons>{`Сообщения`}</TitleButtons>
+        </ButtonMessages>
+        <ButtonWords>
+          <TitleButtons>{`Слова`}</TitleButtons>
+        </ButtonWords>
+        <ButtonProgress>
+          <TitleButtons>{`Достижения`}</TitleButtons>
+        </ButtonProgress>
       </TabGroup>
       <SectionTitle>
         <Text>
