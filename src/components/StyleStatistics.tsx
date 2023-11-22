@@ -8,7 +8,7 @@ export const Property1Default = styled('div')({
     isolation: `isolate`,
     flexDirection: `column`,
     width: '100%',
-    height: `734px`,
+    height: `740px`,
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px 0px 12px 0px`,
@@ -43,29 +43,6 @@ export const Content = styled('div')({
     boxSizing: `border-box`,
     alignSelf: `stretch`,
     margin: `0px`,
-});
-
-export const IcLeft = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    width: `24px`,
-    height: `24px`,
-    margin: `0px`,
-});
-
-export const Shape = styled('img')({
-    height: `18px`,
-    width: `10px`,
-    position: `absolute`,
-    left: `7px`,
-    top: `3px`,
 });
 
 export const Title15 = styled('div')({
@@ -103,86 +80,6 @@ export const IconRobot = styled('img')({
     width: `43px`,
     margin: `0px`,
 });
-
-export const TabGroup = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px 12px`,
-    boxSizing: `border-box`,
-    width: `360px`,
-    overflow: `hidden`,
-    margin: `12px 0px 0px 0px`,
-});
-  
-export const ButtonMessages = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px`,
-});
-  
-export const TitleButtons = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `12px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `16px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const ButtonWords = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const ButtonProgress = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
   
 export const SectionTitle = styled('div')({
     borderRadius: `0px`,
@@ -197,7 +94,7 @@ export const SectionTitle = styled('div')({
     alignSelf: `stretch`,
     width: `360px`,
     left: `0px`,
-    gap: '12px',
+    margin: `20px 0px 0px 0px`,
 });
   
 export const Text = styled('div')({
@@ -324,7 +221,7 @@ export const SectionTitle1 = styled('div')({
     alignSelf: `stretch`,
     width: `360px`,
     left: `0px`,
-    gap: '12px',
+    margin: `20px 0px 0px 0px`,
 });
   
 export const Text1 = styled('div')({
@@ -398,6 +295,7 @@ export const Metric1 = styled('div')({
     justifyContent: `flex-start`,
     alignItems: `flex-start`,
     padding: `12px`,
+    height: `95px`,
     flex: `1`,
     margin: `0px`,
     overflow: `hidden`,
@@ -448,6 +346,7 @@ export const Metric2 = styled('div')({
     justifyContent: `flex-start`,
     alignItems: `flex-start`,
     padding: `12px`,
+    height: `95px`,
     flex: `1`,
     margin: `0px 0px 0px 8px`,
     overflow: `hidden`,
@@ -498,7 +397,7 @@ export const List2 = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `30px 0px 32px 0px`,
 });
   
 export const Item = styled('div')({
@@ -511,6 +410,7 @@ export const Item = styled('div')({
     alignItems: `center`,
     padding: `12px 0px`,
     boxSizing: `border-box`,
+    height: `56px`,
     alignSelf: `stretch`,
     margin: `0px`,
 });
@@ -599,14 +499,6 @@ export const Subtitle = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector200 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
 export const Item1 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -618,6 +510,7 @@ export const Item1 = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `56px`,
     margin: `0px`,
 });
   
@@ -704,14 +597,6 @@ export const Subtitle1 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector2001 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
 export const Item2 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -723,6 +608,7 @@ export const Item2 = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `56px`,
     margin: `0px`,
 });
   
@@ -809,14 +695,6 @@ export const Subtitle2 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector2002 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
 export const Item3 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -828,6 +706,7 @@ export const Item3 = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `56px`,
     margin: `0px`,
 });
   
@@ -914,14 +793,6 @@ export const Subtitle3 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector2003 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
 export const BottomNav = styled('div')({
     backgroundColor: `rgba(0, 20, 52, 1)`,
     boxShadow: `0px 0px 6px rgba(0, 0, 0, 0.12)`,
@@ -935,7 +806,7 @@ export const BottomNav = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `0px 0px 0px 0px`,
 });
   
 export const Tab3 = styled('div')({

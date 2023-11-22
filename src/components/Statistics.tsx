@@ -1,9 +1,4 @@
-import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
-import Vector200Image from '../images/ImgStatictics/Component1_Vector_200.png';
-import Vector2001Image from '../images/ImgStatictics/Component1_Vector_200_1.png';
-import Vector2002Image from '../images/ImgStatictics/Component1_Vector_200_2.png';
-import Vector2003Image from '../images/ImgStatictics/Component1_Vector_200_3.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
@@ -11,11 +6,6 @@ import { Link } from 'react-router-dom';
 import {
     Property1Default,
     TopBar,
-    TabGroup,
-    ButtonMessages,
-    TitleButtons,
-    ButtonWords,
-    ButtonProgress,
     SectionTitle,
     Text,
     Title3,
@@ -41,28 +31,24 @@ import {
     Frame427318906,
     Title8,
     Subtitle,
-    Vector200,
     Item1,
     Frame1,
     Icon2,
     Frame4273189061,
     Title9,
     Subtitle1,
-    Vector2001,
     Item2,
     Frame2,
     Icon3,
     Frame4273189062,
     Title10,
     Subtitle2,
-    Vector2002,
     Item3,
     Frame3,
     Icon4,
     Frame4273189063,
     Title11,
     Subtitle3,
-    Vector2003,
     BottomNav,
     Tab3,
     Icon5,
@@ -75,8 +61,6 @@ import {
     Title14,
     Row1,
     Content,
-    IcLeft,
-    Shape,
     IconButtons,
     IconRobot,
     Title15
@@ -88,9 +72,6 @@ export default function Statistics(props: StProps): JSX.Element {
     <Property1Default className={props.className}>
       <TopBar>
         <Content>
-          <IcLeft>
-            <Shape src={Arrow} loading="lazy" alt={'Arrow'} />
-          </IcLeft>
           <Title15>{`Статистика`}</Title15>
           <IconButtons>
             <IconRobot
@@ -101,17 +82,6 @@ export default function Statistics(props: StProps): JSX.Element {
           </IconButtons>
         </Content>
       </TopBar>
-      <TabGroup>
-        <ButtonMessages>
-          <TitleButtons>{`Сообщения`}</TitleButtons>
-        </ButtonMessages>
-        <ButtonWords>
-          <TitleButtons>{`Слова`}</TitleButtons>
-        </ButtonWords>
-        <ButtonProgress>
-          <TitleButtons>{`Достижения`}</TitleButtons>
-        </ButtonProgress>
-      </TabGroup>
       <SectionTitle>
         <Text>
           <Title3>{`Сообщения`}</Title3>
@@ -151,8 +121,8 @@ export default function Statistics(props: StProps): JSX.Element {
             <Title8>{`Выученные слова`}</Title8>
           </Frame427318906>
           <Subtitle>{`Просмотреть список`}</Subtitle>
-          <Vector200 src={Vector200Image} loading="lazy" alt={'Vector 200'} />
         </Item>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <Item1>
           <Frame1>
             <Icon2>{`⏱️`}</Icon2>
@@ -161,8 +131,8 @@ export default function Statistics(props: StProps): JSX.Element {
             <Title9>{`Общая продолжительность сообщений`}</Title9>
           </Frame4273189061>
           <Subtitle1>{`3ч 15мин`}</Subtitle1>
-          <Vector2001 src={Vector2001Image} loading="lazy" alt={'Vector 200'} />
         </Item1>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <Item2>
           <Frame2>
             <Icon3>{`🔥`}</Icon3>
@@ -171,8 +141,8 @@ export default function Statistics(props: StProps): JSX.Element {
             <Title10>{`Сумма дней общения подряд `}</Title10>
           </Frame4273189062>
           <Subtitle2>{`5`}</Subtitle2>
-          <Vector2002 src={Vector2002Image} loading="lazy" alt={'Vector 200'} />
         </Item2>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <Item3>
           <Frame3>
             <Icon4>{`📅`}</Icon4>
@@ -181,8 +151,8 @@ export default function Statistics(props: StProps): JSX.Element {
             <Title11>{`Сумма дней общения всего`}</Title11>
           </Frame4273189063>
           <Subtitle3>{`30`}</Subtitle3>
-          <Vector2003 src={Vector2003Image} loading="lazy" alt={'Vector 200'} />
         </Item3>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
       </List2>
       <BottomNav>
         <Tab3>

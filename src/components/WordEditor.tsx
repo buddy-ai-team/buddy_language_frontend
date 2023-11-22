@@ -1,9 +1,6 @@
 import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
-import RobotLearningWords from '../images/ImgWordEditor/RobotLearningWords.png';
-import Vector200Image from '../images/ImgWordEditor/_Vector_200.png';
-import Vector2001Image from '../images/ImgWordEditor/_Vector_200_1.png';
-import Vector2002Image from '../images/ImgWordEditor/_Vector_200_2.png';
+import PencilEdit from '../images/ImgWordEditor/free-icon-edit-420140 1.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 
@@ -16,11 +13,6 @@ import {
     Title,
     IconButtons,
     IconRobot,
-    TabGroup,
-    ButtonList,
-    TitleButtons,
-    ButtonImport,
-    ButtonSearch,
     List,
     Item,
     FirstWordInList,
@@ -29,19 +21,16 @@ import {
     Status,
     IconButtons1,
     IconRobotLearningWords,
-    Vector200,
     Item1,
     SecondWordInList,
     Title5,
     Subtitle2,
     IconButtons2,
-    Vector2001,
     Item2,
     ThirdWordInList,
     Title6,
     Subtitle4,
     IconButtons3,
-    Vector2002,
     Button1,
     Seconday,
     Title7,
@@ -84,17 +73,6 @@ export default function WordEditor(props: StProps): JSX.Element {
             </IconButtons>
           </Content>
         </TopBar>
-        <TabGroup>
-          <ButtonList>
-            <TitleButtons>{`Список`}</TitleButtons>
-          </ButtonList>
-          <ButtonImport>
-            <TitleButtons>{`Импорт`}</TitleButtons>
-          </ButtonImport>
-          <ButtonSearch>
-            <TitleButtons>{`Поиск`}</TitleButtons>
-          </ButtonSearch>
-        </TabGroup>
         <List>
           <Item>
             <FirstWordInList>
@@ -107,15 +85,15 @@ export default function WordEditor(props: StProps): JSX.Element {
             </Status>
             <IconButtons1>
               <IconRobotLearningWords
-                src={RobotLearningWords}
+                src={PencilEdit}
                 loading="lazy"
                 alt={
-                  'Robot Icon'
+                  'Pencil'
                 }
               />
             </IconButtons1>
-            <Vector200 src={Vector200Image} loading="lazy" alt={'Vector 200'} />
           </Item>
+          <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
           <Item1>
             <SecondWordInList>
               <Title5>{`Слово 2`}</Title5>
@@ -124,15 +102,15 @@ export default function WordEditor(props: StProps): JSX.Element {
             <Status>{`Статус: Пропущено`}</Status>
             <IconButtons2>
               <IconRobotLearningWords
-                src={RobotLearningWords}
+                src={PencilEdit}
                 loading="lazy"
                 alt={
-                  'Robot Icon'
+                  'Edit'
                 }
               />
             </IconButtons2>
-            <Vector2001 src={Vector2001Image} loading="lazy" alt={'Vector 200'} />
           </Item1>
+          <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
           <Item2>
             <ThirdWordInList>
               <Title6>{`Слово 3`}</Title6>
@@ -141,22 +119,14 @@ export default function WordEditor(props: StProps): JSX.Element {
             <Status>{`Статус: Изучено`}</Status>
             <IconButtons3>
               <IconRobotLearningWords
-                src={RobotLearningWords}
+                src={PencilEdit}
                 loading="lazy"
-                alt={ 'Robot Icon' }
+                alt={ 'Pencil' }
               />
             </IconButtons3>
-            <Vector2002 src={Vector2002Image} loading="lazy" alt={'Vector 200'} />
           </Item2>
+          <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         </List>
-        <Button1>
-          <Seconday>
-            <Title7>{`Очистить список`}</Title7>
-          </Seconday>
-          <Primary>
-            <Title8>{`Добавить слово`}</Title8>
-          </Primary>
-        </Button1>
         <Input1>
           <Title9>{`Добавить слово`}</Title9>
           <Textfield>
@@ -165,11 +135,11 @@ export default function WordEditor(props: StProps): JSX.Element {
           <Info>{`Перевод рядом со словом`}</Info>
         </Input1>
         <Input2>
-          <Title10>{`Импорт слов`}</Title10>
+          <Title10>{`Перевод слов`}</Title10>
           <Textfield1>
-            <Text1>{`Вводите слова, разделенные запятыми`}</Text1>
+            <Text1>{`Вводите перевод слов`}</Text1>
           </Textfield1>
-          <Info1>{`Слова будут добавлены в список`}</Info1>
+          <Info1>{`Перевод появится в списке изучения`}</Info1>
         </Input2>
         <Input3>
           <Title11>{`Поиск слов`}</Title11>
@@ -178,6 +148,14 @@ export default function WordEditor(props: StProps): JSX.Element {
           </Textfield2>
           <Info2>{`Выполните поиск слов в списке`}</Info2>
         </Input3>
+        <Button1>
+          <Seconday>
+            <Title7>{`Удалить слово`}</Title7>
+          </Seconday>
+          <Primary>
+            <Title8>{`Добавить слово`}</Title8>
+          </Primary>
+        </Button1>
       </Property1Default>
     );
 }

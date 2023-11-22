@@ -8,7 +8,7 @@ export const Property1Default = styled('div')({
     isolation: `isolate`,
     flexDirection: `column`,
     width: '100%',
-    height: `850px`, // разное
+    height: `740px`,
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px 0px 12px 0px`,
@@ -199,6 +199,7 @@ export const Item = styled('div')({ // одинаковое
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `45px`,
     margin: `0px`,
 });
 
@@ -269,16 +270,6 @@ export const Title2 = styled('div')({ // одинаковое Title4 WordEditor
     margin: `0px`,
 });
 
-export const Vector200 = styled('div')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-    border: `5px`,
-    color: `#B1BCCD`,
-});
-
 export const Item1 = styled('div')({ // одинаковое
     borderRadius: `0px`,
     display: `flex`,
@@ -290,6 +281,7 @@ export const Item1 = styled('div')({ // одинаковое
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `45px`,
     margin: `0px`,
 });
 
@@ -360,14 +352,6 @@ export const Title3 = styled('div')({ // одинаковое Title4 WordEditor
     margin: `0px`,
 });
 
-export const Vector2001 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-
 export const Item2 = styled('div')({ // одинаковое 
     borderRadius: `0px`,
     display: `flex`,
@@ -379,6 +363,7 @@ export const Item2 = styled('div')({ // одинаковое
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `45px`,
     margin: `0px`,
 });
 
@@ -449,14 +434,6 @@ export const Title4 = styled('div')({ // одинаковое Title6 WordEditor
     margin: `0px`,
 });
 
-export const Vector2002 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-
 export const SectionTitle1 = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -470,7 +447,6 @@ export const SectionTitle1 = styled('div')({
     alignSelf: `stretch`,
     width: `360px`,
     left: `0px`,
-    gap: `12px`,
 });
 
 export const Text1 = styled('div')({
@@ -741,6 +717,7 @@ export const ButtonNativeLangue = styled('div')({
     padding: `10px 5px 8px 7px`,
     flex: `1`,
     margin: `0px`,
+    height: `42px`,
     gap: `27px`,
 });
 
@@ -772,7 +749,8 @@ export const ButtonStudingLanguage = styled('div')({
     alignItems: `flex-start`,
     padding: `10px 5px 8px 7px`,
     flex: `1`,
-    margin: `0px 0px 0px 8px`,
+    margin: `0px 0px 12px 8px`,
+    height: `42px`,
     gap: `27px`,
 });
 
