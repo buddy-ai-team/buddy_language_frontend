@@ -20,25 +20,25 @@ import {
  * 
  *
  * @export
- * @interface Role
+ * @interface AddUserRequest
  */
-export interface Role {
+export interface AddUserRequest {
 
     /**
      * @type {string}
-     * @memberof Role
+     * @memberof AddUserRequest
      */
-    id?: string;
+    firstName: string;
 
     /**
      * @type {string}
-     * @memberof Role
+     * @memberof AddUserRequest
      */
-    name?: string | null;
+    lastName: string;
 
     /**
      * @type {string}
-     * @memberof Role
+     * @memberof AddUserRequest
      */
-    prompt?: string | null;
+    telegramId: string;
 }

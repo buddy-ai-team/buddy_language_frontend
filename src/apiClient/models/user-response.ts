@@ -12,53 +12,39 @@
  * Do not edit the class manually.
  */
 
-// import { Preferences } from './preferences';
-// import { WordEntity } from './word-entity';
 import {
-    Preferences,WordEntity,
+    
 } from ".";
 
 /**
  * 
  *
  * @export
- * @interface User
+ * @interface UserResponse
  */
-export interface User {
+export interface UserResponse {
 
     /**
      * @type {string}
-     * @memberof User
+     * @memberof UserResponse
      */
     id?: string;
 
     /**
-     * @type {Array<WordEntity>}
-     * @memberof User
-     */
-    wordEntities?: Array<WordEntity> | null;
-
-    /**
      * @type {string}
-     * @memberof User
+     * @memberof UserResponse
      */
     firstName?: string | null;
 
     /**
      * @type {string}
-     * @memberof User
+     * @memberof UserResponse
      */
     lastName?: string | null;
 
     /**
      * @type {string}
-     * @memberof User
+     * @memberof UserResponse
      */
     telegramId?: string | null;
-
-    /**
-     * @type {Preferences}
-     * @memberof User
-     */
-    userPreferences?: Preferences;
 }

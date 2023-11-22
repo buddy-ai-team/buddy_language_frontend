@@ -12,33 +12,16 @@
  * Do not edit the class manually.
  */
 
-import {
-    
-} from ".";
-
 /**
  * 
- *
  * @export
- * @interface Role
+ * @enum {string}
  */
-export interface Role {
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    id?: string;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    name?: string | null;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    prompt?: string | null;
+export enum TtsSpeed {
+    NUMBER_0 = 0,
+    NUMBER_1 = 1,
+    NUMBER_2 = 2,
+    NUMBER_3 = 3,
+    NUMBER_4 = 4
 }
+

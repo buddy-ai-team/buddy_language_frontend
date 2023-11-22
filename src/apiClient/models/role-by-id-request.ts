@@ -20,25 +20,13 @@ import {
  * 
  *
  * @export
- * @interface Role
+ * @interface RoleByIdRequest
  */
-export interface Role {
+export interface RoleByIdRequest {
 
     /**
      * @type {string}
-     * @memberof Role
+     * @memberof RoleByIdRequest
      */
-    id?: string;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    name?: string | null;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    prompt?: string | null;
+    id: string;
 }

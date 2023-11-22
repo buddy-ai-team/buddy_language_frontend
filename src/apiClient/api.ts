@@ -11,34 +11,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+export * from './apis/role-api';
+export * from './apis/user-api';
+export * from './apis/word-entity-api';
 
-import {
-    
-} from ".";
-
-/**
- * 
- *
- * @export
- * @interface Role
- */
-export interface Role {
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    id?: string;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    name?: string | null;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    prompt?: string | null;
-}

@@ -4,6 +4,11 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import Statistics from "./components/Statistics";
 import WordEditor from "./components/WordEditor";
 import Settings from "./components/Settings";
+import api from "./Api";
+
+const userResponse = await api.get("/user/get_by_telegram_id?id=123456789");
+const data = await userResponse.data;
+console.log(data);
 
 export default function App() {
   return (

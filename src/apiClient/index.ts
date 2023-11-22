@@ -12,33 +12,7 @@
  * Do not edit the class manually.
  */
 
-import {
-    
-} from ".";
+export * from "./api";
+export * from "./configuration";
+export * from "./models";
 
-/**
- * 
- *
- * @export
- * @interface Role
- */
-export interface Role {
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    id?: string;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    name?: string | null;
-
-    /**
-     * @type {string}
-     * @memberof Role
-     */
-    prompt?: string | null;
-}

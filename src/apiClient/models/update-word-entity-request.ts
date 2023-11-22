@@ -13,41 +13,40 @@
  */
 
 // import { Language } from './language';
-// import { TtsSpeed } from './tts-speed';
-//import { Voice } from './voice';
+// import { WordEntityStatus } from './word-entity-status';
 import {
-    Language,TtsSpeed,Voice,
+    Language,WordEntityStatus,
 } from ".";
 
 /**
  * 
  *
  * @export
- * @interface Preferences
+ * @interface UpdateWordEntityRequest
  */
-export interface Preferences {
+export interface UpdateWordEntityRequest {
+
+    /**
+     * @type {string}
+     * @memberof UpdateWordEntityRequest
+     */
+    id: string;
+
+    /**
+     * @type {string}
+     * @memberof UpdateWordEntityRequest
+     */
+    word: string;
 
     /**
      * @type {Language}
-     * @memberof Preferences
+     * @memberof UpdateWordEntityRequest
      */
-    nativeLanguage?: Language;
+    language: Language;
 
     /**
-     * @type {Language}
-     * @memberof Preferences
+     * @type {WordEntityStatus}
+     * @memberof UpdateWordEntityRequest
      */
-    targetLanguage?: Language;
-
-    /**
-     * @type {Voice}
-     * @memberof Preferences
-     */
-    selectedVoice?: Voice;
-
-    /**
-     * @type {TtsSpeed}
-     * @memberof Preferences
-     */
-    selectedSpeed?: TtsSpeed;
+    status: WordEntityStatus;
 }

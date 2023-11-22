@@ -12,33 +12,41 @@
  * Do not edit the class manually.
  */
 
+// import { Language } from './language';
+// import { WordEntityStatus } from './word-entity-status';
 import {
-    
+    Language,WordEntityStatus,
 } from ".";
 
 /**
  * 
  *
  * @export
- * @interface Role
+ * @interface AddWordEntityRequest
  */
-export interface Role {
+export interface AddWordEntityRequest {
 
     /**
      * @type {string}
-     * @memberof Role
+     * @memberof AddWordEntityRequest
      */
-    id?: string;
+    accountId: string;
 
     /**
      * @type {string}
-     * @memberof Role
+     * @memberof AddWordEntityRequest
      */
-    name?: string | null;
+    word: string;
 
     /**
-     * @type {string}
-     * @memberof Role
+     * @type {Language}
+     * @memberof AddWordEntityRequest
      */
-    prompt?: string | null;
+    language: Language;
+
+    /**
+     * @type {WordEntityStatus}
+     * @memberof AddWordEntityRequest
+     */
+    status: WordEntityStatus;
 }
