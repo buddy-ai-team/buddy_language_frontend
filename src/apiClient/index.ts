@@ -14,5 +14,5 @@
 
 export * from "./api";
 export * from "./configuration";
-export * from "./apiClient/models";
+export * from "./models";
 

@@ -7,6 +7,7 @@ import Vector2003Image from '../images/ImgStatictics/Component1_Vector_200_3.png
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
+import api from "../apiClient/_Api";
 
 import {
     Property1Default,
@@ -81,6 +82,40 @@ import {
     IconRobot,
     Title15
   } from './StyleStatistics';
+
+//Пример использования
+//GET запрос
+api.get('/user/get_by_telegram_id?id=123456789')
+  .then(async function (response) {
+    // обработка успешного запроса
+    console.log(response);
+    //Данные о пользователе в разделе data
+    const user = await response.data;
+    console.log(user.firstName);
+    console.log(user.lastName);
+    console.log(user.telegramId);
+  })
+  .catch(function (error) {
+    // обработка ошибки
+    console.log(error);
+  })
+  .finally(function () {
+    // выполняется всегда
+  });
+
+  //POST запрос
+  api.post('/user/update', {
+    id: "b524e7e7-766f-4e2d-81b3-91a234abd7dc",
+    firstName: 'Bob',
+    lastName: 'Smit',
+    telegramId: "123456789"
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 export default function Statistics(props: StProps): JSX.Element { 
   
