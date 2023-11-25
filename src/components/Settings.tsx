@@ -2,69 +2,54 @@ import BigRobot from '../images/ImgSetting/BigRobot.png';
 import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
-import { Link } from 'react-router-dom';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import {InputLabel, MenuItem, FormControl, Box, Link } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Box from '@mui/material/Box';
 import * as React from 'react';
 
 import {
   Property1Default,
-  DallE20231113161302C,
+  ImgBigRobot,
   TopBar,
   Content,
   IcLeft,
   Shape,
-  Title,
-  IconButtons,
-  IconButtons1,
-  DallE20231113161302C1,
+  TitleSetting,
+  IconBox,
+  IconRobot,
+  ImgRobot,
   SectionTitle,
   Text,
-  Title1,
-  List,
-  Item,
-  Frame,
-  Icon1,
-  Frame427318906,
-  Title2,
+  Title,
+  List7,
+  Item3,
+  BoxIconSound1,
+  IconSound1,
+  BoxTitleSound1,
+  TitleVoice,
   Item1,
-  Frame1,
-  Icon2,
-  Frame4273189061,
-  Title3,
+  BoxIconSound2,
+  IconSound2,
+  BoxTitleSound2,
   Item2,
-  Frame2,
-  Icon3,
-  Frame4273189062,
-  Title4,
-  SectionTitle1,
-  Text1,
-  Title5,
-  Input1,
-  Title6,
-  Textfield,
-  Text2,
-  Selection,
-  Title7,
-  ChipGroup,
-  Chip,
-  Text3,
-  Button1,
-  Seconday,
-  Title8,
-  Primary,
-  Title9,
-  Group1,
-  SectionTitle2,
-  Text4,
-  Title10,
-  Title11,
-  Title12,
-  ButtonNativeLangue,
-  ButtonStudingLanguage
+  BoxIconSound3,
+  IconSound3,
+  BoxTitleSound3,
+  SectionRoleBot,
+  TitleRoleBot,
+  SectionRoleBot1,
+  TitleRole,
+  InputRoleBot,
+  SectionRoleBot2,
+  GroupDescriptionRole,
+  DescriptionRole,
+  GroupButton,
+  ButtonExit,
+  TitleButtonExit,
+  TitleButtonSave,
+  ButtonSave,
+  SelectLanguage,
+  SectionLanguage,
+  LanguageTitle
 } from './StyleSettings';
 
 export default function Settings(props: StProps): JSX.Element {
@@ -75,109 +60,109 @@ export default function Settings(props: StProps): JSX.Element {
     setAge(event.target.value);
   };
 
+  const [role, setRole] = React.useState('');
+
+  const handleRoleChange = (event) => {
+    setRole(event.target.value);
+  }
+
   return (
     <Property1Default className={props.className}>
-      <DallE20231113161302C
+      <ImgBigRobot
         src={BigRobot}
         loading="lazy"
         alt={ 'Big Robot' }
       />
       <TopBar>
         <Content>
-          <Link to="/">
+          <Link href="/">
             <IcLeft>
               <Shape src={Arrow} loading="lazy" alt={'Arrow'} />
             </IcLeft>
           </Link>
-          <Title>{`Настройки`}</Title>
-          <IconButtons>
-            <IconButtons1>
-              <DallE20231113161302C1
+          <TitleSetting>{`Настройки`}</TitleSetting>
+          <IconBox>
+            <IconRobot>
+              <ImgRobot
                 src={Robot}
                 loading="lazy"
                 alt={
                   'Robot Icon'
                 }
               />
-            </IconButtons1>
-          </IconButtons>
+            </IconRobot>
+          </IconBox>
         </Content>
       </TopBar>
       <SectionTitle>
         <Text>
-          <Title1>{`Голосовой выбор бота`}</Title1>
+          <Title>{`Голосовой выбор бота`}</Title>
         </Text>
       </SectionTitle>
-      <List>
-        <Item>
-          <Frame>
-            <Icon1>{`🔊`}</Icon1>
-          </Frame>
-          <Frame427318906>
-            <Title2>{`Голосовой вариант 1`}</Title2>
-          </Frame427318906>
-        </Item>
-        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+      <List7>
         <Item1>
-          <Frame1>
-            <Icon2>{`🔊`}</Icon2>
-          </Frame1>
-          <Frame4273189061>
-            <Title3>{`Голосовой вариант 2`}</Title3>
-          </Frame4273189061>
+          <BoxIconSound1>
+            <IconSound1>{`🔊`}</IconSound1>
+          </BoxIconSound1>
+          <BoxTitleSound1>
+            <TitleVoice>{`Голосовой вариант 1`}</TitleVoice>
+          </BoxTitleSound1>
         </Item1>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <Item2>
-          <Frame2>
-            <Icon3>{`🔊`}</Icon3>
-          </Frame2>
-          <Frame4273189062>
-            <Title4>{`Голосовой вариант 3`}</Title4>
-          </Frame4273189062>
+          <BoxIconSound2>
+            <IconSound2>{`🔊`}</IconSound2>
+          </BoxIconSound2>
+          <BoxTitleSound2>
+            <TitleVoice>{`Голосовой вариант 2`}</TitleVoice>
+          </BoxTitleSound2>
         </Item2>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-      </List>
-      <SectionTitle1>
-        <Text1>
-          <Title5>{`Выбрать роль бота`}</Title5>
-        </Text1>
-      </SectionTitle1>
-      <Input1>
-        <Title6>{`Название роли`}</Title6>
-        <Textfield>
-          <Text2>{`Ввод роли бота`}</Text2>
-        </Textfield>
-      </Input1>
-      <Selection>
-        <Title7>{`Описание роли`}</Title7>
-        <ChipGroup>
-          <Chip>
-            <Text3>{`Ввод описания роли `}</Text3>
-          </Chip>
-        </ChipGroup>
-      </Selection>
-      <SectionTitle2>
-        <Text4>
-          <Title10>{`Выбрать язык`}</Title10>
-        </Text4>
-      </SectionTitle2>
-      <Group1>
-        <Box sx={{
+        <Item3>
+          <BoxIconSound3>
+            <IconSound3>{`🔊`}</IconSound3>
+          </BoxIconSound3>
+          <BoxTitleSound3>
+            <TitleVoice>{`Голосовой вариант 3`}</TitleVoice>
+          </BoxTitleSound3>
+        </Item3>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+      </List7>
+      <SectionRoleBot>
+        <TitleRoleBot>
+          <Title>{`Выбрать роль бота`}</Title>
+        </TitleRoleBot>
+      </SectionRoleBot>
+      <SectionRoleBot1>
+        <TitleRole>{`Название роли`}</TitleRole>
+        <InputRoleBot value={role} onChange={handleRoleChange}
+        placeholder="Ввод роли бота" />
+      </SectionRoleBot1>
+      <SectionRoleBot2>
+        <TitleRole>{`Описание роли`}</TitleRole>
+        <GroupDescriptionRole>
+          <DescriptionRole placeholder="Ввод описания роли"/>
+        </GroupDescriptionRole>
+      </SectionRoleBot2>
+      <SectionLanguage>
+        <LanguageTitle>
+          <Title>{`Выбрать язык`}</Title>
+        </LanguageTitle>
+      </SectionLanguage>
+      <SelectLanguage>
+        <Box id="LabelNativeLangue" sx={{
           display: 'inline-flex',
           position: 'relative',
           border: '#001434',
           isolation: 'isolate',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
           flex: 1,
-          margin: 0
+          marginRight: '4px'
         }}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Родной язык</InputLabel>
+            <InputLabel>Родной язык</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              labelId="LabelNativeLangue"
+              id="SelectNativeLangue"
               value={age}
               onChange={handleChange}
               label="NativeLangue"
@@ -187,18 +172,37 @@ export default function Settings(props: StProps): JSX.Element {
             </Select>
           </FormControl>
         </Box>
-        <ButtonStudingLanguage>
-          <Title12>{`Изучаемый язык`}</Title12>
-        </ButtonStudingLanguage>
-      </Group1>
-      <Button1>
-        <Seconday>
-            <Title8>{`Выйти`}</Title8>
-        </Seconday>
-        <Primary>
-          <Title9>{`Сохранить`}</Title9>
-        </Primary>
-      </Button1>
+        <Box id="LabelStudingLanguage" sx={{
+          display: 'inline-flex',
+          position: 'relative',
+          border: '#001434',
+          isolation: 'isolate',
+          flex: 1,
+          marginLeft: '4px'
+        }}>
+          <FormControl fullWidth>
+            <InputLabel>Изучаемый язык</InputLabel>
+            <Select
+              labelId="LabelStudingLanguage"
+              id="SelectStudingLanguage"
+              value={age}
+              onChange={handleChange}
+              label="StudingLanguage"
+            >
+              <MenuItem value={10}>Русский</MenuItem>
+              <MenuItem value={20}>Английский</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
+      </SelectLanguage>
+      <GroupButton>
+        <ButtonExit variant="contained" href="/">
+          <TitleButtonExit>{`Выйти`}</TitleButtonExit>
+        </ButtonExit>
+        <ButtonSave variant="contained">
+          <TitleButtonSave>{`Сохранить`}</TitleButtonSave>
+        </ButtonSave>
+      </GroupButton>
     </Property1Default>
   );
 }

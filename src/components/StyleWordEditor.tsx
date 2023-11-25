@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import { Button, Box, FormControl } from '@mui/material';
 
 export const Property1Default = styled('div')({
     backgroundColor: `rgba(230, 252, 255, 1)`,
@@ -197,7 +198,8 @@ export const Status = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
 
-export const IconButtons1 = styled('div')({
+export const IconButtons1 = styled(Button)({
+    background: `transparent`,
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -278,7 +280,7 @@ export const Subtitle2 = styled('div')({
     margin: `0px`,
 });
 
-export const IconButtons2 = styled('div')({
+export const IconButtons2 = styled(Button)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -353,7 +355,7 @@ export const Subtitle4 = styled('div')({
     margin: `0px`,
 });
 
-export const IconButtons3 = styled('div')({
+export const IconButtons3 = styled(Button)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -381,7 +383,7 @@ export const Button1 = styled('div')({
     overflow: `hidden`,
 });
 
-export const Seconday = styled('div')({
+export const Seconday = styled(Button)({
     backgroundColor: `rgba(177, 188, 205, 1)`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
@@ -395,6 +397,9 @@ export const Seconday = styled('div')({
     padding: `10px 12px`,
     flex: `1`,
     margin: `0px`,
+    '&:hover': {
+        backgroundColor: '#D3D3D3',
+    }
 });
 
 export const Title7 = styled('div')({
@@ -413,7 +418,7 @@ export const Title7 = styled('div')({
     margin: `0px`,
 });
 
-export const Primary = styled('div')({
+export const Primary = styled(Button)({
     backgroundColor: `rgba(32, 73, 129, 1)`,
     borderRadius: `8px`,
     display: `flex`,
@@ -476,7 +481,8 @@ export const Title9 = styled('div')({
     margin: `0px`,
 });
 
-export const Textfield = styled('div')({
+export const Textfield = styled('input')({
+    background: `transparent`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
@@ -489,23 +495,10 @@ export const Textfield = styled('div')({
     padding: `8px 12px`,
     alignSelf: `stretch`,
     margin: `4px 0px 0px 0px`,
-});
-
-export const Text = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(177, 188, 205, 1)`,
-    fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
     fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
     lineHeight: `20px`,
-    textTransform: `none`,
-    flex: `1`,
-    margin: `0px`,
 });
 
 export const Info = styled('div')({
@@ -540,24 +533,8 @@ export const Input2 = styled('div')({
     overflow: `hidden`,
 });
 
-export const Title10 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-
-export const Textfield1 = styled('div')({
+export const Textfield1 = styled('input')({
+    background: `transparent`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
@@ -570,23 +547,10 @@ export const Textfield1 = styled('div')({
     padding: `8px 12px`,
     alignSelf: `stretch`,
     margin: `4px 0px 0px 0px`,
-});
-
-export const Text1 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(177, 188, 205, 1)`,
-    fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
     fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
     lineHeight: `20px`,
-    textTransform: `none`,
-    flex: `1`,
-    margin: `0px`,
 });
 
 export const Info1 = styled('div')({
@@ -621,24 +585,38 @@ export const Input3 = styled('div')({
     overflow: `hidden`,
 });
 
-export const Title11 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
+export const Textfield5 = styled(Box)({
+    background: `transparent`,
+    //border: `1px rgba(0, 20, 52, 1)`,
+    boxSizing: `border-box`,
+    borderRadius: `6px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
     alignSelf: `stretch`,
-    margin: `0px`,
+    margin: `4px 0px 0px 0px`,
 });
 
-export const Textfield2 = styled('div')({
+export const Input4 = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `center`,
+    alignItems: `flex-start`,
+    padding: `11px 12px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    margin: `12px 0px 0px 0px`,
+    overflow: `hidden`,
+});
+
+export const Textfield2 = styled('input')({
+    background: `transparent`,
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
@@ -651,23 +629,10 @@ export const Textfield2 = styled('div')({
     padding: `8px 12px`,
     alignSelf: `stretch`,
     margin: `4px 0px 0px 0px`,
-});
-
-export const Text2 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(177, 188, 205, 1)`,
-    fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
     fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
     lineHeight: `20px`,
-    textTransform: `none`,
-    flex: `1`,
-    margin: `0px`,
 });
 
 export const Info2 = styled('div')({

@@ -3,6 +3,9 @@ import Robot from '../images/Img/Robot.png';
 import PencilEdit from '../images/ImgWordEditor/free-icon-edit-420140 1.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import {InputLabel, MenuItem, FormControl, Box } from '@mui/material';
+import * as React from 'react';
 
 import {
     Property1Default,
@@ -39,22 +42,27 @@ import {
     Input1,
     Title9,
     Textfield,
-    Text,
     Info,
     Input2,
-    Title10,
     Textfield1,
-    Text1,
     Info1,
-    Input3,
-    Title11,
+    Input4,
     Textfield2,
     Text2,
-    Info2
+    Info2,
+    Input3,
+    Textfield5
 } from './StyleWordEditor';
 
 export default function WordEditor(props: StProps): JSX.Element {
-    return (
+  
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
+
+  return (
       <Property1Default className={props.className}>
         <TopBar>
           <Content>
@@ -80,8 +88,7 @@ export default function WordEditor(props: StProps): JSX.Element {
               <Subtitle>{`Перевод 1`}</Subtitle>
             </FirstWordInList>
             <Status>
-              {`Статус: 
-  На изучении`}
+              {`На изучении`}
             </Status>
             <IconButtons1>
               <IconRobotLearningWords
@@ -99,7 +106,7 @@ export default function WordEditor(props: StProps): JSX.Element {
               <Title5>{`Слово 2`}</Title5>
               <Subtitle2>{`Перевод 2`}</Subtitle2>
             </SecondWordInList>
-            <Status>{`Статус: Пропущено`}</Status>
+            <Status>{`Пропущено`}</Status>
             <IconButtons2>
               <IconRobotLearningWords
                 src={PencilEdit}
@@ -116,7 +123,7 @@ export default function WordEditor(props: StProps): JSX.Element {
               <Title6>{`Слово 3`}</Title6>
               <Subtitle4>{`Перевод 3`}</Subtitle4>
             </ThirdWordInList>
-            <Status>{`Статус: Изучено`}</Status>
+            <Status>{`Изучено`}</Status>
             <IconButtons3>
               <IconRobotLearningWords
                 src={PencilEdit}
@@ -129,30 +136,42 @@ export default function WordEditor(props: StProps): JSX.Element {
         </List>
         <Input1>
           <Title9>{`Добавить слово`}</Title9>
-          <Textfield>
-            <Text>{`Ввести слово`}</Text>
-          </Textfield>
-          <Info>{`Перевод рядом со словом`}</Info>
+          <Textfield placeholder="Вводите слова, разделенные запятыми" />
+          <Info>{`Слова будут добавлены в список изучения`}</Info>
         </Input1>
         <Input2>
-          <Title10>{`Перевод слов`}</Title10>
-          <Textfield1>
-            <Text1>{`Вводите перевод слов`}</Text1>
-          </Textfield1>
-          <Info1>{`Перевод появится в списке изучения`}</Info1>
+          <Title9>{`Перевод слов`}</Title9>
+          <Textfield1 placeholder="Вводите перевод слов" />
+          <Info1>{`Перевод появится под словами в списке изучения`}</Info1>
         </Input2>
         <Input3>
-          <Title11>{`Поиск слов`}</Title11>
-          <Textfield2>
-            <Text2>{`Введите ключевое слово`}</Text2>
-          </Textfield2>
-          <Info2>{`Выполните поиск слов в списке`}</Info2>
+          <Textfield5>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Выбрать статус</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                onChange={handleChange}
+                label="NativeLangue"
+              >
+                <MenuItem value={10}>На изучении</MenuItem>
+                <MenuItem value={20}>Пропущено</MenuItem>
+                <MenuItem value={30}>Изучено</MenuItem>
+              </Select>
+            </FormControl>
+          </Textfield5>
         </Input3>
+        <Input4>
+          <Title9>{`Поиск слов`}</Title9>
+          <Textfield2 placeholder="Введите ключевое слово" />
+          <Info2>{`Выполните поиск слов в списке`}</Info2>
+        </Input4>
         <Button1>
-          <Seconday>
+          <Seconday variant="contained">
             <Title7>{`Удалить слово`}</Title7>
           </Seconday>
-          <Primary>
+          <Primary variant="contained">
             <Title8>{`Добавить слово`}</Title8>
           </Primary>
         </Button1>
