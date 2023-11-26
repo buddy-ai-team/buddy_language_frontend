@@ -97,12 +97,6 @@ export default function Settings(props: StProps): JSX.Element {
     setAge(event.target.value);
   };
 
-  const [role, setRole] = React.useState('');
-
-  const handleRoleChange = (event) => {
-    setRole(event.target.value);
-  }
-
   return (
     <Property1Default className={props.className}>
       <ImgBigRobot
@@ -172,8 +166,7 @@ export default function Settings(props: StProps): JSX.Element {
       </SectionRoleBot>
       <SectionRoleBot1>
         <TitleRole>{`Название роли`}</TitleRole>
-        <InputRoleBot value={role} onChange={handleRoleChange}
-        placeholder="Ввод роли бота" />
+        <InputRoleBot placeholder="Ввод роли бота" />
       </SectionRoleBot1>
       <SectionRoleBot2>
         <TitleRole>{`Описание роли`}</TitleRole>
