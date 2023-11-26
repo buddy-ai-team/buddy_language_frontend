@@ -20,8 +20,7 @@ import {
   SectionTitle,
   Text,
   Title,
-  List7,
-  Item3,
+  ListSounds,
   BoxIconSound1,
   IconSound1,
   BoxTitleSound1,
@@ -31,9 +30,6 @@ import {
   IconSound2,
   BoxTitleSound2,
   Item2,
-  BoxIconSound3,
-  IconSound3,
-  BoxTitleSound3,
   SectionRoleBot,
   TitleRoleBot,
   SectionRoleBot1,
@@ -93,13 +89,13 @@ export default function Settings(props: StProps): JSX.Element {
           <Title>{`Голосовой выбор бота`}</Title>
         </Text>
       </SectionTitle>
-      <List7>
+      <ListSounds>
         <Item1>
           <BoxIconSound1>
             <IconSound1>{`🔊`}</IconSound1>
           </BoxIconSound1>
           <BoxTitleSound1>
-            <TitleVoice>{`Голосовой вариант 1`}</TitleVoice>
+            <TitleVoice>{`Мужской голос`}</TitleVoice>
           </BoxTitleSound1>
         </Item1>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
@@ -108,20 +104,11 @@ export default function Settings(props: StProps): JSX.Element {
             <IconSound2>{`🔊`}</IconSound2>
           </BoxIconSound2>
           <BoxTitleSound2>
-            <TitleVoice>{`Голосовой вариант 2`}</TitleVoice>
+            <TitleVoice>{`Женский голос`}</TitleVoice>
           </BoxTitleSound2>
         </Item2>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-        <Item3>
-          <BoxIconSound3>
-            <IconSound3>{`🔊`}</IconSound3>
-          </BoxIconSound3>
-          <BoxTitleSound3>
-            <TitleVoice>{`Голосовой вариант 3`}</TitleVoice>
-          </BoxTitleSound3>
-        </Item3>
-        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-      </List7>
+      </ListSounds>
       <SectionRoleBot>
         <TitleRoleBot>
           <Title>{`Выбрать роль бота`}</Title>

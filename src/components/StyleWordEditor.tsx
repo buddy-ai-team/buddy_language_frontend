@@ -473,14 +473,13 @@ export const TextFieldWordTranslation = styled('input')({
 });
 
 export const SectionSelectStatus = styled('div')({
-    borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
     isolation: `isolate`,
     flexDirection: `column`,
     justifyContent: `center`,
     alignItems: `flex-start`,
-    padding: `11px 12px`,
+    padding: `5px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
     margin: `12px 0px 0px 0px`,

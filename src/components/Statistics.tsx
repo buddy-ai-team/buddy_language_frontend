@@ -1,7 +1,6 @@
 import Robot from '../images/Img/Robot.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-//import { Link } from "react-router-dom";
 
 import {
     Property1Default,
@@ -34,7 +33,6 @@ import {
     SectionNumberConsecutiveCommunicationDays,
     OutputNumberConsecutiveCommunicationDays,
     BottomNav,
-    ButtonHome,
     IconNav,
     TitleIcon,
     ButtonWordEditor,
@@ -94,7 +92,7 @@ export default function Statistics(props: StProps): JSX.Element {
         </GroupLanguage>
       </List2>
       <Group>
-        <SectionLearnedWords>
+        <SectionLearnedWords to="/get_list_studied_words">
           <BoxIcon>
             <Icon>{`📖`}</Icon>
           </BoxIcon>
@@ -136,10 +134,6 @@ export default function Statistics(props: StProps): JSX.Element {
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
       </Group>
       <BottomNav>
-        <ButtonHome>
-          <IconNav>{`🏠`}</IconNav>
-          <TitleIcon>{`Домой`}</TitleIcon>
-        </ButtonHome>
         <ButtonWordEditor to="/get_word_editor">
             <IconWordEditor
               src={FreeIconScrabble7880Image}
@@ -148,7 +142,7 @@ export default function Statistics(props: StProps): JSX.Element {
             />
             <TitleIcon>{`Редактор слов`}</TitleIcon>
         </ButtonWordEditor>
-        <ButtonSettings>
+        <ButtonSettings to="/get_settings">
           <IconNav>{`⚙️`}</IconNav>
           <TitleIcon>{`Настройки`}</TitleIcon>
         </ButtonSettings>

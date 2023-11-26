@@ -337,7 +337,7 @@ export const Group = styled('div')({
     margin: `30px 0px 32px 0px`,
 });
   
-export const SectionLearnedWords = styled('div')({
+export const SectionLearnedWords = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -350,6 +350,7 @@ export const SectionLearnedWords = styled('div')({
     height: `56px`,
     alignSelf: `stretch`,
     margin: `0px`,
+    textDecoration: `none`,
 });
   
 export const BoxIcon = styled('div')({
@@ -545,20 +546,6 @@ export const BottomNav = styled('div')({
     margin: `0px 0px 0px 0px`,
 });
   
-export const ButtonHome = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `7px 4px 4px 4px`,
-    boxSizing: `border-box`,
-    flex: `1`,
-    margin: `0px`,
-});
-  
 export const IconNav = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
@@ -603,10 +590,9 @@ export const ButtonWordEditor = styled(Link)({
     alignItems: `center`,
     padding: `7px 4px 4px 4px`,
     boxSizing: `border-box`,
-    width: `122px`,
     height: `48px`,
-    margin: `0px`,
     textDecorationLine: `none`,
+    flex: `1`,
 });
   
 export const IconWordEditor = styled('img')({
@@ -616,7 +602,7 @@ export const IconWordEditor = styled('img')({
     margin: `0px`,
 });
   
-export const ButtonSettings = styled('div')({
+export const ButtonSettings = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -627,5 +613,5 @@ export const ButtonSettings = styled('div')({
     padding: `4px`,
     boxSizing: `border-box`,
     flex: `1`,
-    margin: `0px`,
+    textDecoration: `none`,
 });

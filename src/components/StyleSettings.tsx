@@ -173,7 +173,7 @@ export const Title = styled('div')({
     margin: `0px`,
 });
 
-export const List7 = styled(List)({
+export const ListSounds = styled(List)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -184,7 +184,7 @@ export const List7 = styled(List)({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `12px 0px 15px 0px`,
     overflow: `hidden`,
     gap: `8px`,
 });
@@ -336,71 +336,6 @@ export const BoxTitleSound2 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
 
-export const Item3 = styled(ListItemButton)({ 
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `center`,
-    alignItems: `center`,
-    padding: `12px 0px`,
-    boxSizing: `border-box`,
-    alignSelf: `stretch`,
-    height: `45px`,
-    margin: `0px`,
-});
-
-export const BoxIconSound3 = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    borderRadius: `16px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    width: `32px`,
-    height: `32px`,
-    margin: `0px`,
-});
-
-export const IconSound3 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `32px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    width: `32px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `0px`,
-});
-
-export const BoxTitleSound3 = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-
 export const SectionRoleBot = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -494,7 +429,7 @@ export const SectionRoleBot2 = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `12px 0px 15px 0px`,
     overflow: `hidden`,
     gap: `4px`,
 });
@@ -542,7 +477,7 @@ export const SectionLanguage = styled('div')({
     flexDirection: `row`,
     justifyContent: `flex-start`,
     alignItems: `center`,
-    padding: `16px 12px 0px 12px`,
+    padding: `16px 12px 5px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
     width: `360px`,
@@ -589,10 +524,10 @@ export const SelectLanguage = styled('div')({
     flexDirection: `row`,
     justifyContent: `flex-start`,
     alignItems: `flex-start`,
-    padding: `0px 12px`,
+    padding: `5px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 5px 0px 0px`,
+    margin: `12px 5px 15px 0px`,
     overflow: `hidden`,
 });
 
