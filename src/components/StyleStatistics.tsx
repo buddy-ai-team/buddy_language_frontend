@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
 
 export const Property1Default = styled('div')({
     backgroundColor: `rgba(230, 252, 255, 1)`,
@@ -337,7 +337,7 @@ export const Group = styled('div')({
     margin: `30px 0px 32px 0px`,
 });
   
-export const SectionLearnedWords = styled(Link)({
+export const SectionLearnedWords = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -593,7 +593,7 @@ export const TitleIcon = styled('div')({
     margin: `0px`,
 });
   
-export const ButtonWordEditor = styled(Link)({
+export const ButtonWordEditor = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -616,7 +616,7 @@ export const IconWordEditor = styled('img')({
     margin: `0px`,
 });
   
-export const ButtonSettings = styled(Link)({
+export const ButtonSettings = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
