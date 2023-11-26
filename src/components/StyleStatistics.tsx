@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-//import Link from '@mui/material/Link';
+import { Link } from "react-router-dom";
 
 export const Property1Default = styled('div')({
     backgroundColor: `rgba(230, 252, 255, 1)`,
@@ -593,7 +593,7 @@ export const TitleIcon = styled('div')({
     margin: `0px`,
 });
   
-export const ButtonWordEditor = styled('div')({
+export const ButtonWordEditor = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,

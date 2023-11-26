@@ -1,7 +1,7 @@
 import Robot from '../images/Img/Robot.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 import {
     Property1Default,
@@ -140,15 +140,13 @@ export default function Statistics(props: StProps): JSX.Element {
           <IconNav>{`🏠`}</IconNav>
           <TitleIcon>{`Домой`}</TitleIcon>
         </ButtonHome>
-        <ButtonWordEditor>
-          <Link to="/get_word_editor">
+        <ButtonWordEditor to="/get_word_editor">
             <IconWordEditor
               src={FreeIconScrabble7880Image}
               loading="lazy"
               alt={'free-icon-scrabble-7880465 1'}
             />
             <TitleIcon>{`Редактор слов`}</TitleIcon>
-          </Link>
         </ButtonWordEditor>
         <ButtonSettings>
           <IconNav>{`⚙️`}</IconNav>
