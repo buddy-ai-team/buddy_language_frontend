@@ -1,85 +1,49 @@
-import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
-import Vector200Image from '../images/ImgStatictics/Component1_Vector_200.png';
-import Vector2001Image from '../images/ImgStatictics/Component1_Vector_200_1.png';
-import Vector2002Image from '../images/ImgStatictics/Component1_Vector_200_2.png';
-import Vector2003Image from '../images/ImgStatictics/Component1_Vector_200_3.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-import { Link } from 'react-router-dom';
 
 import {
     Property1Default,
     TopBar,
-    TabGroup,
-    ButtonMessages,
-    TitleButtons,
-    ButtonWords,
-    ButtonProgress,
     SectionTitle,
     Text,
-    Title3,
-    List,
-    Row,
-    Metric,
-    Title4,
-    Data,
-    SectionTitle1,
-    Text1,
-    Title5,
+    TitleHeading,
     List1,
-    Metric1,
-    Title6,
-    Data1,
-    Metric2,
-    Title7,
-    Data2,
+    GroupNumberOfMessages,
+    NumberOfMessages,
+    Title1,
+    OutputNumberOfMessages,
     List2,
-    Item,
-    Frame,
-    Icon1,
-    Frame427318906,
-    Title8,
-    Subtitle,
-    Vector200,
-    Item1,
-    Frame1,
-    Icon2,
-    Frame4273189061,
-    Title9,
-    Subtitle1,
-    Vector2001,
-    Item2,
-    Frame2,
-    Icon3,
-    Frame4273189062,
-    Title10,
-    Subtitle2,
-    Vector2002,
-    Item3,
-    Frame3,
-    Icon4,
-    Frame4273189063,
-    Title11,
-    Subtitle3,
-    Vector2003,
+    NumberOfWordsStudied,
+    Title2,
+    OutputNumberOfWordsStudied,
+    NumberOfLearningWords,
+    OutputNumberOfLearningWords,
+    Group,
+    SectionLearnedWords,
+    BoxIcon,
+    Icon,
+    Label,
+    Title3,
+    LabelViewList,
+    SectionDurationOfMessages,
+    OutputDurationOfMessages,
+    SectionNumberDaysCommunication,
+    OutputNumberDaysCommunication,
+    SectionNumberConsecutiveCommunicationDays,
+    OutputNumberConsecutiveCommunicationDays,
     BottomNav,
-    Tab3,
-    Icon5,
-    Title12,
-    Tab4,
-    FreeIconScrabble7880,
-    Title13,
-    Tab5,
-    Icon6,
-    Title14,
-    Row1,
+    ButtonHome,
+    IconNav,
+    TitleIcon,
+    ButtonWordEditor,
+    IconWordEditor,
+    ButtonSettings,
+    GroupLanguage,
     Content,
-    IcLeft,
-    Shape,
-    IconButtons,
+    IconBox,
     IconRobot,
-    Title15
+    TitleStatistics
   } from './StyleStatistics';
 
 export default function Statistics(props: StProps): JSX.Element { 
@@ -88,123 +52,105 @@ export default function Statistics(props: StProps): JSX.Element {
     <Property1Default className={props.className}>
       <TopBar>
         <Content>
-          <IcLeft>
-            <Shape src={Arrow} loading="lazy" alt={'Arrow'} />
-          </IcLeft>
-          <Title15>{`Статистика`}</Title15>
-          <IconButtons>
+          <TitleStatistics>{`Статистика`}</TitleStatistics>
+          <IconBox>
             <IconRobot
                   src={Robot}
                   loading="lazy"
                   alt={ 'Robot Icon' }
                 />
-          </IconButtons>
+          </IconBox>
         </Content>
       </TopBar>
-      <TabGroup>
-        <ButtonMessages>
-          <TitleButtons>{`Сообщения`}</TitleButtons>
-        </ButtonMessages>
-        <ButtonWords>
-          <TitleButtons>{`Слова`}</TitleButtons>
-        </ButtonWords>
-        <ButtonProgress>
-          <TitleButtons>{`Достижения`}</TitleButtons>
-        </ButtonProgress>
-      </TabGroup>
       <SectionTitle>
         <Text>
-          <Title3>{`Сообщения`}</Title3>
+          <TitleHeading>{`Сообщения`}</TitleHeading>
         </Text>
       </SectionTitle>
-      <List>
-        <Row>
-          <Metric>
-            <Title4>{`Общее количество`}</Title4>
-            <Data>{`150`}</Data>
-          </Metric>
-        </Row>
-      </List>
-      <SectionTitle1>
-        <Text1>
-          <Title5>{`Слова`}</Title5>
-        </Text1>
-      </SectionTitle1>
       <List1>
-        <Row1>
-          <Metric1>
-            <Title6>{`Количество изученных слов`}</Title6>
-            <Data1>{`500`}</Data1>
-          </Metric1>
-          <Metric2>
-            <Title7>{`Слова, которые изучаются`}</Title7>
-            <Data2>{`100`}</Data2>
-          </Metric2>
-        </Row1>
+        <GroupNumberOfMessages>
+          <NumberOfMessages>
+            <Title1>{`Общее количество`}</Title1>
+            <OutputNumberOfMessages>{`150`}</OutputNumberOfMessages>
+          </NumberOfMessages>
+        </GroupNumberOfMessages>
       </List1>
+      <SectionTitle>
+        <Text>
+          <TitleHeading>{`Слова`}</TitleHeading>
+        </Text>
+      </SectionTitle>
       <List2>
-        <Item>
-          <Frame>
-            <Icon1>{`📖`}</Icon1>
-          </Frame>
-          <Frame427318906>
-            <Title8>{`Выученные слова`}</Title8>
-          </Frame427318906>
-          <Subtitle>{`Просмотреть список`}</Subtitle>
-          <Vector200 src={Vector200Image} loading="lazy" alt={'Vector 200'} />
-        </Item>
-        <Item1>
-          <Frame1>
-            <Icon2>{`⏱️`}</Icon2>
-          </Frame1>
-          <Frame4273189061>
-            <Title9>{`Общая продолжительность сообщений`}</Title9>
-          </Frame4273189061>
-          <Subtitle1>{`3ч 15мин`}</Subtitle1>
-          <Vector2001 src={Vector2001Image} loading="lazy" alt={'Vector 200'} />
-        </Item1>
-        <Item2>
-          <Frame2>
-            <Icon3>{`🔥`}</Icon3>
-          </Frame2>
-          <Frame4273189062>
-            <Title10>{`Сумма дней общения подряд `}</Title10>
-          </Frame4273189062>
-          <Subtitle2>{`5`}</Subtitle2>
-          <Vector2002 src={Vector2002Image} loading="lazy" alt={'Vector 200'} />
-        </Item2>
-        <Item3>
-          <Frame3>
-            <Icon4>{`📅`}</Icon4>
-          </Frame3>
-          <Frame4273189063>
-            <Title11>{`Сумма дней общения всего`}</Title11>
-          </Frame4273189063>
-          <Subtitle3>{`30`}</Subtitle3>
-          <Vector2003 src={Vector2003Image} loading="lazy" alt={'Vector 200'} />
-        </Item3>
+        <GroupLanguage>
+          <NumberOfWordsStudied>
+            <Title2>{`Количество изученных слов`}</Title2>
+            <OutputNumberOfWordsStudied>{`500`}</OutputNumberOfWordsStudied>
+          </NumberOfWordsStudied>
+          <NumberOfLearningWords>
+            <Title2>{`Слова, которые изучаются`}</Title2>
+            <OutputNumberOfLearningWords>{`100`}</OutputNumberOfLearningWords>
+          </NumberOfLearningWords>
+        </GroupLanguage>
       </List2>
+      <Group>
+        <SectionLearnedWords href="/get_list_studied_words" underline="none">
+          <BoxIcon>
+            <Icon>{`📖`}</Icon>
+          </BoxIcon>
+          <Label>
+            <Title3>{`Выученные слова`}</Title3>
+          </Label>
+          <LabelViewList>{`Просмотреть список`}</LabelViewList>
+        </SectionLearnedWords>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+        <SectionDurationOfMessages>
+          <BoxIcon>
+            <Icon>{`⏱️`}</Icon>
+          </BoxIcon>
+          <Label>
+            <Title3>{`Общая продолжительность сообщений`}</Title3>
+          </Label>
+          <OutputDurationOfMessages>{`3ч 15мин`}</OutputDurationOfMessages>
+        </SectionDurationOfMessages>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+        <SectionNumberConsecutiveCommunicationDays>
+          <BoxIcon>
+            <Icon>{`🔥`}</Icon>
+          </BoxIcon>
+          <Label>
+            <Title3>{`Сумма дней общения подряд `}</Title3>
+          </Label>
+          <OutputNumberConsecutiveCommunicationDays>{`5`}</OutputNumberConsecutiveCommunicationDays>
+        </SectionNumberConsecutiveCommunicationDays>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+        <SectionNumberDaysCommunication>
+          <BoxIcon>
+            <Icon>{`📅`}</Icon>
+          </BoxIcon>
+          <Label>
+            <Title3>{`Сумма дней общения всего`}</Title3>
+          </Label>
+          <OutputNumberDaysCommunication>{`30`}</OutputNumberDaysCommunication>
+        </SectionNumberDaysCommunication>
+        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+      </Group>
       <BottomNav>
-        <Tab3>
-          <Icon5>{`🏠`}</Icon5>
-          <Title12>{`Домой`}</Title12>
-        </Tab3>
-        <Tab4>
-          <Link to="/get_word_editor">
-            <FreeIconScrabble7880
-              src={FreeIconScrabble7880Image}
-              loading="lazy"
-              alt={'free-icon-scrabble-7880465 1'}
-            />
-            <Title13>{`Редактор слов`}</Title13>
-          </Link>
-        </Tab4>
-        <Tab5>
-          <Link to="/get_settings">
-            <Icon6>{`⚙️`}</Icon6>
-            <Title14>{`Настройки`}</Title14>
-          </Link>
-        </Tab5>
+        <ButtonHome>
+          <IconNav>{`🏠`}</IconNav>
+          <TitleIcon>{`Домой`}</TitleIcon>
+        </ButtonHome>
+        <ButtonWordEditor href="/get_word_editor" underline="none">
+          <IconWordEditor
+            src={FreeIconScrabble7880Image}
+            loading="lazy"
+            alt={'free-icon-scrabble-7880465 1'}
+          />
+          <TitleIcon>{`Редактор слов`}</TitleIcon>
+        </ButtonWordEditor>
+        <ButtonSettings href="/get_settings" underline="none">
+          <IconNav>{`⚙️`}</IconNav>
+          <TitleIcon>{`Настройки`}</TitleIcon>
+        </ButtonSettings>
       </BottomNav>
     </Property1Default>
   );

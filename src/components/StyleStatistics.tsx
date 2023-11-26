@@ -1,4 +1,5 @@
 import { styled } from '@mui/material/styles';
+import Link from '@mui/material/Link';
 
 export const Property1Default = styled('div')({
     backgroundColor: `rgba(230, 252, 255, 1)`,
@@ -8,7 +9,7 @@ export const Property1Default = styled('div')({
     isolation: `isolate`,
     flexDirection: `column`,
     width: '100%',
-    height: `734px`,
+    height: `740px`,
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px 0px 12px 0px`,
@@ -45,30 +46,7 @@ export const Content = styled('div')({
     margin: `0px`,
 });
 
-export const IcLeft = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    width: `24px`,
-    height: `24px`,
-    margin: `0px`,
-});
-
-export const Shape = styled('img')({
-    height: `18px`,
-    width: `10px`,
-    position: `absolute`,
-    left: `7px`,
-    top: `3px`,
-});
-
-export const Title15 = styled('div')({
+export const TitleStatistics = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -85,7 +63,7 @@ export const Title15 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
 
-export const IconButtons = styled('div')({
+export const IconBox = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -103,86 +81,6 @@ export const IconRobot = styled('img')({
     width: `43px`,
     margin: `0px`,
 });
-
-export const TabGroup = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px 12px`,
-    boxSizing: `border-box`,
-    width: `360px`,
-    overflow: `hidden`,
-    margin: `12px 0px 0px 0px`,
-});
-  
-export const ButtonMessages = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px`,
-});
-  
-export const TitleButtons = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `12px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `16px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const ButtonWords = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const ButtonProgress = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `8px`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
   
 export const SectionTitle = styled('div')({
     borderRadius: `0px`,
@@ -197,7 +95,7 @@ export const SectionTitle = styled('div')({
     alignSelf: `stretch`,
     width: `360px`,
     left: `0px`,
-    gap: '12px',
+    margin: `20px 0px 0px 0px`,
 });
   
 export const Text = styled('div')({
@@ -214,134 +112,7 @@ export const Text = styled('div')({
     margin: `0px`,
 });
   
-export const Title3 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `18px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `24px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const List = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `center`,
-    alignItems: `center`,
-    padding: `0px 12px`,
-    boxSizing: `border-box`,
-    alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
-    overflow: `hidden`,
-    gap: `8px`,
-});
-  
-export const Row = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const Metric = styled('div')({
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `12px`,
-    flex: `1`,
-    margin: `0px`,
-    overflow: `hidden`,
-});
-  
-export const Title4 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(177, 188, 205, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const Data = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `28px`,
-    textTransform: `none`,
-    width: `35px`,
-    margin: `4px 0px 0px 0px`,
-});
-  
-export const SectionTitle1 = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
-    padding: `16px 12px 0px 12px`,
-    boxSizing: `border-box`,
-    alignSelf: `stretch`,
-    width: `360px`,
-    left: `0px`,
-    gap: '12px',
-});
-  
-export const Text1 = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    flex: `1`,
-    margin: `0px`,
-});
-  
-export const Title5 = styled('div')({
+export const TitleHeading = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -371,9 +142,10 @@ export const List1 = styled('div')({
     alignSelf: `stretch`,
     margin: `12px 0px 0px 0px`,
     overflow: `hidden`,
+    gap: `8px`,
 });
   
-export const Row1 = styled('div')({
+export const GroupNumberOfMessages = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -387,7 +159,7 @@ export const Row1 = styled('div')({
     margin: `0px`,
 });
   
-export const Metric1 = styled('div')({
+export const NumberOfMessages = styled('div')({
     border: `1px solid rgba(0, 20, 52, 1)`,
     boxSizing: `border-box`,
     borderRadius: `6px`,
@@ -403,7 +175,7 @@ export const Metric1 = styled('div')({
     overflow: `hidden`,
 });
   
-export const Title6 = styled('div')({
+export const Title1 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -414,63 +186,13 @@ export const Title6 = styled('div')({
     fontSize: `14px`,
     letterSpacing: `0px`,
     textDecoration: `none`,
-    lineHeight: `14.5px`,
+    lineHeight: `20px`,
     textTransform: `none`,
-    width: `152px`,
+    alignSelf: `stretch`,
     margin: `0px`,
 });
   
-export const Data1 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `28px`,
-    textTransform: `none`,
-    width: `35px`,
-    margin: `4px 0px 0px 0px`,
-});
-  
-export const Metric2 = styled('div')({
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `6px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `12px`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-    overflow: `hidden`,
-});
-  
-export const Title7 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(177, 188, 205, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `14.5px`,
-    textTransform: `none`,
-    width: `114px`,
-    margin: `0px`,
-});
-  
-export const Data2 = styled('div')({
+export const OutputNumberOfMessages = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -499,9 +221,123 @@ export const List2 = styled('div')({
     boxSizing: `border-box`,
     alignSelf: `stretch`,
     margin: `12px 0px 0px 0px`,
+    overflow: `hidden`,
 });
   
-export const Item = styled('div')({
+export const GroupLanguage = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `0px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    margin: `0px`,
+});
+  
+export const NumberOfWordsStudied = styled('div')({
+    border: `1px solid rgba(0, 20, 52, 1)`,
+    boxSizing: `border-box`,
+    borderRadius: `6px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `12px`,
+    height: `95px`,
+    flex: `1`,
+    margin: `0px`,
+    overflow: `hidden`,
+});
+  
+export const Title2 = styled('div')({
+    textAlign: `left`,
+    whiteSpace: `pre-wrap`,
+    fontSynthesis: `none`,
+    color: `rgba(177, 188, 205, 1)`,
+    fontStyle: `normal`,
+    fontFamily: `Roboto`,
+    fontWeight: `400`,
+    fontSize: `14px`,
+    letterSpacing: `0px`,
+    textDecoration: `none`,
+    lineHeight: `14.5px`,
+    textTransform: `none`,
+    width: `152px`,
+    margin: `0px`,
+});
+  
+export const OutputNumberOfWordsStudied = styled('div')({
+    textAlign: `left`,
+    whiteSpace: `pre-wrap`,
+    fontSynthesis: `none`,
+    color: `rgba(0, 20, 52, 1)`,
+    fontStyle: `normal`,
+    fontFamily: `Roboto`,
+    fontWeight: `500`,
+    fontSize: `20px`,
+    letterSpacing: `0px`,
+    textDecoration: `none`,
+    lineHeight: `28px`,
+    textTransform: `none`,
+    width: `35px`,
+    margin: `4px 0px 0px 0px`,
+});
+  
+export const NumberOfLearningWords = styled('div')({
+    border: `1px solid rgba(0, 20, 52, 1)`,
+    boxSizing: `border-box`,
+    borderRadius: `6px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `12px`,
+    height: `95px`,
+    flex: `1`,
+    margin: `0px 0px 0px 8px`,
+    overflow: `hidden`,
+});
+  
+export const OutputNumberOfLearningWords = styled('div')({
+    textAlign: `left`,
+    whiteSpace: `pre-wrap`,
+    fontSynthesis: `none`,
+    color: `rgba(0, 20, 52, 1)`,
+    fontStyle: `normal`,
+    fontFamily: `Roboto`,
+    fontWeight: `500`,
+    fontSize: `20px`,
+    letterSpacing: `0px`,
+    textDecoration: `none`,
+    lineHeight: `28px`,
+    textTransform: `none`,
+    width: `35px`,
+    margin: `4px 0px 0px 0px`,
+});
+  
+export const Group = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    padding: `0px 12px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    margin: `30px 0px 32px 0px`,
+});
+  
+export const SectionLearnedWords = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -511,11 +347,12 @@ export const Item = styled('div')({
     alignItems: `center`,
     padding: `12px 0px`,
     boxSizing: `border-box`,
+    height: `56px`,
     alignSelf: `stretch`,
     margin: `0px`,
 });
   
-export const Frame = styled('div')({
+export const BoxIcon = styled('div')({
     backgroundColor: `rgba(177, 188, 205, 1)`,
     borderRadius: `16px`,
     display: `flex`,
@@ -531,7 +368,7 @@ export const Frame = styled('div')({
     margin: `0px`,
 });
   
-export const Icon1 = styled('div')({
+export const Icon = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -551,7 +388,7 @@ export const Icon1 = styled('div')({
     top: `0px`,
 });
   
-export const Frame427318906 = styled('div')({
+export const Label = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -565,7 +402,7 @@ export const Frame427318906 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Title8 = styled('div')({
+export const Title3 = styled('div')({
     textAlign: `left`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -582,7 +419,7 @@ export const Title8 = styled('div')({
     margin: `0px`,
 });
   
-export const Subtitle = styled('div')({
+export const LabelViewList = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -599,15 +436,7 @@ export const Subtitle = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector200 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
-export const Item1 = styled('div')({
+export const SectionDurationOfMessages = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -618,77 +447,11 @@ export const Item1 = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `56px`,
     margin: `0px`,
 });
   
-export const Frame1 = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    borderRadius: `16px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    width: `32px`,
-    height: `32px`,
-    margin: `0px`,
-});
-  
-export const Icon2 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `32px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    width: `32px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `0px`,
-});
-  
-export const Frame4273189061 = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const Title9 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `14.5px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const Subtitle1 = styled('div')({
+export const OutputDurationOfMessages = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -704,15 +467,7 @@ export const Subtitle1 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector2001 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
-export const Item2 = styled('div')({
+export const SectionNumberConsecutiveCommunicationDays = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -723,77 +478,11 @@ export const Item2 = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `56px`,
     margin: `0px`,
 });
   
-export const Frame2 = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    borderRadius: `16px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    width: `32px`,
-    height: `32px`,
-    margin: `0px`,
-});
-  
-export const Icon3 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `32px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    width: `32px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `0px`,
-});
-  
-export const Frame4273189062 = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const Title10 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    width: `203px`,
-    margin: `0px`,
-});
-  
-export const Subtitle2 = styled('div')({
+export const OutputNumberConsecutiveCommunicationDays = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -809,15 +498,7 @@ export const Subtitle2 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const Vector2002 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
-});
-  
-export const Item3 = styled('div')({
+export const SectionNumberDaysCommunication = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -828,77 +509,11 @@ export const Item3 = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
+    height: `56px`,
     margin: `0px`,
 });
   
-export const Frame3 = styled('div')({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    borderRadius: `16px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    width: `32px`,
-    height: `32px`,
-    margin: `0px`,
-});
-  
-export const Icon4 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `32px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    width: `32px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `0px`,
-});
-  
-export const Frame4273189063 = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `flex-start`,
-    padding: `0px`,
-    boxSizing: `border-box`,
-    flex: `1`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const Title11 = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `0px`,
-});
-  
-export const Subtitle3 = styled('div')({
+export const OutputNumberDaysCommunication = styled('div')({
     textAlign: `right`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -912,14 +527,6 @@ export const Subtitle3 = styled('div')({
     lineHeight: `20px`,
     textTransform: `none`,
     margin: `0px 0px 0px 8px`,
-});
-  
-export const Vector2003 = styled('img')({
-    height: `0px`,
-    width: `336px`,
-    position: `absolute`,
-    left: `0px`,
-    top: `56px`,
 });
   
 export const BottomNav = styled('div')({
@@ -935,10 +542,10 @@ export const BottomNav = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `0px 0px 0px 0px`,
 });
   
-export const Tab3 = styled('div')({
+export const ButtonHome = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -952,7 +559,7 @@ export const Tab3 = styled('div')({
     margin: `0px`,
 });
   
-export const Icon5 = styled('div')({
+export const IconNav = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -969,7 +576,7 @@ export const Icon5 = styled('div')({
     margin: `0px`,
 });
   
-export const Title12 = styled('div')({
+export const TitleIcon = styled('div')({
     textAlign: `center`,
     whiteSpace: `pre-wrap`,
     fontSynthesis: `none`,
@@ -986,7 +593,7 @@ export const Title12 = styled('div')({
     margin: `0px`,
 });
   
-export const Tab4 = styled('div')({
+export const ButtonWordEditor = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -1002,74 +609,23 @@ export const Tab4 = styled('div')({
     textDecorationLine: `none`,
 });
   
-export const FreeIconScrabble7880 = styled('img')({
+export const IconWordEditor = styled('img')({
     height: `23px`,
     width: `21px`,
     objectFit: `cover`,
     margin: `0px`,
 });
   
-export const Title13 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(230, 252, 255, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `10px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `14px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
-    margin: `2px 0px 0px 0px`,
-});
-  
-export const Tab5 = styled('div')({
+export const ButtonSettings = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
     isolation: `isolate`,
     flexDirection: `column`,
-    justifyContent: `flex-start`,
+    justifyContent: `center`,
     alignItems: `center`,
     padding: `4px`,
     boxSizing: `border-box`,
     flex: `1`,
-    margin: `0px`,
-});
-  
-export const Icon6 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 0, 0, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `20px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `28px`,
-    textTransform: `none`,
-    width: `28px`,
-    margin: `0px`
-});
-  
-export const Title14 = styled('div')({
-    textAlign: `center`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(230, 252, 255, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `400`,
-    fontSize: `10px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `14px`,
-    textTransform: `none`,
-    alignSelf: `stretch`,
     margin: `0px`,
 });
