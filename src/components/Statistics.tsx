@@ -7,7 +7,6 @@ import Vector2003Image from '../images/ImgStatictics/Component1_Vector_200_3.png
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import apiService from "../apiService";
 
 import {
     Property1Default,
@@ -82,40 +81,6 @@ import {
     IconRobot,
     Title15
   } from './StyleStatistics';
-
-//Пример использования
-
-const user1 = await apiService.getUser("b524e7e7-766f-4e2d-81b3-91a234abd7dc");
-if(user1 != null)
-{
-  console.log(user1.firstName);
-  console.log(user1.lastName);
-}
-
-const user2 = await apiService.getUserByTelegramId("123456789");
-if(user2 != null)
-{
-  console.log(user2);
-  console.log(user2.firstName);
-  console.log(user2.lastName);
-
-  user2.firstName = "Bob";
-  user2.lastName = "Smit";
-  const updateUser = await apiService.updateUser(user2);
-  console.log(updateUser);
-  
-}
-
-// const addUserRequst = {
-//   "firstName": "Max",
-//   "lastName": "Terner",
-//   "telegramId": "987654321"
-// }
-// const userAdd = await apiService.addUser(addUserRequst);
-// console.log(userAdd);
-
-const user3 = await apiService.getUserByTelegramId("987654321");
-console.log(user3);
 
 export default function Statistics(props: StProps): JSX.Element { 
   
