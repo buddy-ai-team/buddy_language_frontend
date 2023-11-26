@@ -1,126 +1,80 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import api from "./apiClient/_Api";
-import { Role,
-         AddRoleRequest,
-         User,
-         AddUserRequest, 
-         WordEntity,
-         AddWordEntityRequest } from "./apiClient/index";
+import {
+    Role,
+    AddRoleRequest,
+    User,
+    AddUserRequest,
+    WordEntity,
+    AddWordEntityRequest
+} from "./apiClient/index";
 
-class apiSevice{
+class ApiService {
 
-    //User's metods
-    async getUser(id: string){
+    private async requestApi<T>(url: string, method: string, data?: any): Promise<T> {
         try {
-            const response = await api.get<User>(`/user/get?userId=${id}`);
+            const response = await api.request<T>({
+                url,
+                method,
+                data,
+            });
             return response.data;
-        } catch (error) {
+        } catch (error: any) {
             console.error(error);
-        }      
+            throw new Error(`Error occurred during API request: ${error.message}`);
+        }
     }
 
-    async getUserByTelegramId(id: string){
-        try {
-            const response = await api.get<User>(`/user/get_by_telegram_id?id=${id}`);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    // User's methods
+    async getUser(id: string): Promise<User> {
+        return this.requestApi<User>(`/user/get?userId=${id}`, 'GET');
     }
 
-    async updateUser(user: User){
-        try {
-            const response = await api.post<User>('/user/update', user);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    async getUserByTelegramId(id: string): Promise<User> {
+        return this.requestApi<User>(`/user/get_by_telegram_id?id=${id}`, 'GET');
     }
 
-    async addUser(addUserRequest: AddUserRequest){
-        try {
-            const response = await api.post<User>('/user/add', addUserRequest);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    async updateUser(user: User): Promise<User> {
+        return this.requestApi<User>('/user/update', 'POST', user);
     }
 
-    //Role's metods
-
-    async getRole(id: string){
-        try {
-            const response = await api.get<Role>(`/role/get?roleId=${id}`);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }      
+    async addUser(addUserRequest: AddUserRequest): Promise<User> {
+        return this.requestApi<User>('/user/add', 'POST', addUserRequest);
     }
 
-    async getRoleAll(){
-        try {
-            const response = await api.get<Array<Role>>(`/role/all`);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    // Role's methods
+    async getRole(id: string): Promise<Role> {
+        return this.requestApi<Role>(`/role/get?roleId=${id}`, 'GET');
     }
 
-    async updateRole(role: Role){
-        try {
-            const response = await api.post<Role>('/role/update', role);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    async getRoleAll(): Promise<Role[]> {
+        return this.requestApi<Role[]>('/role/all', 'GET');
     }
 
-    async addRole(addRoleRequest: AddRoleRequest){
-        try {
-            const response = await api.post<Role>('/role/add', addRoleRequest);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    async updateRole(role: Role): Promise<Role> {
+        return this.requestApi<Role>('/role/update', 'POST', role);
     }
 
-    //Word's metods
-
-    async getWord(id: string){
-        try {
-            const response = await api.get<WordEntity>(`/wordentity/id?wordId=${id}`);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }      
+    async addRole(addRoleRequest: AddRoleRequest): Promise<Role> {
+        return this.requestApi<Role>('/role/add', 'POST', addRoleRequest);
     }
 
-    async getWordsByAccountId(accountId: string){
-        try {
-            const response = await api.get<Array<WordEntity>>(`/wordentity/id-account?accountId=${accountId}`);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    // Word's methods
+    async getWord(id: string): Promise<WordEntity> {
+        return this.requestApi<WordEntity>(`/wordentity/id?wordId=${id}`, 'GET');
     }
 
-    async updateWord(word: WordEntity){
-        try {
-            const response = await api.post<WordEntity>('/wordentity/update', word);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    async getWordsByAccountId(accountId: string): Promise<WordEntity[]> {
+        return this.requestApi<WordEntity[]>(`/wordentity/id-account?accountId=${accountId}`, 'GET');
     }
 
-    async addWord(addWordEntityRequest: AddWordEntityRequest){
-        try {
-            const response = await api.post<WordEntity>('/wordentity/add', addWordEntityRequest);
-            return response.data;
-        } catch (error) {
-            console.error(error);
-        }  
+    async updateWord(word: WordEntity): Promise<WordEntity> {
+        return this.requestApi<WordEntity>('/wordentity/update', 'POST', word);
     }
 
+    async addWord(addWordEntityRequest: AddWordEntityRequest): Promise<WordEntity> {
+        return this.requestApi<WordEntity>('/wordentity/add', 'POST', addWordEntityRequest);
+    }
 }
 
-export default new apiSevice();
+export default new ApiService();
