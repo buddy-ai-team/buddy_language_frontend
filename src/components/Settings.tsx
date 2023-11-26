@@ -5,7 +5,6 @@ import { StProps } from '../types';
 import {InputLabel, MenuItem, FormControl, Box, Link } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import * as React from 'react';
-//import api from "../apiClient/_Api";
 
 import {
   Property1Default,
@@ -52,42 +51,6 @@ import {
   SectionLanguage,
   LanguageTitle
 } from './StyleSettings';
-
-//Пример использования
-
-//Пример использования
-//GET запрос
-// api.get('/user/get_by_telegram_id?id=123456789')
-//   .then(async function (response) {
-//     // обработка успешного запроса
-//     console.log(response);
-//     //Данные о пользователе в разделе data
-//     const user = await response.data;
-//     console.log(user.firstName);
-//     console.log(user.lastName);
-//     console.log(user.telegramId);
-//   })
-//   .catch(function (error) {
-//     // обработка ошибки
-//     console.log(error);
-//   })
-//   .finally(function () {
-//     // выполняется всегда
-//   });
-
-  //POST запрос
-  // api.post('/user/update', {
-  //   id: "b524e7e7-766f-4e2d-81b3-91a234abd7dc",
-  //   firstName: 'Bob',
-  //   lastName: 'Smit',
-  //   telegramId: "123456789"
-  // })
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
 
 export default function Settings(props: StProps): JSX.Element {
 
