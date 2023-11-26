@@ -5,9 +5,11 @@ import Statistics from "./components/Statistics";
 import WordEditor from "./components/WordEditor";
 import Settings from "./components/Settings";
 import ListStudiedWords from './components/ListStudiedWords';
+import { SDKProvider} from '@tma.js/sdk-react';
 
 export default function App() {
   return (
+    <SDKProvider>
     <HelmetProvider>
       <StyledEngineProvider injectFirst>
           <Routes>
@@ -18,5 +20,6 @@ export default function App() {
           </Routes>
       </StyledEngineProvider>
     </HelmetProvider>
+    </SDKProvider>
   );
 }
