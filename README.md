@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/85aff744-87b3-42c4-be32-306b810fa547/deploy-status)](https://app.netlify.com/sites/buddy-language-bot/deploys)
+
+[ссылка на сборку](https://buddy-language-bot.netlify.app)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
