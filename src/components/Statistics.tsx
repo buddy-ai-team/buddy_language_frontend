@@ -1,7 +1,6 @@
 import Robot from '../images/Img/Robot.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-import Link from '@mui/material/Link';
 
 import {
     Property1Default,
@@ -94,7 +93,7 @@ export default function Statistics(props: StProps): JSX.Element {
         </GroupLanguage>
       </List2>
       <Group>
-        <SectionLearnedWords>
+        <SectionLearnedWords href="/get_list_studied_words" underline="none">
           <BoxIcon>
             <Icon>{`📖`}</Icon>
           </BoxIcon>
@@ -140,21 +139,17 @@ export default function Statistics(props: StProps): JSX.Element {
           <IconNav>{`🏠`}</IconNav>
           <TitleIcon>{`Домой`}</TitleIcon>
         </ButtonHome>
-        <ButtonWordEditor>
-          <Link href="/get_word_editor" underline="none">
-            <IconWordEditor
-              src={FreeIconScrabble7880Image}
-              loading="lazy"
-              alt={'free-icon-scrabble-7880465 1'}
-            />
-            <TitleIcon>{`Редактор слов`}</TitleIcon>
-          </Link>
+        <ButtonWordEditor href="/get_word_editor" underline="none">
+          <IconWordEditor
+            src={FreeIconScrabble7880Image}
+            loading="lazy"
+            alt={'free-icon-scrabble-7880465 1'}
+          />
+          <TitleIcon>{`Редактор слов`}</TitleIcon>
         </ButtonWordEditor>
-        <ButtonSettings>
-          <Link href="/get_settings" underline="none">
-            <IconNav>{`⚙️`}</IconNav>
-            <TitleIcon>{`Настройки`}</TitleIcon>
-          </Link>
+        <ButtonSettings href="/get_settings" underline="none">
+          <IconNav>{`⚙️`}</IconNav>
+          <TitleIcon>{`Настройки`}</TitleIcon>
         </ButtonSettings>
       </BottomNav>
     </Property1Default>

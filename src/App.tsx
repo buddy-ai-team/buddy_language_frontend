@@ -4,6 +4,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import Statistics from "./components/Statistics";
 import WordEditor from "./components/WordEditor";
 import Settings from "./components/Settings";
+import ListStudiedWords from './components/ListStudiedWords';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
             <Route path="/" element={<Statistics />} />
             <Route path="/get_word_editor" element={<WordEditor />} />
             <Route path="/get_settings" element={<Settings />} />
+            <Route path="/get_list_studied_words" element={<ListStudiedWords/>} />
           </Routes>
       </StyledEngineProvider>
     </HelmetProvider>

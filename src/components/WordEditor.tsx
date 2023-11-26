@@ -4,7 +4,7 @@ import PencilEdit from '../images/ImgWordEditor/free-icon-edit-420140 1.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {InputLabel, MenuItem, FormControl, Box } from '@mui/material';
+import {InputLabel, MenuItem, FormControl } from '@mui/material';
 import * as React from 'react';
 
 import {
@@ -14,44 +14,41 @@ import {
     IcLeft,
     Shape,
     Title,
-    IconButtons,
+    IconBox,
     IconRobot,
     List,
-    Item,
+    ItemToStudy,
     FirstWordInList,
-    Title4,
-    Subtitle,
+    TitleWordFirst,
+    TitleTranslationFirst,
     Status,
-    IconButtons1,
-    IconRobotLearningWords,
-    Item1,
+    IconButtonToStudy,
+    IconPencilToStudy,
+    ItemSkipped,
     SecondWordInList,
-    Title5,
-    Subtitle2,
-    IconButtons2,
-    Item2,
+    TitleWordSecond,
+    TitleTranslationSecond,
+    IconButtonSkipped,
+    ItemStudied,
     ThirdWordInList,
-    Title6,
-    Subtitle4,
-    IconButtons3,
-    Button1,
-    Seconday,
-    Title7,
-    Primary,
-    Title8,
-    Input1,
-    Title9,
-    Textfield,
+    TitleWordThird,
+    TitleTranslationThird,
+    IconButtonStudied,
+    GroupButtons,
+    ButtonDelete,
+    TitleDelete,
+    ButtonAddWord,
+    TitleAddWord,
+    SectionAddWord,
+    TitleWord,
+    TextFieldAddWord,
     Info,
-    Input2,
-    Textfield1,
-    Info1,
-    Input4,
-    Textfield2,
-    Text2,
-    Info2,
-    Input3,
-    Textfield5
+    SectionWordTranslation,
+    TextFieldWordTranslation,
+    SectionWordSearch,
+    TextFieldWordSearch,
+    SectionSelectStatus,
+    TextFieldSelectStatus
 } from './StyleWordEditor';
 
 export default function WordEditor(props: StProps): JSX.Element {
@@ -72,80 +69,80 @@ export default function WordEditor(props: StProps): JSX.Element {
               </IcLeft>
             </Link>
             <Title>{`Редактор слов`}</Title>
-            <IconButtons>
+            <IconBox>
               <IconRobot
                 src={Robot}
                 loading="lazy"
                 alt={ 'Robot Icon' }
               />
-            </IconButtons>
+            </IconBox>
           </Content>
         </TopBar>
         <List>
-          <Item>
+          <ItemToStudy>
             <FirstWordInList>
-              <Title4>{`Слово 1`}</Title4>
-              <Subtitle>{`Перевод 1`}</Subtitle>
+              <TitleWordFirst>{`Слово 1`}</TitleWordFirst>
+              <TitleTranslationFirst>{`Перевод 1`}</TitleTranslationFirst>
             </FirstWordInList>
             <Status>
               {`На изучении`}
             </Status>
-            <IconButtons1>
-              <IconRobotLearningWords
+            <IconButtonToStudy>
+              <IconPencilToStudy
                 src={PencilEdit}
                 loading="lazy"
                 alt={
                   'Pencil'
                 }
               />
-            </IconButtons1>
-          </Item>
+            </IconButtonToStudy>
+          </ItemToStudy>
           <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-          <Item1>
+          <ItemSkipped>
             <SecondWordInList>
-              <Title5>{`Слово 2`}</Title5>
-              <Subtitle2>{`Перевод 2`}</Subtitle2>
+              <TitleWordSecond>{`Слово 2`}</TitleWordSecond>
+              <TitleTranslationSecond>{`Перевод 2`}</TitleTranslationSecond>
             </SecondWordInList>
             <Status>{`Пропущено`}</Status>
-            <IconButtons2>
-              <IconRobotLearningWords
+            <IconButtonSkipped>
+              <IconPencilToStudy
                 src={PencilEdit}
                 loading="lazy"
                 alt={
                   'Edit'
                 }
               />
-            </IconButtons2>
-          </Item1>
+            </IconButtonSkipped>
+          </ItemSkipped>
           <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-          <Item2>
+          <ItemStudied>
             <ThirdWordInList>
-              <Title6>{`Слово 3`}</Title6>
-              <Subtitle4>{`Перевод 3`}</Subtitle4>
+              <TitleWordThird>{`Слово 3`}</TitleWordThird>
+              <TitleTranslationThird>{`Перевод 3`}</TitleTranslationThird>
             </ThirdWordInList>
             <Status>{`Изучено`}</Status>
-            <IconButtons3>
-              <IconRobotLearningWords
+            <IconButtonStudied>
+              <IconPencilToStudy
                 src={PencilEdit}
                 loading="lazy"
                 alt={ 'Pencil' }
               />
-            </IconButtons3>
-          </Item2>
+            </IconButtonStudied>
+          </ItemStudied>
           <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         </List>
-        <Input1>
-          <Title9>{`Добавить слово`}</Title9>
-          <Textfield placeholder="Вводите слова, разделенные запятыми" />
+        <SectionAddWord>
+          <TitleWord>{`Добавить слово`}</TitleWord>
+          <TextFieldAddWord placeholder="Вводите слова, разделенные запятыми" />
           <Info>{`Слова будут добавлены в список изучения`}</Info>
-        </Input1>
-        <Input2>
-          <Title9>{`Перевод слов`}</Title9>
-          <Textfield1 placeholder="Вводите перевод слов" />
-          <Info1>{`Перевод появится под словами в списке изучения`}</Info1>
-        </Input2>
-        <Input3>
-          <Textfield5>
+        </SectionAddWord>
+        <SectionWordTranslation>
+          <TitleWord>{`Перевод слов`}</TitleWord>
+          <TextFieldWordTranslation placeholder="Вводите перевод слов" />
+          <Info>{`Перевод появится под словами в списке изучения`}</Info>
+        </SectionWordTranslation>
+        <SectionSelectStatus>
+          <TextFieldSelectStatus>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Выбрать статус</InputLabel>
               <Select
@@ -160,21 +157,21 @@ export default function WordEditor(props: StProps): JSX.Element {
                 <MenuItem value={30}>Изучено</MenuItem>
               </Select>
             </FormControl>
-          </Textfield5>
-        </Input3>
-        <Input4>
-          <Title9>{`Поиск слов`}</Title9>
-          <Textfield2 placeholder="Введите ключевое слово" />
-          <Info2>{`Выполните поиск слов в списке`}</Info2>
-        </Input4>
-        <Button1>
-          <Seconday variant="contained">
-            <Title7>{`Удалить слово`}</Title7>
-          </Seconday>
-          <Primary variant="contained">
-            <Title8>{`Добавить слово`}</Title8>
-          </Primary>
-        </Button1>
+          </TextFieldSelectStatus>
+        </SectionSelectStatus>
+        <SectionWordSearch>
+          <TitleWord>{`Поиск слов`}</TitleWord>
+          <TextFieldWordSearch placeholder="Введите ключевое слово" />
+          <Info>{`Выполните поиск слов в списке`}</Info>
+        </SectionWordSearch>
+        <GroupButtons>
+          <ButtonDelete variant="contained">
+            <TitleDelete>{`Удалить слово`}</TitleDelete>
+          </ButtonDelete>
+          <ButtonAddWord variant="contained">
+            <TitleAddWord>{`Добавить слово`}</TitleAddWord>
+          </ButtonAddWord>
+        </GroupButtons>
       </Property1Default>
     );
 }
