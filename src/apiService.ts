@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosInstance } from "axios";
+import {AxiosInstance} from "axios";
 import api from "./apiClient/_Api";
 import {
   Role,
@@ -10,22 +10,24 @@ import {
   AddWordEntityRequest,
 } from "./apiClient/index";
 
-// Создаем экземпляр Axios с нужными заголовками авторизации
-const http: AxiosInstance = axios.create();
+// const apiInstance: AxiosInstance = createApiInstance();
 
 // Функция для установки заголовка авторизации в Axios перед отправкой запроса
-const setAuthorizationHeader = () => {
-  const initData = new URLSearchParams(window.location.hash.slice(1)).get(
-    "tgWebAppData"
-  );
+const setAuthorizationHeader = (api: AxiosInstance) => {
+    try {
+        const initData = new URLSearchParams(window.location.hash.slice(1)).get("tgWebAppData");
 
-  if (initData === null) {
-    throw new Error("Ooof! Something is wrong. Init data is missing");
-    return; // Игнорируем запрос, если initData отсутствует
-  }
+        if (initData === null) {
+            throw new Error("Ooof! Something is wrong. Init data is missing");
+        }
 
-  // Устанавливаем заголовок авторизации для всех запросов с использованием созданного Axios-экземпляра
-  http.defaults.headers.common["Authorization"] = `tma ${initData}`;
+        // Устанавливаем заголовок авторизации для всех запросов с использованием переданного Axios-экземпляра
+       api.defaults.headers.common["Authorization"] = `tma ${initData}`;
+    } catch (error: any) {
+        // Обработка ошибок
+        console.error("Failed to set authorization header:", error.message);
+        throw error;
+    }
 };
 
 class ApiService {
@@ -34,18 +36,18 @@ class ApiService {
     method: string,
     data?: any
   ): Promise<T> {
-    try {
-      setAuthorizationHeader(); // Установка заголовка перед каждым запросом
-      const response = await api.request<T>({
-        url,
-        method,
-        data,
-      });
-      return response.data;
-    } catch (error: any) {
-      console.error(`Error occurred during API request: ${error.message}`);
-      throw new Error(`Error occurred during API request: ${error.message}`);
-    }
+     try {
+            setAuthorizationHeader(api); // Установка заголовка перед каждым запросом
+            const response = await api.request<T>({
+                url,
+                method,
+                data,
+            });
+            return response.data;
+        } catch (error: any) {
+            console.error(error);
+            throw new Error(`Error occurred during API request: ${error.message}`);
+        }
   }
 
   // User's methods
