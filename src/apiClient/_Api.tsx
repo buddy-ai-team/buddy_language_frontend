@@ -1,7 +1,11 @@
-import axios from "axios";
+import axios, {AxiosInstance} from "axios";
 
-const api = axios.create({
-    baseURL: "https://buddylanguageapi.azurewebsites.net",
+export const createApiInstance = (): AxiosInstance => {
+    return axios.create({
+        baseURL: "https://buddylanguageapi.azurewebsites.net",
     });
+};
+
+const api: AxiosInstance = createApiInstance();
 
 export default api;
