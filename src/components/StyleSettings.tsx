@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Button, List, ListItemButton } from '@mui/material';
+import { Button, List, ListItemButton, Box } from '@mui/material';
 
 export const Property1Default = styled('div')({ 
     backgroundColor: `rgba(230, 252, 255, 1)`,
@@ -9,7 +9,7 @@ export const Property1Default = styled('div')({
     isolation: `isolate`,
     flexDirection: `column`,
     width: '100%',
-    height: `740px`,
+    height: `790px`,
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px 0px 12px 0px`,
@@ -336,6 +336,35 @@ export const BoxTitleSound2 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
 
+export const SectionVoiceSpeed = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    padding: `5px 12px 0px 12px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    height: `45px`,
+    marginLeft: `5px`,
+});
+
+export const BoxVoiceSpeed = styled(Box)({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `0px`,
+    boxSizing: `border-box`,
+    flex: `1`,
+    margin: `0px 30px 0px 30px`,
+});
+
 export const SectionRoleBot = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -424,12 +453,12 @@ export const SectionRoleBot2 = styled('div')({
     position: `relative`,
     isolation: `isolate`,
     flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
+    justifyContent: `center`,
+    alignItems: `flex-start`,
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 15px 0px`,
+    margin: `12px 0px 0px 0px`,
     overflow: `hidden`,
     gap: `4px`,
 });
@@ -445,7 +474,6 @@ export const GroupDescriptionRole = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    height: `102px`,
     margin: `4px 0px 0px 0px`,
 });
 
@@ -459,14 +487,44 @@ export const DescriptionRole = styled('input')({
     isolation: `isolate`,
     flexDirection: `column`,
     justifyContent: `flex-start`,
-    alignItems: `flex-start`,
+    alignItems: `center`,
     padding: `8px 8px 8px 12px`,
     flex: `1`,
-    height: `101px`,
-    margin: `0px`,
+    margin: `4px 0px 0px 0px`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
     fontSize: `14px`,
+    lineHeight: `20px`,
+});
+
+export const SectionRoleBot3 = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `center`,
+    alignItems: `flex-start`,
+    padding: `0px 12px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    margin: `12px 0px 0px 0px`,
+    overflow: `hidden`,
+    gap: `4px`,
+});
+
+export const ApplyingExistingRoles = styled(Box)({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `0px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    margin: `4px 0px 0px 0px`,
 });
 
 export const SectionLanguage = styled('div')({
@@ -477,7 +535,7 @@ export const SectionLanguage = styled('div')({
     flexDirection: `row`,
     justifyContent: `flex-start`,
     alignItems: `center`,
-    padding: `16px 12px 5px 12px`,
+    padding: `16px 12px 0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
     width: `360px`,
@@ -527,7 +585,7 @@ export const SelectLanguage = styled('div')({
     padding: `5px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 5px 15px 0px`,
+    margin: `5px 5px 12px 0px`,
     overflow: `hidden`,
 });
 
