@@ -362,7 +362,7 @@ export const BoxVoiceSpeed = styled(Box)({
     padding: `0px`,
     boxSizing: `border-box`,
     flex: `1`,
-    margin: `0px 30px 0px 30px`,
+    margin: `0px 15px 0px 25px`,
 });
 
 export const SectionRoleBot = styled('div')({
