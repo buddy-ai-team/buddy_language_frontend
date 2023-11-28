@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Button, List, ListItemButton } from '@mui/material';
+import { Button, List, ListItemButton, Box } from '@mui/material';
 
 export const Property1Default = styled('div')({ 
     backgroundColor: `rgba(230, 252, 255, 1)`,
@@ -336,6 +336,35 @@ export const BoxTitleSound2 = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
 
+export const SectionVoiceSpeed = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    padding: `5px 12px 0px 12px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    height: `45px`,
+    marginLeft: `5px`,
+});
+
+export const BoxVoiceSpeed = styled(Box)({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `flex-start`,
+    padding: `0px`,
+    boxSizing: `border-box`,
+    flex: `1`,
+    margin: `0px 30px 0px 30px`,
+});
+
 export const SectionRoleBot = styled('div')({
     borderRadius: `0px`,
     display: `flex`,
@@ -445,7 +474,7 @@ export const GroupDescriptionRole = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    height: `102px`,
+    height: `60px`,
     margin: `4px 0px 0px 0px`,
 });
 
@@ -462,7 +491,7 @@ export const DescriptionRole = styled('input')({
     alignItems: `flex-start`,
     padding: `8px 8px 8px 12px`,
     flex: `1`,
-    height: `101px`,
+    height: `59px`,
     margin: `0px`,
     fontFamily: `Roboto`,
     fontWeight: `400`,

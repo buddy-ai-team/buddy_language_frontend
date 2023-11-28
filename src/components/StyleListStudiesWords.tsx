@@ -112,7 +112,7 @@ export const SelectionButton = styled('div')({
     isolation: `isolate`,
     flexDirection: `row`,
     justifyContent: `flex-end`,
-    minHeight: `90vh`,
+    minHeight: `100vh`,
     alignItems: `flex-end`,
     padding: `13px 12px`,
     boxSizing: `border-box`,

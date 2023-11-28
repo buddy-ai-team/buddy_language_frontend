@@ -2,7 +2,7 @@ import BigRobot from '../images/ImgSetting/BigRobot.png';
 import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
-import {InputLabel, MenuItem, FormControl, Box, Link } from '@mui/material';
+import {InputLabel, MenuItem, FormControl, Box, Link, Slider } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import * as React from 'react';
 
@@ -45,16 +45,44 @@ import {
   ButtonSave,
   SelectLanguage,
   SectionLanguage,
-  LanguageTitle
+  LanguageTitle,
+  SectionVoiceSpeed,
+  BoxVoiceSpeed
 } from './StyleSettings';
 
 export default function Settings(props: StProps): JSX.Element {
 
   const [age, setAge] = React.useState('');
+  const marks = [
+    {
+      value: 0,
+      label: 'Xslow',
+    },
+    {
+      value: 1,
+      label: 'Slow',
+    },
+    {
+      value: 2,
+      label: 'Medium',
+    },
+    {
+      value: 3,
+      label: 'Fast',
+    },
+    {
+      value: 4,
+      label: 'Xfast',
+    },
+  ];
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
+
+  function valueLabelFormat(value: number) {
+    return marks.findIndex((mark) => mark.value === value) + 1;
+  }
 
   return (
     <Property1Default className={props.className}>
@@ -109,6 +137,21 @@ export default function Settings(props: StProps): JSX.Element {
         </Item2>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
       </ListSounds>
+      <SectionVoiceSpeed>
+        <Title>{`Скорость голоса`}</Title>
+        <BoxVoiceSpeed>
+          <Slider
+            aria-label="Restricted values"
+            defaultValue={3}
+            valueLabelFormat={valueLabelFormat}
+            //getAriaValueText={valuetext}
+            step={null}
+            valueLabelDisplay="auto"
+            marks={marks}
+            max={4}
+          />
+        </BoxVoiceSpeed>
+      </SectionVoiceSpeed>
       <SectionRoleBot>
         <TitleRoleBot>
           <Title>{`Выбрать роль бота`}</Title>
