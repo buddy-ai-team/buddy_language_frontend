@@ -47,7 +47,9 @@ import {
   SectionLanguage,
   LanguageTitle,
   SectionVoiceSpeed,
-  BoxVoiceSpeed
+  BoxVoiceSpeed,
+  SectionRoleBot3,
+  ApplyingExistingRoles
 } from './StyleSettings';
 
 export default function Settings(props: StProps): JSX.Element {
@@ -142,11 +144,11 @@ export default function Settings(props: StProps): JSX.Element {
         <BoxVoiceSpeed>
           <Slider
             aria-label="Restricted values"
-            defaultValue={3}
+            defaultValue={1}
             valueLabelFormat={valueLabelFormat}
             //getAriaValueText={valuetext}
             step={null}
-            valueLabelDisplay="auto"
+            valueLabelDisplay="off"
             marks={marks}
             max={4}
           />
@@ -167,13 +169,28 @@ export default function Settings(props: StProps): JSX.Element {
           <DescriptionRole placeholder="Ввод описания роли"/>
         </GroupDescriptionRole>
       </SectionRoleBot2>
+      <SectionRoleBot3>
+        <TitleRole>{`Существующие роли`}</TitleRole>
+        <ApplyingExistingRoles>
+          <FormControl fullWidth>
+              <InputLabel>Роли</InputLabel>
+              <Select
+                id="SelectRole"
+                value={age}
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>Default</MenuItem>
+              </Select>
+            </FormControl>
+        </ApplyingExistingRoles>
+      </SectionRoleBot3>
       <SectionLanguage>
         <LanguageTitle>
           <Title>{`Выбрать язык`}</Title>
         </LanguageTitle>
       </SectionLanguage>
       <SelectLanguage>
-        <Box id="LabelNativeLangue" sx={{
+        <Box sx={{
           display: 'inline-flex',
           position: 'relative',
           border: '#001434',
@@ -184,18 +201,16 @@ export default function Settings(props: StProps): JSX.Element {
           <FormControl fullWidth>
             <InputLabel>Родной язык</InputLabel>
             <Select
-              labelId="LabelNativeLangue"
               id="SelectNativeLangue"
               value={age}
               onChange={handleChange}
-              label="NativeLangue"
             >
               <MenuItem value={10}>Русский</MenuItem>
               <MenuItem value={20}>Английский</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <Box id="LabelStudingLanguage" sx={{
+        <Box sx={{
           display: 'inline-flex',
           position: 'relative',
           border: '#001434',
@@ -206,11 +221,9 @@ export default function Settings(props: StProps): JSX.Element {
           <FormControl fullWidth>
             <InputLabel>Изучаемый язык</InputLabel>
             <Select
-              labelId="LabelStudingLanguage"
               id="SelectStudingLanguage"
               value={age}
               onChange={handleChange}
-              label="StudingLanguage"
             >
               <MenuItem value={10}>Русский</MenuItem>
               <MenuItem value={20}>Английский</MenuItem>
