@@ -9,6 +9,7 @@ export function getInitData(): string {
             throw new Error('Ooof! Something is wrong. Init data is missing');
         }
         else {
+            console.log(initDataString);
             return initDataString;
         }
     }
