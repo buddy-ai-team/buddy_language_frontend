@@ -9,15 +9,6 @@ import { SDKProvider} from '@tma.js/sdk-react';
 
 export default function App() {
 
-const initData = new URLSearchParams(window.location.hash.slice(1))
-  .get('tgWebAppData');
-
-if (initData === null) {
-    console.log("initData is empty");
-  //throw new Error('Ooof! Something is wrong. Init data is missing');
-}
-console.log(initData); 
-
   return (
     <SDKProvider  initOptions={{ debug: true, cssVars: true }}>
       <HelmetProvider>

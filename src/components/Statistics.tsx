@@ -45,8 +45,16 @@ import {
     TitleStatistics
   } from './StyleStatistics';
 
+import { getCurentTelegramUser} from '../currentTelegramUser';
+import { getInitData } from "../initData";
+import apiService from "../apiService";
+
+const initData = getInitData();
+const userTelegramId = getCurentTelegramUser(initData).id;
+const user = await apiService.getUserByTelegramId(userTelegramId);
+console.log(user);
+
 export default function Statistics(props: StProps): JSX.Element { 
-  
   return (
     <Property1Default className={props.className}>
       <TopBar>
