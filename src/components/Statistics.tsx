@@ -3,50 +3,50 @@ import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_i
 import { StProps } from '../types';
 
 import {
-    Property1Default,
-    TopBar,
-    SectionTitle,
-    Text,
-    TitleHeading,
-    List1,
-    GroupNumberOfMessages,
-    NumberOfMessages,
-    Title1,
-    OutputNumberOfMessages,
-    List2,
-    NumberOfWordsStudied,
-    Title2,
-    OutputNumberOfWordsStudied,
-    NumberOfLearningWords,
-    OutputNumberOfLearningWords,
-    Group,
-    SectionLearnedWords,
-    BoxIcon,
-    Icon,
-    Label,
-    Title3,
-    LabelViewList,
-    SectionDurationOfMessages,
-    OutputDurationOfMessages,
-    SectionNumberDaysCommunication,
-    OutputNumberDaysCommunication,
-    SectionNumberConsecutiveCommunicationDays,
-    OutputNumberConsecutiveCommunicationDays,
-    BottomNav,
-    IconNav,
-    TitleIcon,
-    ButtonWordEditor,
-    IconWordEditor,
-    ButtonSettings,
-    GroupLanguage,
-    Content,
-    IconBox,
-    IconRobot,
-    TitleStatistics
-  } from './StyleStatistics';
+  Property1Default,
+  TopBar,
+  SectionTitle,
+  Text,
+  TitleHeading,
+  List1,
+  GroupNumberOfMessages,
+  NumberOfMessages,
+  Title1,
+  OutputNumberOfMessages,
+  List2,
+  NumberOfWordsStudied,
+  Title2,
+  OutputNumberOfWordsStudied,
+  NumberOfLearningWords,
+  OutputNumberOfLearningWords,
+  Group,
+  SectionLearnedWords,
+  BoxIcon,
+  Icon,
+  Label,
+  Title3,
+  LabelViewList,
+  SectionDurationOfMessages,
+  OutputDurationOfMessages,
+  SectionNumberDaysCommunication,
+  OutputNumberDaysCommunication,
+  SectionNumberConsecutiveCommunicationDays,
+  OutputNumberConsecutiveCommunicationDays,
+  BottomNav,
+  IconNav,
+  TitleIcon,
+  ButtonWordEditor,
+  IconWordEditor,
+  ButtonSettings,
+  GroupLanguage,
+  Content,
+  IconBox,
+  IconRobot,
+  TitleStatistics
+} from './StyleStatistics';
 
-export default function Statistics(props: StProps): JSX.Element { 
-  
+export default function Statistics(props: StProps): JSX.Element {
+
   return (
     <Property1Default className={props.className}>
       <TopBar>
@@ -54,10 +54,10 @@ export default function Statistics(props: StProps): JSX.Element {
           <TitleStatistics>{`Статистика`}</TitleStatistics>
           <IconBox>
             <IconRobot
-                  src={Robot}
-                  loading="lazy"
-                  alt={ 'Robot Icon' }
-                />
+              src={Robot}
+              loading="lazy"
+              alt={'Robot Icon'}
+            />
           </IconBox>
         </Content>
       </TopBar>
@@ -135,12 +135,12 @@ export default function Statistics(props: StProps): JSX.Element {
       </Group>
       <BottomNav>
         <ButtonWordEditor to="/get_word_editor">
-            <IconWordEditor
-              src={FreeIconScrabble7880Image}
-              loading="lazy"
-              alt={'free-icon-scrabble-7880465 1'}
-            />
-            <TitleIcon>{`Редактор слов`}</TitleIcon>
+          <IconWordEditor
+            src={FreeIconScrabble7880Image}
+            loading="lazy"
+            alt={'free-icon-scrabble-7880465 1'}
+          />
+          <TitleIcon>{`Редактор слов`}</TitleIcon>
         </ButtonWordEditor>
         <ButtonSettings to="/get_settings">
           <IconNav>{`⚙️`}</IconNav>
