@@ -19,7 +19,7 @@ if (initData === null) {
 console.log(initData); 
 
   return (
-    <SDKProvider  initOptions={{ debug: true, cssVars: true }}>
+    <SDKProvider initOptions={{ debug: true, cssVars: true }}>
       <HelmetProvider>
         <StyledEngineProvider injectFirst>
             <Routes>
