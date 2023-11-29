@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {AxiosInstance} from "axios";
+//import {AxiosInstance} from "axios";
 import api from "./apiClient/_Api";
 import {
   Role,
@@ -10,26 +10,6 @@ import {
   AddWordEntityRequest,
 } from "./apiClient/index";
 
-// const apiInstance: AxiosInstance = createApiInstance();
-
-// Функция для установки заголовка авторизации в Axios перед отправкой запроса
-const setAuthorizationHeader = (api: AxiosInstance) => {
-    try {
-        const initData = new URLSearchParams(window.location.hash.slice(1)).get("tgWebAppData");
-
-        if (initData === null) {
-            throw new Error("Ooof! Something is wrong. Init data is missing");
-        }
-
-        // Устанавливаем заголовок авторизации для всех запросов с использованием переданного Axios-экземпляра
-       api.defaults.headers.common["Authorization"] = `tma ${initData}`;
-    } catch (error: any) {
-        // Обработка ошибок
-        console.error("Failed to set authorization header:", error.message);
-        throw error;
-    }
-};
-
 class ApiService {
   private async requestApi<T>(
     url: string,
@@ -37,7 +17,7 @@ class ApiService {
     data?: any
   ): Promise<T> {
      try {
-            setAuthorizationHeader(api); // Установка заголовка перед каждым запросом
+            //setAuthorizationHeader(api); // Установка заголовка перед каждым запросом
             const response = await api.request<T>({
                 url,
                 method,
