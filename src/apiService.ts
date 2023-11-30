@@ -10,75 +10,78 @@ import {
 } from "./apiClient/index";
 
 class ApiService {
-  private requestApi<T>(url: string, method: string, data?: any): Promise<T> {
-    return new Promise((resolve, reject) => {
-      http
-        .request<T>({
-          url,
-          method,
-          data,
-        })
-        .then((response) => {
-          resolve(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-          reject(new Error(`Error occurred during API request: ${error.message}`));
-        });
-    });
+
+  private async requestApi<T>(
+    url: string,
+    method: string,
+    data?: any
+  ): Promise<T> {
+    try {
+      const response = await http.request<T>({
+        url,
+        method,
+        data,
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(`Error occurred during API request: ${error.message}`);
+    }
   }
 
   // User's methods
-  getUser(id: string): Promise<User> {
+  async getUser(id: string): Promise<User> {
     return this.requestApi<User>(`/user/get?userId=${id}`, "GET");
   }
 
-  getUserByTelegramId(id: string): Promise<User> {
+  async getUserByTelegramId(id: string): Promise<User> {
     return this.requestApi<User>(`/user/get_by_telegram_id?id=${id}`, "GET");
   }
 
-  updateUser(user: User): Promise<User> {
+  async updateUser(user: User): Promise<User> {
     return this.requestApi<User>("/user/update", "POST", user);
   }
 
-  addUser(addUserRequest: AddUserRequest): Promise<User> {
+  async addUser(addUserRequest: AddUserRequest): Promise<User> {
     return this.requestApi<User>("/user/add", "POST", addUserRequest);
   }
 
   // Role's methods
-  getRole(id: string): Promise<Role> {
+  async getRole(id: string): Promise<Role> {
     return this.requestApi<Role>(`/role/get?roleId=${id}`, "GET");
   }
 
-  getRoleAll(): Promise<Role[]> {
+  async getRoleAll(): Promise<Role[]> {
     return this.requestApi<Role[]>("/role/all", "GET");
   }
 
-  updateRole(role: Role): Promise<Role> {
+  async updateRole(role: Role): Promise<Role> {
     return this.requestApi<Role>("/role/update", "POST", role);
   }
 
-  addRole(addRoleRequest: AddRoleRequest): Promise<Role> {
+  async addRole(addRoleRequest: AddRoleRequest): Promise<Role> {
     return this.requestApi<Role>("/role/add", "POST", addRoleRequest);
   }
 
   // Word's methods
-  getWord(id: string): Promise<WordEntity> {
+  async getWord(id: string): Promise<WordEntity> {
     return this.requestApi<WordEntity>(`/wordentity/id?wordId=${id}`, "GET");
   }
 
-  getWordsByAccountId(accountId: string): Promise<WordEntity[]> {
+  async getWordsByAccountId(accountId: string): Promise<WordEntity[]> {
     return this.requestApi<WordEntity[]>(
       `/wordentity/id-account?accountId=${accountId}`,
       "GET"
     );
   }
 
-  updateWord(word: WordEntity): Promise<WordEntity> {
+  async updateWord(word: WordEntity): Promise<WordEntity> {
     return this.requestApi<WordEntity>("/wordentity/update", "POST", word);
   }
 
-  addWord(addWordEntityRequest: AddWordEntityRequest): Promise<WordEntity> {
+  async addWord(
+    addWordEntityRequest: AddWordEntityRequest
+  ): Promise<WordEntity> {
     return this.requestApi<WordEntity>(
       "/wordentity/add",
       "POST",
