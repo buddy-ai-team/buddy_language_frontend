@@ -175,3 +175,6 @@ export default function WordEditor(props: StProps): JSX.Element {
       </Property1Default>
     );
 }
+
+
+//{`Слово 1`}

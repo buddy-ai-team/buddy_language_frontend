@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-//import {AxiosInstance} from "axios";
-import api from "./apiClient/_Api";
+import http from "./apiClient/http";
 import {
   Role,
   AddRoleRequest,
@@ -11,23 +10,23 @@ import {
 } from "./apiClient/index";
 
 class ApiService {
+
   private async requestApi<T>(
     url: string,
     method: string,
     data?: any
   ): Promise<T> {
-     try {
-            //setAuthorizationHeader(api); // Установка заголовка перед каждым запросом
-            const response = await api.request<T>({
-                url,
-                method,
-                data,
-            });
-            return response.data;
-        } catch (error: any) {
-            console.error(error);
-            throw new Error(`Error occurred during API request: ${error.message}`);
-        }
+    try {
+      const response = await http.request<T>({
+        url,
+        method,
+        data,
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new Error(`Error occurred during API request: ${error.message}`);
+    }
   }
 
   // User's methods
