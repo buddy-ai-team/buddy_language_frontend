@@ -60,7 +60,7 @@ export default function WordEditor(props: StProps): JSX.Element {
   };
 
   return (
-      <Property1Default className={props.className}>
+      <Property1Default className={props.TelegramId}>
         <TopBar>
           <Content>
             <Link to="/">
