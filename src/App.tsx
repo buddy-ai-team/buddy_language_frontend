@@ -8,28 +8,36 @@ import ListStudiedWords from './components/ListStudiedWords';
 import { SDKProvider } from '@tma.js/sdk-react'; 
 import { useEffect, useState } from 'react';
 import { getInitData } from './initData';
+import { getCurentTelegramUserId } from './currentTelegramUser';
 
 export default function App() {
   const [initData, setInitData] = useState<string | null >(null);
 
   useEffect(()=>{
-    const initDataString = getInitData();
-    setInitData(initDataString);
-  }, [initData]);
+    try{
+      const initDataString = getInitData();
+      setInitData(initDataString);
+    }catch(error){
+      console.error(error);
+    }
+
+  }, []);
 
   if(initData === null){
-    return <div>Loading...</div>
+    return <div>Это приложение работает только из Telegram.</div>
   }
+
+  const userId = getCurentTelegramUserId(initData);
 
   return (
     <SDKProvider  initOptions={{ debug: true, cssVars: true }}>
       <HelmetProvider>
         <StyledEngineProvider injectFirst>
             <Routes>
-              <Route path="/" element={<Statistics />} />
-              <Route path="/get_word_editor" element={<WordEditor />} />
-              <Route path="/get_settings" element={<Settings />} />
-              <Route path="/get_list_studied_words" element={<ListStudiedWords/>} />
+              <Route path="/" element={<Statistics telegramUserId={userId}/>} />
+              <Route path="/get_word_editor" element={<WordEditor telegramUserId={userId}/>} />
+              <Route path="/get_settings" element={<Settings telegramUserId={userId}/>} />
+              <Route path="/get_list_studied_words" element={<ListStudiedWords telegramUserId={userId}/>} />
             </Routes>
         </StyledEngineProvider>
       </HelmetProvider>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from "axios";
-
+import { getInitData } from "./initData";
 import {
   Role,
   AddRoleRequest,
@@ -10,6 +10,7 @@ import {
   AddWordEntityRequest,
 } from "./apiClient/index";
 
+
 const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
 
 const http = axios.create({
@@ -18,7 +19,7 @@ const http = axios.create({
 
 const setAuthorizationHeader = (api: AxiosInstance) => {
   try {
-    const initData = new URLSearchParams(window.location.hash.slice(1)).get("tgWebAppData");
+    const initData = getInitData();
     if (initData === null) {
       throw new Error("Ooof! Something is wrong. Init data is missing");
     }
