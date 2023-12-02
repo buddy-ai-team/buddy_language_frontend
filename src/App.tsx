@@ -4,6 +4,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import Statistics from "./components/Statistics";
 import WordEditor from "./components/WordEditor";
 import Settings from "./components/Settings";
+import Notification from './components/Notification';
 import ListStudiedWords from './components/ListStudiedWords';
 import { SDKProvider} from '@tma.js/sdk-react';
 import { getInitData } from "./initData";
@@ -28,7 +29,7 @@ export default function App() {
   }, []);
 
   if (TelegramId  === null) {
-    return <div>Loading...</div>;
+    return <Notification />
   }
 
   return (
