@@ -87,7 +87,7 @@ export default function Settings(props: StProps): JSX.Element {
   }
 
   return (
-    <Property1Default className={props.className}>
+    <Property1Default className={props.TelegramId}>
       <ImgBigRobot
         src={BigRobot}
         loading="lazy"
