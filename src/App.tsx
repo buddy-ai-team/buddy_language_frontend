@@ -5,9 +5,21 @@ import Statistics from "./components/Statistics";
 import WordEditor from "./components/WordEditor";
 import Settings from "./components/Settings";
 import ListStudiedWords from './components/ListStudiedWords';
-import { SDKProvider} from '@tma.js/sdk-react';
+import { SDKProvider } from '@tma.js/sdk-react'; 
+import { useEffect, useState } from 'react';
+import { getInitData } from './initData';
 
 export default function App() {
+  const [initData, setInitData] = useState<string | null >(null);
+
+  useEffect(()=>{
+    const initDataString = getInitData();
+    setInitData(initDataString);
+  }, [initData]);
+
+  if(initData === null){
+    return <div>Loading...</div>
+  }
 
   return (
     <SDKProvider  initOptions={{ debug: true, cssVars: true }}>
