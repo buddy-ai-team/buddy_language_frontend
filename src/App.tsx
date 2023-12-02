@@ -7,7 +7,7 @@ import Settings from "./components/Settings";
 import ListStudiedWords from './components/ListStudiedWords';
 import { SDKProvider } from '@tma.js/sdk-react'; 
 import { useEffect, useState } from 'react';
-import { getInitData } from './initData';
+import { getInitDataString } from './initData';
 import { getCurentTelegramUserId } from './currentTelegramUser';
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 
   useEffect(()=>{
     try{
-      const initDataString = getInitData();
+      const initDataString = getInitDataString();
       setInitData(initDataString);
     }catch(error){
       console.error(error);
@@ -24,7 +24,7 @@ export default function App() {
   }, []);
 
   if(initData === null){
-    return <div>Это приложение работает только из Telegram.</div>
+    return <div>Loading...</div>
   }
 
   const userId = getCurentTelegramUserId(initData);

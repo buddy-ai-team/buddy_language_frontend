@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from "axios";
-import { getInitData } from "./initData";
+import { getInitDataString } from "./initData";
 import {
   Role,
   AddRoleRequest,
@@ -19,7 +19,7 @@ const http = axios.create({
 
 const setAuthorizationHeader = (api: AxiosInstance) => {
   try {
-    const initData = getInitData();
+    const initData = getInitDataString();
     if (initData === null) {
       throw new Error("Ooof! Something is wrong. Init data is missing");
     }
