@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from "axios";
-import { getInitDataString } from "./initData";
+import { getInitData } from "./initData";
 import {
   Role,
   AddRoleRequest,
@@ -19,7 +19,7 @@ const http = axios.create({
 
 const setAuthorizationHeader = (api: AxiosInstance) => {
   try {
-    const initData = getInitDataString();
+    const initData = getInitData();
     if (initData === null) {
       throw new Error("Ooof! Something is wrong. Init data is missing");
     }
@@ -42,7 +42,7 @@ async function requestApi<T>(
   data?: any
 ): Promise<T> {
   try {
-    setAuthorizationHeader(http); // Установка заголовка перед каждым запросом
+    setAuthorizationHeader(http); // Установка заголовка авторизации перед каждым запросом
     const response = await http.request<T>({
       url,
       method,

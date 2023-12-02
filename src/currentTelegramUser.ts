@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export function getCurentTelegramUserId(initDataString: string): string {
+export function getCurentTelegramUser(initDataString: string): any {
 
     try{
         const user = new URLSearchParams(initDataString).get("user");
@@ -9,8 +9,7 @@ export function getCurentTelegramUserId(initDataString: string): string {
         }
         else{
             const resultUser = JSON.parse(user);
-            const telegramUserId: string = resultUser.id;
-            return telegramUserId;
+            return resultUser; 
         }
     }
     catch (error: any) {
