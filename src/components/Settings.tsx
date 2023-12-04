@@ -1,10 +1,17 @@
-import BigRobot from '../images/ImgSetting/BigRobot.png';
-import Arrow from '../images/Img/Arrow.png';
-import Robot from '../images/Img/Robot.png';
-import { StProps } from '../types';
-import {InputLabel, MenuItem, FormControl, Box, Link, Slider } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import * as React from 'react';
+import BigRobot from "../images/ImgSetting/BigRobot.png";
+import Arrow from "../images/Img/Arrow.png";
+import Robot from "../images/Img/Robot.png";
+import { StProps } from "../types";
+import {
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Box,
+  Link,
+  Slider,
+} from "@mui/material";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import * as React from "react";
 
 import {
   Property1Default,
@@ -49,14 +56,14 @@ import {
   SectionVoiceSpeed,
   BoxVoiceSpeed,
   SectionRoleBot3,
-  ApplyingExistingRoles
-} from './StyleSettings';
+  ApplyingExistingRoles,
+} from "./StyleSettings";
 
 export default function Settings(props: StProps): JSX.Element {
   const [nativeLanguage, setNativeLanguage] = React.useState("");
   const [learningLanguage, setLearningLanguage] = React.useState("");
   const [voiceType, setVoiceType] = React.useState("");
-  const [age, setAge] = React.useState("");
+  const [selectedRole, setSelectedRole] = React.useState("");
   const marks = [
     {
       value: 0,
@@ -81,7 +88,7 @@ export default function Settings(props: StProps): JSX.Element {
   ];
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setSelectedRole(event.target.value);
   };
 
   function valueLabelFormat(value: number) {
@@ -89,7 +96,13 @@ export default function Settings(props: StProps): JSX.Element {
   }
 
   const handleNativeLanguageChange = (event: SelectChangeEvent) => {
-    setNativeLanguage(event.target.value as string);
+    const selectedLanguage = event.target.value as string;
+    if (selectedLanguage !== learningLanguage) {
+      setNativeLanguage(selectedLanguage);
+    } else {
+      console.log("Родной язык не может быть изучаемым");
+      // Можно также вывести уведомление об ошибке пользователю
+    }
   };
 
   const handleLearningLanguageChange = (event: SelectChangeEvent) => {
@@ -97,6 +110,15 @@ export default function Settings(props: StProps): JSX.Element {
     // Проверяем, чтобы выбранный язык для изучения не совпадал с выбранным родным языком
     if (selectedLanguage !== nativeLanguage) {
       setLearningLanguage(selectedLanguage);
+    } else {
+      console.log("Изучаемый язык не может быть родным");
+      // Можно также вывести уведомление об ошибке пользователю
+    }
+
+    // Дополнительная проверка на совпадение языков
+    if (selectedLanguage === nativeLanguage) {
+      console.log("Родной и изучаемый языки не могут совпадать");
+      // Можно также вывести уведомление об ошибке пользователю
     }
   };
 
@@ -196,7 +218,11 @@ export default function Settings(props: StProps): JSX.Element {
         <ApplyingExistingRoles>
           <FormControl fullWidth>
             <InputLabel>Роли</InputLabel>
-            <Select id="SelectRole" value={age} onChange={handleChange}>
+            <Select
+              id="SelectRole"
+              value={selectedRole}
+              onChange={handleChange}
+            >
               <MenuItem value={10}>Default</MenuItem>
             </Select>
           </FormControl>
@@ -267,7 +293,7 @@ export default function Settings(props: StProps): JSX.Element {
         <ButtonExit variant="contained" href="/">
           <TitleButtonExit>{`Выйти`}</TitleButtonExit>
         </ButtonExit>
-        <ButtonSave variant="contained">
+        <ButtonSave variant="contained" href="/">
           <TitleButtonSave>{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
       </GroupButton>
