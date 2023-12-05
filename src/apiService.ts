@@ -20,18 +20,11 @@ const http = axios.create({
 const setAuthorizationHeader = (api: AxiosInstance) => {
   try {
     const initData = getInitData();
-    if (initData === null) {
-      throw new Error("Ooof! Something is wrong. Init data is missing");
-    }
     // Устанавливаем заголовок авторизации для всех запросов с использованием переданного Axios-экземпляра
     api.defaults.headers.common["Authorization"] = `tma ${initData}`;
-  } catch (error) {
-    // Обработка ошибок
-    if (axios.isAxiosError(error)) {
-      console.log(error.response?.data);
-    } else if (error instanceof Error) {
-      console.log("Failed to set authorization header:", error.message);
-    }
+  } catch (error: any) {
+    console.error(error);
+    throw new Error(`Failed to set authorization header: ${error.message}`);
   }
 };
 
@@ -67,6 +60,10 @@ export async function getUserByTelegramId(id: string): Promise<User> {
 
 export async function updateUser(user: User): Promise<User> {
   return requestApi<User>("/user/update", "POST", user);
+}
+
+export async function updateUserPreferences(user: User): Promise<User> {
+  return requestApi<User>("/user/update_user_preferences", "POST", user);
 }
 
 export async function addUser(addUserRequest: AddUserRequest): Promise<User> {

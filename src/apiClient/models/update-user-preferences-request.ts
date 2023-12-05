@@ -13,54 +13,53 @@
  */
 
 import { Language } from './language';
-import { Role } from './role';
 import { TtsSpeed } from './tts-speed';
 import { Voice } from './voice';
 // import {
-//     Language,Role,TtsSpeed,Voice,
+//     Language,TtsSpeed,Voice,
 // } from ".";
 
 /**
  * 
  *
  * @export
- * @interface Preferences
+ * @interface UpdateUserPreferencesRequest
  */
-export interface Preferences {
-
-    /**
-     * @type {Language}
-     * @memberof Preferences
-     */
-    nativeLanguage?: Language;
-
-    /**
-     * @type {Language}
-     * @memberof Preferences
-     */
-    targetLanguage?: Language;
-
-    /**
-     * @type {Voice}
-     * @memberof Preferences
-     */
-    selectedVoice?: Voice;
-
-    /**
-     * @type {TtsSpeed}
-     * @memberof Preferences
-     */
-    selectedSpeed?: TtsSpeed;
+export interface UpdateUserPreferencesRequest {
 
     /**
      * @type {string}
-     * @memberof Preferences
+     * @memberof UpdateUserPreferencesRequest
      */
-    assistantRoleId?: string;
+    id: string;
 
     /**
-     * @type {Role}
-     * @memberof Preferences
+     * @type {Language}
+     * @memberof UpdateUserPreferencesRequest
      */
-    assistantRole?: Role;
+    nativeLanguage: Language;
+
+    /**
+     * @type {Language}
+     * @memberof UpdateUserPreferencesRequest
+     */
+    targetLanguage: Language;
+
+    /**
+     * @type {TtsSpeed}
+     * @memberof UpdateUserPreferencesRequest
+     */
+    selectedSpeed: TtsSpeed;
+
+    /**
+     * @type {Voice}
+     * @memberof UpdateUserPreferencesRequest
+     */
+    selectedVoice: Voice;
+
+    /**
+     * @type {string}
+     * @memberof UpdateUserPreferencesRequest
+     */
+    assistantRoleId: string;
 }

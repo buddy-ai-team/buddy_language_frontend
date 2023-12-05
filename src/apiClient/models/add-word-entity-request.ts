@@ -12,11 +12,11 @@
  * Do not edit the class manually.
  */
 
-// import { Language } from './language';
-// import { WordEntityStatus } from './word-entity-status';
-import {
-    Language,WordEntityStatus,
-} from ".";
+import { Language } from './language';
+import { WordEntityStatus } from './word-entity-status';
+// import {
+//     Language,WordEntityStatus,
+// } from ".";
 
 /**
  * 
@@ -37,6 +37,12 @@ export interface AddWordEntityRequest {
      * @memberof AddWordEntityRequest
      */
     word: string;
+
+    /**
+     * @type {string}
+     * @memberof AddWordEntityRequest
+     */
+    translation: string;
 
     /**
      * @type {Language}

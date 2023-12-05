@@ -1,29 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export function getInitData(): string {
-    try {
-        const initDataString = new URLSearchParams(window.location.hash.slice(1))
-            .get('tgWebAppData');
 
-        if (initDataString === null) {
-            throw new Error('Ooof! Something is wrong. Init data is missing');
-        }
-        else {
-            console.log(initDataString);
-            return initDataString;
-        }
-    }
-    catch (error: any) {
-        console.error(error);
-        throw new Error(`Error occurred during API request: ${error.message}`);
-    }
+    const initDataString = new URLSearchParams(window.location.hash.slice(1))
+        .get('tgWebAppData');
 
+    if (initDataString === null) {
+        throw new Error('Ooof! Something is wrong. Init data is missing');
+    }
+    else {
+        console.log(initDataString);
+        return initDataString;
+    }
 }
-
-//Может здесь не нужно выбрасывать ошибку?
-// export function getInitDataString(): string | null {
-
-//     const initDataString = new URLSearchParams(window.location.hash.slice(1))
-//         .get('tgWebAppData');
-//     return initDataString;
-// }

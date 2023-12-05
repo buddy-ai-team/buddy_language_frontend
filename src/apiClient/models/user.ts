@@ -12,11 +12,11 @@
  * Do not edit the class manually.
  */
 
-// import { Preferences } from './preferences';
-// import { WordEntity } from './word-entity';
-import {
-    Preferences,WordEntity,
-} from ".";
+import { Preferences } from './preferences';
+import { WordEntity } from './word-entity';
+// import {
+//     Preferences,WordEntity,
+// } from ".";
 
 /**
  * 

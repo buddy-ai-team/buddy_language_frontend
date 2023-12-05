@@ -12,9 +12,10 @@
  * Do not edit the class manually.
  */
 
-import {
-    
-} from ".";
+import { RoleType } from './role-type';
+// import {
+//     RoleType,
+// } from ".";
 
 /**
  * 
@@ -35,4 +36,10 @@ export interface AddRoleRequest {
      * @memberof AddRoleRequest
      */
     prompt: string;
+
+    /**
+     * @type {RoleType}
+     * @memberof AddRoleRequest
+     */
+    roleType: RoleType;
 }

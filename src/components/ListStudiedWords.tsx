@@ -3,7 +3,7 @@ import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import apiService from "../apiService";
+import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
 import { useEffect, useState } from 'react';
 import { WordEntity } from '../apiClient';
 
@@ -28,8 +28,8 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
     useEffect(() => {
         const fetchWords = async () => {
             try {
-                const user = await apiService.getUserByTelegramId(props.TelegramId);
-                const words = await apiService.getWordsByAccountId(user.id);
+                const user = await getUserByTelegramId(props.TelegramId);
+                const words = await getWordsByAccountId(user.id);
                 setUserWords(words);
             } catch (error) {
                 console.error('Error fetching words:', error);
