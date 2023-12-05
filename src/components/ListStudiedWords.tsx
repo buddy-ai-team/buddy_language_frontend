@@ -3,6 +3,9 @@ import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
+import apiService from "../apiService";
+import { useEffect, useState } from 'react';
+import { WordEntity } from '../apiClient';
 
 import {
     Property1Default,
@@ -18,21 +21,24 @@ import {
     TitleButton
 } from './StyleListStudiesWords';
 
-// import apiService from "../apiService";
-// import { getInitData } from '../initData';
-// import { getCurentTelegramUser } from '../currentTelegramUser';
-
-// const initData = getInitData();
-// const userTelegramId = getCurentTelegramUser(initData).id;
-// const user = await apiService.getUserByTelegramId(userTelegramId);
-
-// const userWords = await apiService.getWordsByAccountId(user.id);
-// const outWords: any[] = []; 
-// userWords.forEach((userWord)=>{
-//   outWords.push(<div>{userWord.word}</div>)
-// });
 
 export default function ListStudiedWords(props: StProps): JSX.Element {
+
+    const [userWords, setUserWords] = useState<WordEntity[]>([]);
+
+    useEffect(() => {
+        const fetchWords = async () => {
+            try {
+                const user = await apiService.getUserByTelegramId(props.TelegramId);
+                const words = await apiService.getWordsByAccountId(user.id);
+                setUserWords(words);
+            } catch (error) {
+                console.error('Error fetching words:', error);
+            }
+        };
+
+        fetchWords();
+    }, [props.TelegramId]);
 
     return (
         <Property1Default className={props.TelegramId}>
@@ -53,6 +59,9 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     </IconButtons>
                 </Content>
             </TopBar>
+            {userWords.map(word => (
+                <div key={word.id}>{word.word}</div>
+            ))}
             <SelectionButton>
                 <ButtonClearList>
                     <TitleButton>{`Очистить список`}</TitleButton>
