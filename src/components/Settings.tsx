@@ -67,23 +67,23 @@ export default function Settings(props: StProps): JSX.Element {
   const marks = [
     {
       value: 0,
-      label: "Xslow",
+      label: "0.5x",
     },
     {
       value: 1,
-      label: "Slow",
+      label: "1x",
     },
     {
       value: 2,
-      label: "Medium",
+      label: "1.5x",
     },
     {
       value: 3,
-      label: "Fast",
+      label: "2x",
     },
     {
       value: 4,
-      label: "Xfast",
+      label: "2.5x",
     },
   ];
 
@@ -101,7 +101,6 @@ export default function Settings(props: StProps): JSX.Element {
       setNativeLanguage(selectedLanguage);
     } else {
       console.log("Родной язык не может быть изучаемым");
-      // Можно также вывести уведомление об ошибке пользователю
     }
   };
 
@@ -112,13 +111,11 @@ export default function Settings(props: StProps): JSX.Element {
       setLearningLanguage(selectedLanguage);
     } else {
       console.log("Изучаемый язык не может быть родным");
-      // Можно также вывести уведомление об ошибке пользователю
     }
 
     // Дополнительная проверка на совпадение языков
     if (selectedLanguage === nativeLanguage) {
       console.log("Родной и изучаемый языки не могут совпадать");
-      // Можно также вывести уведомление об ошибке пользователю
     }
   };
 
@@ -253,6 +250,10 @@ export default function Settings(props: StProps): JSX.Element {
             >
               <MenuItem value={"Русский"}>Русский</MenuItem>
               <MenuItem value={"Английский"}>Английский</MenuItem>
+              <MenuItem value={"Французский"}>Французский</MenuItem>
+              <MenuItem value={"Немецкий"}>Немецкий</MenuItem>
+              <MenuItem value={"Арабский"}>Арабский</MenuItem>
+              <MenuItem value={"Итальянский"}>Итальянский</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -284,6 +285,30 @@ export default function Settings(props: StProps): JSX.Element {
                 disabled={nativeLanguage === "Английский"}
               >
                 Английский
+              </MenuItem>
+              <MenuItem
+                value={"Французский"}
+                disabled={nativeLanguage === "Французский"}
+              >
+                Французский
+              </MenuItem>
+              <MenuItem
+                value={"Немецкий"}
+                disabled={nativeLanguage === "Немецкий"}
+              >
+                Немецкий
+              </MenuItem>
+              <MenuItem
+                value={"Арабский"}
+                disabled={nativeLanguage === "Арабский"}
+              >
+                Арабский
+              </MenuItem>
+              <MenuItem
+                value={"Итальянский"}
+                disabled={nativeLanguage === "Итальянский"}
+              >
+                Итальянский
               </MenuItem>
             </Select>
           </FormControl>
