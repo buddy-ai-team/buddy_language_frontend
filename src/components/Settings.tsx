@@ -1,10 +1,17 @@
-import BigRobot from '../images/ImgSetting/BigRobot.png';
-import Arrow from '../images/Img/Arrow.png';
-import Robot from '../images/Img/Robot.png';
-import { StProps } from '../types';
-import {InputLabel, MenuItem, FormControl, Box, Link, Slider } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import * as React from 'react';
+import BigRobot from "../images/ImgSetting/BigRobot.png";
+import Arrow from "../images/Img/Arrow.png";
+import Robot from "../images/Img/Robot.png";
+import { StProps } from "../types";
+import {
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Box,
+  Link,
+  Slider,
+} from "@mui/material";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import * as React from "react";
 
 import {
   Property1Default,
@@ -49,67 +56,87 @@ import {
   SectionVoiceSpeed,
   BoxVoiceSpeed,
   SectionRoleBot3,
-  ApplyingExistingRoles
-} from './StyleSettings';
+  ApplyingExistingRoles,
+} from "./StyleSettings";
 
 export default function Settings(props: StProps): JSX.Element {
-
-  const [age, setAge] = React.useState('');
+  const [nativeLanguage, setNativeLanguage] = React.useState("");
+  const [learningLanguage, setLearningLanguage] = React.useState("");
+  const [voiceType, setVoiceType] = React.useState("");
+  const [selectedRole, setSelectedRole] = React.useState("");
   const marks = [
     {
       value: 0,
-      label: 'Xslow',
+      label: "0.5x",
     },
     {
       value: 1,
-      label: 'Slow',
+      label: "1x",
     },
     {
       value: 2,
-      label: 'Medium',
+      label: "1.5x",
     },
     {
       value: 3,
-      label: 'Fast',
+      label: "2x",
     },
     {
       value: 4,
-      label: 'Xfast',
+      label: "2.5x",
     },
   ];
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setSelectedRole(event.target.value);
   };
 
   function valueLabelFormat(value: number) {
     return marks.findIndex((mark) => mark.value === value) + 1;
   }
 
+  const handleNativeLanguageChange = (event: SelectChangeEvent) => {
+    const selectedLanguage = event.target.value as string;
+    if (selectedLanguage !== learningLanguage) {
+      setNativeLanguage(selectedLanguage);
+    } else {
+      console.log("Родной язык не может быть изучаемым");
+    }
+  };
+
+  const handleLearningLanguageChange = (event: SelectChangeEvent) => {
+    const selectedLanguage = event.target.value as string;
+    // Проверяем, чтобы выбранный язык для изучения не совпадал с выбранным родным языком
+    if (selectedLanguage !== nativeLanguage) {
+      setLearningLanguage(selectedLanguage);
+    } else {
+      console.log("Изучаемый язык не может быть родным");
+    }
+
+    // Дополнительная проверка на совпадение языков
+    if (selectedLanguage === nativeLanguage) {
+      console.log("Родной и изучаемый языки не могут совпадать");
+    }
+  };
+
+  const handleVoiceTypeChange = (selectedVoice: string) => {
+    setVoiceType(selectedVoice);
+  };
+
   return (
     <Property1Default className={props.className}>
-      <ImgBigRobot
-        src={BigRobot}
-        loading="lazy"
-        alt={ 'Big Robot' }
-      />
+      <ImgBigRobot src={BigRobot} loading="lazy" alt={"Big Robot"} />
       <TopBar>
         <Content>
           <Link href="/">
             <IcLeft>
-              <Shape src={Arrow} loading="lazy" alt={'Arrow'} />
+              <Shape src={Arrow} loading="lazy" alt={"Arrow"} />
             </IcLeft>
           </Link>
           <TitleSetting>{`Настройки`}</TitleSetting>
           <IconBox>
             <IconRobot>
-              <ImgRobot
-                src={Robot}
-                loading="lazy"
-                alt={
-                  'Robot Icon'
-                }
-              />
+              <ImgRobot src={Robot} loading="lazy" alt={"Robot Icon"} />
             </IconRobot>
           </IconBox>
         </Content>
@@ -120,24 +147,38 @@ export default function Settings(props: StProps): JSX.Element {
         </Text>
       </SectionTitle>
       <ListSounds>
-        <Item1>
-          <BoxIconSound1>
+        <Item1 onClick={() => handleVoiceTypeChange("male")}>
+          <BoxIconSound1
+            style={{
+              backgroundColor: voiceType === "male" ? "#204981" : "transparent",
+            }}
+          >
             <IconSound1>{`🔊`}</IconSound1>
           </BoxIconSound1>
-          <BoxTitleSound1>
+          <BoxTitleSound1
+            style={{
+              textDecorationColor:
+                voiceType === "male" ? "#7FFFD4" : "transparent",
+            }}
+          >
             <TitleVoice>{`Мужской голос`}</TitleVoice>
           </BoxTitleSound1>
         </Item1>
-        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-        <Item2>
-          <BoxIconSound2>
+        <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
+        <Item2 onClick={() => handleVoiceTypeChange("female")}>
+          <BoxIconSound2
+            style={{
+              backgroundColor:
+                voiceType === "female" ? "#204981" : "transparent",
+            }}
+          >
             <IconSound2>{`🔊`}</IconSound2>
           </BoxIconSound2>
           <BoxTitleSound2>
             <TitleVoice>{`Женский голос`}</TitleVoice>
           </BoxTitleSound2>
         </Item2>
-        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
+        <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
       </ListSounds>
       <SectionVoiceSpeed>
         <Title>{`Скорость голоса`}</Title>
@@ -166,22 +207,22 @@ export default function Settings(props: StProps): JSX.Element {
       <SectionRoleBot2>
         <TitleRole>{`Описание роли`}</TitleRole>
         <GroupDescriptionRole>
-          <DescriptionRole placeholder="Ввод описания роли"/>
+          <DescriptionRole placeholder="Ввод описания роли" />
         </GroupDescriptionRole>
       </SectionRoleBot2>
       <SectionRoleBot3>
         <TitleRole>{`Существующие роли`}</TitleRole>
         <ApplyingExistingRoles>
           <FormControl fullWidth>
-              <InputLabel>Роли</InputLabel>
-              <Select
-                id="SelectRole"
-                value={age}
-                onChange={handleChange}
-              >
-                <MenuItem value={10}>Default</MenuItem>
-              </Select>
-            </FormControl>
+            <InputLabel>Роли</InputLabel>
+            <Select
+              id="SelectRole"
+              value={selectedRole}
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Default</MenuItem>
+            </Select>
+          </FormControl>
         </ApplyingExistingRoles>
       </SectionRoleBot3>
       <SectionLanguage>
@@ -190,43 +231,85 @@ export default function Settings(props: StProps): JSX.Element {
         </LanguageTitle>
       </SectionLanguage>
       <SelectLanguage>
-        <Box sx={{
-          display: 'inline-flex',
-          position: 'relative',
-          border: '#001434',
-          isolation: 'isolate',
-          flex: 1,
-          marginRight: '4px'
-        }}>
+        <Box
+          sx={{
+            display: "inline-flex",
+            position: "relative",
+            border: "#001434",
+            isolation: "isolate",
+            flex: 1,
+            marginRight: "4px",
+          }}
+        >
           <FormControl fullWidth>
             <InputLabel>Родной язык</InputLabel>
             <Select
               id="SelectNativeLangue"
-              value={age}
-              onChange={handleChange}
+              value={nativeLanguage}
+              onChange={handleNativeLanguageChange}
             >
-              <MenuItem value={10}>Русский</MenuItem>
-              <MenuItem value={20}>Английский</MenuItem>
+              <MenuItem value={"Русский"}>Русский</MenuItem>
+              <MenuItem value={"Английский"}>Английский</MenuItem>
+              <MenuItem value={"Французский"}>Французский</MenuItem>
+              <MenuItem value={"Немецкий"}>Немецкий</MenuItem>
+              <MenuItem value={"Арабский"}>Арабский</MenuItem>
+              <MenuItem value={"Итальянский"}>Итальянский</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <Box sx={{
-          display: 'inline-flex',
-          position: 'relative',
-          border: '#001434',
-          isolation: 'isolate',
-          flex: 1,
-          marginLeft: '4px'
-        }}>
+        <Box
+          sx={{
+            display: "inline-flex",
+            position: "relative",
+            border: "#001434",
+            isolation: "isolate",
+            flex: 1,
+            marginLeft: "4px",
+          }}
+        >
           <FormControl fullWidth>
             <InputLabel>Изучаемый язык</InputLabel>
             <Select
               id="SelectStudingLanguage"
-              value={age}
-              onChange={handleChange}
+              value={learningLanguage}
+              onChange={handleLearningLanguageChange}
             >
-              <MenuItem value={10}>Русский</MenuItem>
-              <MenuItem value={20}>Английский</MenuItem>
+              <MenuItem
+                value={"Русский"}
+                disabled={nativeLanguage === "Русский"}
+              >
+                Русский
+              </MenuItem>
+              <MenuItem
+                value={"Английский"}
+                disabled={nativeLanguage === "Английский"}
+              >
+                Английский
+              </MenuItem>
+              <MenuItem
+                value={"Французский"}
+                disabled={nativeLanguage === "Французский"}
+              >
+                Французский
+              </MenuItem>
+              <MenuItem
+                value={"Немецкий"}
+                disabled={nativeLanguage === "Немецкий"}
+              >
+                Немецкий
+              </MenuItem>
+              <MenuItem
+                value={"Арабский"}
+                disabled={nativeLanguage === "Арабский"}
+              >
+                Арабский
+              </MenuItem>
+              <MenuItem
+                value={"Итальянский"}
+                disabled={nativeLanguage === "Итальянский"}
+              >
+                Итальянский
+              </MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -235,7 +318,7 @@ export default function Settings(props: StProps): JSX.Element {
         <ButtonExit variant="contained" href="/">
           <TitleButtonExit>{`Выйти`}</TitleButtonExit>
         </ButtonExit>
-        <ButtonSave variant="contained">
+        <ButtonSave variant="contained" href="/">
           <TitleButtonSave>{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
       </GroupButton>

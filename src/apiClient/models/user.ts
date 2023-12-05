@@ -30,7 +30,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Array<WordEntity>}

@@ -8,8 +8,9 @@ import ListStudiedWords from './components/ListStudiedWords';
 import { SDKProvider} from '@tma.js/sdk-react';
 
 export default function App() {
+
   return (
-    <SDKProvider>
+    <SDKProvider initOptions={{ debug: true, cssVars: true }}>
       <HelmetProvider>
         <StyledEngineProvider injectFirst>
             <Routes>

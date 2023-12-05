@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
@@ -18,6 +19,20 @@ import {
     ButtonClearList,
     TitleButton
 } from './StyleListStudiesWords';
+
+// import apiService from "../apiService";
+// import { getInitData } from '../initData';
+// import { getCurentTelegramUser } from '../currentTelegramUser';
+
+// const initData = getInitData();
+// const userTelegramId = getCurentTelegramUser(initData).id;
+// const user = await apiService.getUserByTelegramId(userTelegramId);
+
+// const userWords = await apiService.getWordsByAccountId(user.id);
+// const outWords: any[] = []; 
+// userWords.forEach((userWord)=>{
+//   outWords.push(<div>{userWord.word}</div>)
+// });
 
 export default function ListStudiedWords(props: StProps): JSX.Element {
     const [studiedWords, setStudiedWords] = useState<WordEntity[]>([]);
