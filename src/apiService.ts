@@ -12,11 +12,10 @@ import {
 } from "./apiClient/index";
 
 
-//const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
-const LOCAL_BASE_URL = "https://localhost:7264";
+const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
 
 const http = axios.create({
-  baseURL: LOCAL_BASE_URL,
+  baseURL: BASE_URL,
 });
 
 const setAuthorizationHeader = (api: AxiosInstance) => {
