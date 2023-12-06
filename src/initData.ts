@@ -17,5 +17,4 @@ export function getInitData(): string {
         console.error(error);
         throw new Error(`Error occurred during API request: ${error.message}`);
     }
-
 }

@@ -12,9 +12,10 @@
  * Do not edit the class manually.
  */
 
-import {
-    
-} from ".";
+import { RoleType } from './role-type';
+// import {
+//     RoleType,
+// } from ".";
 
 /**
  * 
@@ -23,6 +24,12 @@ import {
  * @interface Role
  */
 export interface Role {
+
+    /**
+     * @type {RoleType}
+     * @memberof Role
+     */
+    roleType?: RoleType;
 
     /**
      * @type {string}

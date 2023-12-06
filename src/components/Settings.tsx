@@ -2,6 +2,8 @@ import BigRobot from "../images/ImgSetting/BigRobot.png";
 import Arrow from "../images/Img/Arrow.png";
 import Robot from "../images/Img/Robot.png";
 import { StProps } from "../types";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import * as React from "react";
 import {
   InputLabel,
   MenuItem,
@@ -10,8 +12,6 @@ import {
   Link,
   Slider,
 } from "@mui/material";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import * as React from "react";
 
 import {
   Property1Default,
@@ -124,7 +124,7 @@ export default function Settings(props: StProps): JSX.Element {
   };
 
   return (
-    <Property1Default className={props.className}>
+    <Property1Default className={props.TelegramId}>
       <ImgBigRobot src={BigRobot} loading="lazy" alt={"Big Robot"} />
       <TopBar>
         <Content>

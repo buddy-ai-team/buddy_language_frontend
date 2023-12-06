@@ -19,7 +19,6 @@ import { Configuration } from '../configuration';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { AddRoleRequest } from '../models';
 import { Role } from '../models';
-import { RoleByIdRequest } from '../models';
 import { RoleResponse } from '../models';
 import { UpdateRoleRequest } from '../models';
 import { UpdateRoleResponse } from '../models';
@@ -102,12 +101,12 @@ export const RoleApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
-         * @param {RoleByIdRequest} [body] 
+         * @param {string} [roleId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        roleIdGet: async (body?: RoleByIdRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/role/id`;
+        roleGetGet: async (roleId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/role/get`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -118,7 +117,9 @@ export const RoleApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (roleId !== undefined) {
+                localVarQueryParameter['roleId'] = roleId;
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -130,8 +131,6 @@ export const RoleApiAxiosParamCreator = function (configuration?: Configuration)
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") /*|| localVarRequestOptions.headers['Content-Type'] === 'application/json'*/;
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -212,12 +211,12 @@ export const RoleApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {RoleByIdRequest} [body] 
+         * @param {string} [roleId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async roleIdGet(body?: RoleByIdRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RoleResponse>>> {
-            const localVarAxiosArgs = await RoleApiAxiosParamCreator(configuration).roleIdGet(body, options);
+        async roleGetGet(roleId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RoleResponse>>> {
+            const localVarAxiosArgs = await RoleApiAxiosParamCreator(configuration).roleGetGet(roleId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -264,12 +263,12 @@ export const RoleApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
-         * @param {RoleByIdRequest} [body] 
+         * @param {string} [roleId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async roleIdGet(body?: RoleByIdRequest, options?: AxiosRequestConfig): Promise<AxiosResponse<RoleResponse>> {
-            return RoleApiFp(configuration).roleIdGet(body, options).then((request) => request(axios, basePath));
+        async roleGetGet(roleId?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<RoleResponse>> {
+            return RoleApiFp(configuration).roleGetGet(roleId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -311,13 +310,13 @@ export class RoleApi extends BaseAPI {
     }
     /**
      * 
-     * @param {RoleByIdRequest} [body] 
+     * @param {string} [roleId] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RoleApi
      */
-    public async roleIdGet(body?: RoleByIdRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<RoleResponse>> {
-        return RoleApiFp(this.configuration).roleIdGet(body, options).then((request) => request(this.axios, this.basePath));
+    public async roleGetGet(roleId?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<RoleResponse>> {
+        return RoleApiFp(this.configuration).roleGetGet(roleId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
