@@ -1,6 +1,9 @@
 import Robot from '../images/Img/Robot.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
+// import apiService from "../apiService";
+// import { useEffect, useState } from 'react';
+// import { User } from '../apiClient';
 
 import {
   Property1Default,
@@ -45,10 +48,20 @@ import {
   TitleStatistics
 } from './StyleStatistics';
 
-export default function Statistics(props: StProps): JSX.Element {
+export default function Statistics(props: StProps): JSX.Element | null {
+  // const [userData, setUserData] = useState<User | null>(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const user = await apiService.getUserByTelegramId(props.TelegramId);
+  //     setUserData(user);
+  //   };
+  //   fetchData();
+  // }, []);
+
 
   return (
-    <Property1Default className={props.className}>
+    <Property1Default className={props.TelegramId}>
       <TopBar>
         <Content>
           <TitleStatistics>{`Статистика`}</TitleStatistics>

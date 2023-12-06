@@ -12,12 +12,12 @@
  * Do not edit the class manually.
  */
 
-// import { Language } from './language';
-// import { User } from './user';
-// import { WordEntityStatus } from './word-entity-status';
-import {
-    Language,User,WordEntityStatus,
-} from ".";
+import { Language } from './language';
+import { User } from './user';
+import { WordEntityStatus } from './word-entity-status';
+// import {
+//     Language,User,WordEntityStatus,
+// } from ".";
 
 /**
  * 
@@ -62,4 +62,10 @@ export interface WordEntity {
      * @memberof WordEntity
      */
     word?: string | null;
+
+    /**
+     * @type {string}
+     * @memberof WordEntity
+     */
+    translation?: string | null;
 }

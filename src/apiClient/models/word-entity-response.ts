@@ -12,11 +12,11 @@
  * Do not edit the class manually.
  */
 
-// import { Language } from './language';
-// import { WordEntityStatus } from './word-entity-status';
-import {
-    Language,WordEntityStatus,
-} from ".";
+import { Language } from './language';
+import { WordEntityStatus } from './word-entity-status';
+// import {
+//     Language,WordEntityStatus,
+// } from ".";
 
 /**
  * 

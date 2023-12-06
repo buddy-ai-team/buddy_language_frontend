@@ -12,9 +12,10 @@
  * Do not edit the class manually.
  */
 
-import {
-    
-} from ".";
+import { RoleType } from './role-type';
+// import {
+//     RoleType,
+// } from ".";
 
 /**
  * 
@@ -41,4 +42,10 @@ export interface UpdateRoleRequest {
      * @memberof UpdateRoleRequest
      */
     prompt: string;
+
+    /**
+     * @type {RoleType}
+     * @memberof UpdateRoleRequest
+     */
+    roleType: RoleType;
 }

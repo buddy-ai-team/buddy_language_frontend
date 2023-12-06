@@ -12,21 +12,14 @@
  * Do not edit the class manually.
  */
 
-import {
-    
-} from ".";
-
 /**
  * 
- *
  * @export
- * @interface RoleByIdRequest
+ * @enum {string}
  */
-export interface RoleByIdRequest {
-
-    /**
-     * @type {string}
-     * @memberof RoleByIdRequest
-     */
-    id: string;
+export enum RoleType {
+    NUMBER_0 = 0,
+    NUMBER_1 = 1,
+    NUMBER_2 = 2
 }
+

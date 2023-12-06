@@ -1,3 +1,3 @@
 export interface StProps {
-    className?: any;
+    TelegramId: string;
 }
