@@ -4,7 +4,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 export default function Notification() {
 
     return (
-        <div style={{ background: 'linear-gradient(#FFFFFF, #AFEEEE)', height: '600px' }}>
+        <div style={{ background: 'linear-gradient(#FFFFFF, #AFEEEE)', height: '750px' }}>
                 <h1 style={{ textAlign: 'center', color: '#191970' }}>Buddy Language: Ваш личный помощник и переводчик в Telegram!</h1>
                 <div style={{ textAlign: 'center', color: '#191970', fontSize: '20px' }}>
                     <TelegramIcon fontSize="large"/>
