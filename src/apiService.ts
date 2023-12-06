@@ -8,18 +8,21 @@ import {
   AddUserRequest,
   WordEntity,
   AddWordEntityRequest,
+  UpdateUserPreferencesRequest,
 } from "./apiClient/index";
 
 
-const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
+//const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
+const LOCAL_BASE_URL = "https://localhost:7264";
 
 const http = axios.create({
-  baseURL: BASE_URL,
+  baseURL: LOCAL_BASE_URL,
 });
 
 const setAuthorizationHeader = (api: AxiosInstance) => {
   try {
     const initData = getInitData();
+
     // Устанавливаем заголовок авторизации для всех запросов с использованием переданного Axios-экземпляра
     api.defaults.headers.common["Authorization"] = `tma ${initData}`;
   } catch (error: any) {
@@ -62,8 +65,8 @@ export async function updateUser(user: User): Promise<User> {
   return requestApi<User>("/user/update", "POST", user);
 }
 
-export async function updateUserPreferences(user: User): Promise<User> {
-  return requestApi<User>("/user/update_user_preferences", "POST", user);
+export async function updateUserPreferences(newUserPreferences: UpdateUserPreferencesRequest): Promise<User> {
+  return requestApi<User>("/user/update_user_preferences", "POST", newUserPreferences);
 }
 
 export async function addUser(addUserRequest: AddUserRequest): Promise<User> {

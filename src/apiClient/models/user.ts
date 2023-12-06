@@ -60,5 +60,5 @@ export interface User {
      * @type {Preferences}
      * @memberof User
      */
-    userPreferences?: Preferences;
+    userPreferences: Preferences;
 }

@@ -56,7 +56,7 @@ export interface Preferences {
      * @type {string}
      * @memberof Preferences
      */
-    assistantRoleId?: string;
+    assistantRoleId: string;
 
     /**
      * @type {Role}
