@@ -12,14 +12,17 @@ import { useEffect, useState } from 'react';
 import { getCurentTelegramUser } from './currentTelegramUser';
 
 export default function App() {
+
   const [TelegramId, setTelegramId] = useState<string | null>(null);
+  const [initData, setInitData] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const initData = getInitData();
-        
-        const userTelegramId = getCurentTelegramUser(initData).id;
+      try { 
+        const initDataRaw = getInitData();
+        setInitData(initDataRaw);  
+
+        const userTelegramId = getCurentTelegramUser(initDataRaw).id;
         setTelegramId(userTelegramId);
     } catch (error) {
       console.error(error);
@@ -28,7 +31,7 @@ export default function App() {
     fetchData();
   }, []);
 
-  if (TelegramId  === null) {
+  if (initData  === null || TelegramId === null) {
     return <Notification />
   }
 
@@ -37,10 +40,10 @@ export default function App() {
       <HelmetProvider>
         <StyledEngineProvider injectFirst>
             <Routes>
-              <Route path="/" element={<Statistics TelegramId={TelegramId}/>} />
-              <Route path="/get_word_editor" element={<WordEditor TelegramId={TelegramId}/>} />
-              <Route path="/get_settings" element={<Settings TelegramId={TelegramId}/>} />
-              <Route path="/get_list_studied_words" element={<ListStudiedWords TelegramId={TelegramId}/>} />
+              <Route path="/" element={<Statistics TelegramId={TelegramId} initData={initData}/>} />
+              <Route path="/get_word_editor" element={<WordEditor TelegramId={TelegramId} initData={initData}/>} />
+              <Route path="/get_settings" element={<Settings TelegramId={TelegramId} initData={initData}/>} />
+              <Route path="/get_list_studied_words" element={<ListStudiedWords TelegramId={TelegramId} initData={initData}/>} />
             </Routes>
         </StyledEngineProvider>
       </HelmetProvider>
