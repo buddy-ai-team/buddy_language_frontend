@@ -604,41 +604,6 @@ export const GroupButton = styled('div')({
     overflow: `hidden`,
 });
 
-export const ButtonExit = styled(Button)({
-    backgroundColor: `rgba(177, 188, 205, 1)`,
-    border: `1px solid rgba(0, 20, 52, 1)`,
-    boxSizing: `border-box`,
-    borderRadius: `8px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `column`,
-    justifyContent: `center`,
-    alignItems: `center`,
-    padding: `10px 12px`,
-    flex: `1`,
-    margin: `0px`,
-    '&:hover': {
-        backgroundColor: '#D3D3D3',
-    }
-});
-
-export const TitleButtonExit = styled('div')({
-    textAlign: `left`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `16px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `22px`,
-    textTransform: `none`,
-    margin: `0px`,
-});
-
 export const ButtonSave = styled(Button)({
     backgroundColor: `rgba(32, 73, 129, 1)`,
     borderRadius: `8px`,

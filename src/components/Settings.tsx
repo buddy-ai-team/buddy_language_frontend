@@ -47,8 +47,6 @@ import {
   GroupDescriptionRole,
   DescriptionRole,
   GroupButton,
-  ButtonExit,
-  TitleButtonExit,
   TitleButtonSave,
   ButtonSave,
   SelectLanguage,
@@ -198,7 +196,6 @@ export default function Settings(props: StProps): JSX.Element {
             aria-label="Restricted values"
             defaultValue={1}
             valueLabelFormat={valueLabelFormat}
-            //getAriaValueText={valuetext}
             step={null}
             valueLabelDisplay="off"
             marks={marks}
@@ -326,9 +323,6 @@ export default function Settings(props: StProps): JSX.Element {
         </Box>
       </SelectLanguage>
       <GroupButton>
-        <ButtonExit variant="contained" href="/">
-          <TitleButtonExit>{`Выйти`}</TitleButtonExit>
-        </ButtonExit>
         <ButtonSave variant="contained" href="/">
           <TitleButtonSave>{`Сохранить`}</TitleButtonSave>
         </ButtonSave>

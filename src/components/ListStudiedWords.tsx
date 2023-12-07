@@ -5,7 +5,7 @@ import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 import { getUserByTelegramId} from "../apiService";
 import { useEffect, useState } from 'react';
-// import { WordEntity } from '../apiClient';
+// import { WordEntity, WordEntityStatus } from '../apiClient';
 
 import {
     Property1Default,
@@ -43,6 +43,8 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
         fetchWords();
     }, [props.TelegramId, props.initData]);
 
+    // const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
+
     return (
         <Property1Default className={props.TelegramId}>
             <TopBar>
@@ -71,3 +73,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
         </Property1Default>
     );
 }
+
+/* {filteredWords.map(word => (
+    <div key={word.id}>{word.word}</div>
+    ))} */
