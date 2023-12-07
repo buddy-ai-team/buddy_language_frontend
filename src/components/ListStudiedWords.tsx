@@ -5,7 +5,7 @@ import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 import { getUserByTelegramId} from "../apiService";
 import { useEffect, useState } from 'react';
-//import { WordEntity } from '../apiClient';
+// import { WordEntity } from '../apiClient';
 
 import {
     Property1Default,

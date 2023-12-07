@@ -149,11 +149,6 @@ export default function Settings(props: StProps): JSX.Element {
           <Title>{`Голосовой выбор бота`}</Title>
         </Text>
       </SectionTitle>
-      {/* <ReactAudioPlayer
-        src="src\voice\telegram_audio.ogg"
-        autoPlay
-        controls
-      /> */}
       <ListSounds>
         <Item1 onClick={() => handleVoiceTypeChange('male')}>
           <BoxIconSound1

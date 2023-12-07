@@ -21,7 +21,7 @@ export default function App() {
       try { 
         const initDataRaw = getInitData();
         setInitData(initDataRaw);  
-
+        
         const userTelegramId = getCurentTelegramUser(initDataRaw).id;
         setTelegramId(userTelegramId);
     } catch (error) {
