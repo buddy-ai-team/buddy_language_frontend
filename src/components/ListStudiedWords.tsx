@@ -63,9 +63,6 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
             ))}
             <SelectionButton>
                 <ButtonClearList>
-                {studiedWords.map((word, index) => (
-                    <div key={index}>{word}</div>
-                ))}
                     <TitleButton>{`Очистить список`}</TitleButton>
                 </ButtonClearList>
             </SelectionButton>
