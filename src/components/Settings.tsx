@@ -5,6 +5,7 @@ import { StProps } from "../types";
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import * as React from "react";
+import ReactAudioPlayer from 'react-audio-player';
 import {
   InputLabel,
   MenuItem,
@@ -46,8 +47,6 @@ import {
   GroupDescriptionRole,
   DescriptionRole,
   GroupButton,
-  ButtonExit,
-  TitleButtonExit,
   TitleButtonSave,
   ButtonSave,
   SelectLanguage,
@@ -121,6 +120,8 @@ export default function Settings(props: StProps): JSX.Element {
 
   const handleVoiceTypeChange = (selectedVoice: string) => {
     setVoiceType(selectedVoice);
+    const audio = new Audio(`src\voice\telegram_audio.ogg`);
+    audio.play();
   };
 
   return (
@@ -147,10 +148,10 @@ export default function Settings(props: StProps): JSX.Element {
         </Text>
       </SectionTitle>
       <ListSounds>
-        <Item1 onClick={() => handleVoiceTypeChange("male")}>
+        <Item1 onClick={() => handleVoiceTypeChange('male')}>
           <BoxIconSound1
             style={{
-              backgroundColor: voiceType === "male" ? "#204981" : "transparent",
+              backgroundColor: voiceType === 'male' ? "#204981" : "transparent",
             }}
           >
             <IconSound1>{`🔊`}</IconSound1>
@@ -158,18 +159,18 @@ export default function Settings(props: StProps): JSX.Element {
           <BoxTitleSound1
             style={{
               textDecorationColor:
-                voiceType === "male" ? "#7FFFD4" : "transparent",
+                voiceType === 'male' ? "#7FFFD4" : "transparent",
             }}
           >
             <TitleVoice>{`Мужской голос`}</TitleVoice>
           </BoxTitleSound1>
         </Item1>
         <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
-        <Item2 onClick={() => handleVoiceTypeChange("female")}>
+        <Item2 onClick={() => handleVoiceTypeChange('female')}>
           <BoxIconSound2
             style={{
               backgroundColor:
-                voiceType === "female" ? "#204981" : "transparent",
+                voiceType === 'female' ? "#204981" : "transparent",
             }}
           >
             <IconSound2>{`🔊`}</IconSound2>
@@ -178,6 +179,14 @@ export default function Settings(props: StProps): JSX.Element {
             <TitleVoice>{`Женский голос`}</TitleVoice>
           </BoxTitleSound2>
         </Item2>
+        {voiceType === 'male' && (
+        <ReactAudioPlayer
+          src="src\voice\telegram_audio.ogg"
+          autoPlay
+          controls
+          style={{ display: 'none' }} // Чтобы скрыть стандартные контролы, если нужно
+        />
+      )}
         <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
       </ListSounds>
       <SectionVoiceSpeed>
@@ -187,7 +196,6 @@ export default function Settings(props: StProps): JSX.Element {
             aria-label="Restricted values"
             defaultValue={1}
             valueLabelFormat={valueLabelFormat}
-            //getAriaValueText={valuetext}
             step={null}
             valueLabelDisplay="off"
             marks={marks}
@@ -315,9 +323,6 @@ export default function Settings(props: StProps): JSX.Element {
         </Box>
       </SelectLanguage>
       <GroupButton>
-        <ButtonExit variant="contained" href="/">
-          <TitleButtonExit>{`Выйти`}</TitleButtonExit>
-        </ButtonExit>
         <ButtonSave variant="contained" href="/">
           <TitleButtonSave>{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
