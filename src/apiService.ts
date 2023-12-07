@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from "axios";
-import { getInitData } from "./initData";
 import {
   Role,
   AddRoleRequest,
@@ -11,17 +10,14 @@ import {
   UpdateUserPreferencesRequest,
 } from "./apiClient/index";
 
-
 const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
 
 const http = axios.create({
   baseURL: BASE_URL,
 });
 
-const setAuthorizationHeader = (api: AxiosInstance) => {
+const setAuthorizationHeader = (api: AxiosInstance, initData: string) => {
   try {
-    const initData = getInitData();
-
     // Устанавливаем заголовок авторизации для всех запросов с использованием переданного Axios-экземпляра
     api.defaults.headers.common["Authorization"] = `tma ${initData}`;
   } catch (error: any) {
@@ -34,10 +30,11 @@ const setAuthorizationHeader = (api: AxiosInstance) => {
 async function requestApi<T>(
   url: string,
   method: string,
+  initData: string,
   data?: any
 ): Promise<T> {
   try {
-    setAuthorizationHeader(http); // Установка заголовка авторизации перед каждым запросом
+    setAuthorizationHeader(http, initData); // Установка заголовка авторизации перед каждым запросом
     const response = await http.request<T>({
       url,
       method,
@@ -52,65 +49,67 @@ async function requestApi<T>(
 }
 
 // User's methods
-export async function getUser(id: string): Promise<User> {
-  return requestApi<User>(`/user/get?userId=${id}`, "GET");
+export async function getUser(initData: string, id: string): Promise<User> {
+  return requestApi<User>(`/user/get?userId=${id}`, "GET", initData);
 }
 
-export async function getUserByTelegramId(id: string): Promise<User> {
-  return requestApi<User>(`/user/get_by_telegram_id?id=${id}`, "GET");
+export async function getUserByTelegramId(initData: string, id: string): Promise<User> {
+  return requestApi<User>(`/user/get_by_telegram_id?id=${id}`, "GET", initData);
 }
 
-export async function updateUser(user: User): Promise<User> {
-  return requestApi<User>("/user/update", "POST", user);
+export async function updateUser(initData: string, user: User): Promise<User> {
+  return requestApi<User>("/user/update", "POST", initData, user);
 }
 
-export async function updateUserPreferences(newUserPreferences: UpdateUserPreferencesRequest): Promise<User> {
-  return requestApi<User>("/user/update_user_preferences", "POST", newUserPreferences);
+export async function updateUserPreferences(initData: string, newUserPreferences: UpdateUserPreferencesRequest): Promise<User> {
+  return requestApi<User>("/user/update_user_preferences", "POST", initData, newUserPreferences);
 }
 
-export async function addUser(addUserRequest: AddUserRequest): Promise<User> {
-  return requestApi<User>("/user/add", "POST", addUserRequest);
+export async function addUser(initData: string, addUserRequest: AddUserRequest): Promise<User> {
+  return requestApi<User>("/user/add", "POST", initData, addUserRequest);
 }
 
 // Role's methods
-export async function getRole(id: string): Promise<Role> {
-  return requestApi<Role>(`/role/get?roleId=${id}`, "GET");
+export async function getRole(initData: string, id: string): Promise<Role> {
+  return requestApi<Role>(`/role/get?roleId=${id}`, "GET", initData);
 }
 
-export async function getRoleAll(): Promise<Role[]> {
-  return requestApi<Role[]>("/role/all", "GET");
+export async function getRoleAll(initData: string): Promise<Role[]> {
+  return requestApi<Role[]>("/role/all", "GET", initData);
 }
 
-export async function updateRole(role: Role): Promise<Role> {
-  return requestApi<Role>("/role/update", "POST", role);
+export async function updateRole(initData: string, role: Role): Promise<Role> {
+  return requestApi<Role>("/role/update", "POST", initData, role);
 }
 
-export async function addRole(addRoleRequest: AddRoleRequest): Promise<Role> {
-  return requestApi<Role>("/role/add", "POST", addRoleRequest);
+export async function addRole(initData: string, addRoleRequest: AddRoleRequest): Promise<Role> {
+  return requestApi<Role>("/role/add", "POST", initData, addRoleRequest);
 }
 
 // Word's methods
-export async function getWord(id: string): Promise<WordEntity> {
-  return requestApi<WordEntity>(`/wordentity/id?wordId=${id}`, "GET");
+export async function getWord(initData: string, id: string): Promise<WordEntity> {
+  return requestApi<WordEntity>(`/wordentity/id?wordId=${id}`, "GET", initData);
 }
 
-export async function getWordsByAccountId(accountId: string): Promise<WordEntity[]> {
+export async function getWordsByAccountId(initData: string, accountId: string): Promise<WordEntity[]> {
   return requestApi<WordEntity[]>(
     `/wordentity/id-account?accountId=${accountId}`,
-    "GET"
+    "GET", initData
   );
 }
 
-export async function updateWord(word: WordEntity): Promise<WordEntity> {
-  return requestApi<WordEntity>("/wordentity/update", "POST", word);
+export async function updateWord(initData: string, word: WordEntity): Promise<WordEntity> {
+  return requestApi<WordEntity>("/wordentity/update", "POST", initData, word);
 }
 
 export async function addWord(
+  initData: string, 
   addWordEntityRequest: AddWordEntityRequest
 ): Promise<WordEntity> {
   return requestApi<WordEntity>(
     "/wordentity/add",
     "POST",
-    addWordEntityRequest
+    initData,
+    addWordEntityRequest,
   );
 }

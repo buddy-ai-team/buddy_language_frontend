@@ -2,6 +2,7 @@ import BigRobot from "../images/ImgSetting/BigRobot.png";
 import Arrow from "../images/Img/Arrow.png";
 import Robot from "../images/Img/Robot.png";
 import { StProps } from "../types";
+import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import * as React from "react";
 import ReactAudioPlayer from 'react-audio-player';
@@ -10,7 +11,6 @@ import {
   MenuItem,
   FormControl,
   Box,
-  Link,
   Slider,
 } from "@mui/material";
 
@@ -131,7 +131,7 @@ export default function Settings(props: StProps): JSX.Element {
       <ImgBigRobot src={BigRobot} loading="lazy" alt={"Big Robot"} />
       <TopBar>
         <Content>
-          <Link href="/">
+          <Link to="/">
             <IcLeft>
               <Shape src={Arrow} loading="lazy" alt={"Arrow"} />
             </IcLeft>

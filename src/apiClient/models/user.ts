@@ -42,13 +42,13 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    firstName?: string | null;
+    firstName: string | null;
 
     /**
      * @type {string}
      * @memberof User
      */
-    lastName?: string | null;
+    lastName: string | null;
 
     /**
      * @type {string}
