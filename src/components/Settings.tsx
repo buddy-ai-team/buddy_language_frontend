@@ -56,9 +56,10 @@ import {
   SectionRoleBot3,
   ApplyingExistingRoles,
 } from "./StyleSettings";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
 import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
+import telegram_audio from "../voice/telegram_audio.ogg";
 
 export default function Settings(props: StProps): JSX.Element {
   const [nativeLanguage, setNativeLanguage] = useState("");
@@ -93,7 +94,7 @@ export default function Settings(props: StProps): JSX.Element {
     },
   ];
 
-  const languages = [
+  const languages = useMemo(() => [
     {
       name: "Русский",
       value: Language.NUMBER_1
@@ -101,10 +102,9 @@ export default function Settings(props: StProps): JSX.Element {
     {
       name: "Английский",
       value: Language.NUMBER_0
-    }
-  ];
+    },], []);
 
-  const voices = [
+  const voices = useMemo(() => [
     {
       name: "male",
       value: Voice.NUMBER_0
@@ -112,8 +112,7 @@ export default function Settings(props: StProps): JSX.Element {
     {
       name: "female",
       value: Voice.NUMBER_1
-    }
-  ];
+    },], []);
 
 
   const handleChangeRole = (event: SelectChangeEvent) => {
@@ -129,6 +128,7 @@ export default function Settings(props: StProps): JSX.Element {
   };
 
   const handleChangeSpeed = (event: Event, activeThumb: number | number[]) => {
+    console.log(event);
     setSelectedSpeed(activeThumb as number);
   };
 
@@ -162,36 +162,31 @@ export default function Settings(props: StProps): JSX.Element {
 
   const handleVoiceTypeChange = (selectedVoice: string) => {
     setVoiceType(selectedVoice);
-    const audio = new Audio(`src\voice\telegram_audio.ogg`);
-    audio.play();
+    if (selectedVoice === "male") {
+      const audio = new Audio(telegram_audio);
+      audio.play();
+    }
   };
 
   const onSaveUsersSetings = async () => {
 
-    const newNativLanguage = languages.find((language) => language.name === nativeLanguage)?.value;
-    const newLearningLanguage = languages.find((lang) => lang.name === learningLanguage)?.value;
+    const newLearningLanguage = languages.find((language) => language.name === learningLanguage);
+    const newNativLanguage = languages.find((language) => language.name === nativeLanguage);
     const newSpeed: TtsSpeed = selectedSpeed;
-    const newVoice = voices.find((voice) => voice.name === voiceType)?.value;
+    const newVoice = voices.find((voice) => voice.name === voiceType);
     const newRoleId = allRoles.find((role) => role.name === selectedRoleName)?.id;
-    
-    console.log(user?.id);
-    console.log(newNativLanguage);
-    console.log(newLearningLanguage);
-    console.log(newSpeed);
-    console.log(newVoice);
-    console.log(newRoleId);
 
     if (user && newNativLanguage && newLearningLanguage && newVoice && newRoleId) {
       const newUserPreferences: UpdateUserPreferencesRequest = {
         id: user.id,
-        nativeLanguage: newNativLanguage,
-        targetLanguage: newLearningLanguage,
+        nativeLanguage: newNativLanguage.value,
+        targetLanguage: newLearningLanguage.value,
         selectedSpeed: newSpeed,
-        selectedVoice: newVoice,
+        selectedVoice: newVoice.value,
         assistantRoleId: newRoleId,
       };
       console.log(newUserPreferences);
-    
+
       try {
         const updateUser = await updateUserPreferences(props.initData, newUserPreferences);
         console.log(updateUser);
@@ -199,29 +194,7 @@ export default function Settings(props: StProps): JSX.Element {
         console.error('Ошибка при обновлении пользовательских настроек:', error);
       }
     } else {
-      const missingData = [];
-
-      if (!user) {
-        missingData.push('пользователь');
-      }
-    
-      if (!newNativLanguage) {
-        missingData.push('родной язык');
-      }
-    
-      if (!newLearningLanguage) {
-        missingData.push('изучаемый язык');
-      }
-    
-      if (!newVoice) {
-        missingData.push('голос');
-      }
-    
-      if (!newRoleId) {
-        missingData.push('роль');
-      }
-    
-      console.error(`Некорректные данные для обновления пользовательских настроек. Отсутствуют или некорректны следующие данные: ${missingData.join(', ')}.`);
+      console.error(`Некорректные данные для обновления пользовательских настроек.`);
     }
 
   };
@@ -231,7 +204,6 @@ export default function Settings(props: StProps): JSX.Element {
       try {
         const user = await getUserByTelegramId(props.initData, props.TelegramId);
         setUser(user);
-        console.log(user);
         //установка языков
         const usersNativeLanguage = user.userPreferences.nativeLanguage;
         const currentNativeLanguage = languages.find((language) => language.value === usersNativeLanguage);
@@ -289,7 +261,7 @@ export default function Settings(props: StProps): JSX.Element {
     };
 
     fetchCurrentUsersSettings();
-  }, [props.TelegramId, props.initData]);
+  }, [props.TelegramId, props.initData, voices, languages]);
 
   return (
     <Property1Default className={props.TelegramId}>
@@ -427,10 +399,6 @@ export default function Settings(props: StProps): JSX.Element {
             >
               <MenuItem value={"Русский"}>Русский</MenuItem>
               <MenuItem value={"Английский"}>Английский</MenuItem>
-              <MenuItem value={"Французский"}>Французский</MenuItem>
-              <MenuItem value={"Немецкий"}>Немецкий</MenuItem>
-              <MenuItem value={"Арабский"}>Арабский</MenuItem>
-              <MenuItem value={"Итальянский"}>Итальянский</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -463,30 +431,6 @@ export default function Settings(props: StProps): JSX.Element {
               >
                 Английский
               </MenuItem>
-              <MenuItem
-                value={"Французский"}
-                disabled={nativeLanguage === "Французский"}
-              >
-                Французский
-              </MenuItem>
-              <MenuItem
-                value={"Немецкий"}
-                disabled={nativeLanguage === "Немецкий"}
-              >
-                Немецкий
-              </MenuItem>
-              <MenuItem
-                value={"Арабский"}
-                disabled={nativeLanguage === "Арабский"}
-              >
-                Арабский
-              </MenuItem>
-              <MenuItem
-                value={"Итальянский"}
-                disabled={nativeLanguage === "Итальянский"}
-              >
-                Итальянский
-              </MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -500,4 +444,28 @@ export default function Settings(props: StProps): JSX.Element {
   );
 }
 
-//href="/" 
+/*               <MenuItem value={"Французский"}>Французский</MenuItem>
+              <MenuItem value={"Немецкий"}>Немецкий</MenuItem>
+              <MenuItem value={"Итальянский"}>Итальянский</MenuItem>
+              */
+
+/*               <MenuItem
+                value={"Французский"}
+                disabled={nativeLanguage === "Французский"}
+              >
+                Французский
+              </MenuItem>
+              <MenuItem
+                value={"Немецкий"}
+                disabled={nativeLanguage === "Немецкий"}
+              >
+                Немецкий
+              </MenuItem>
+              <MenuItem
+                value={"Итальянский"}
+                disabled={nativeLanguage === "Итальянский"}
+              >
+                Итальянский
+              </MenuItem>
+              */
+
