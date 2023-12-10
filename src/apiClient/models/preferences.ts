@@ -32,25 +32,25 @@ export interface Preferences {
      * @type {Language}
      * @memberof Preferences
      */
-    nativeLanguage?: Language;
+    nativeLanguage: Language;
 
     /**
      * @type {Language}
      * @memberof Preferences
      */
-    targetLanguage?: Language;
+    targetLanguage: Language;
 
     /**
      * @type {Voice}
      * @memberof Preferences
      */
-    selectedVoice?: Voice;
+    selectedVoice: Voice;
 
     /**
      * @type {TtsSpeed}
      * @memberof Preferences
      */
-    selectedSpeed?: TtsSpeed;
+    selectedSpeed: TtsSpeed;
 
     /**
      * @type {string}
