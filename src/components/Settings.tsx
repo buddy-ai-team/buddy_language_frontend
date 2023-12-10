@@ -4,7 +4,6 @@ import Robot from "../images/Img/Robot.png";
 import { StProps } from "../types";
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import ReactAudioPlayer from 'react-audio-player';
 import {
   InputLabel,
   MenuItem,
@@ -59,7 +58,8 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
 import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
-import telegram_audio from "../voice/telegram_audio.ogg";
+import audio_man from "../voice/telegram_audio_man.ogg";
+import audio_woman from "../voice/telegram_audio_woman.ogg";
 
 export default function Settings(props: StProps): JSX.Element {
   const [nativeLanguage, setNativeLanguage] = useState("");
@@ -162,9 +162,12 @@ export default function Settings(props: StProps): JSX.Element {
 
   const handleVoiceTypeChange = (selectedVoice: string) => {
     setVoiceType(selectedVoice);
-    if (selectedVoice === "male") {
-      const audio = new Audio(telegram_audio);
-      audio.play();
+    if (selectedVoice === "female") {
+      const audio_w = new Audio(audio_woman);
+      audio_w.play();
+    } else {
+      const audio_m = new Audio(audio_man);
+      audio_m.play();
     }
   };
 
@@ -318,14 +321,6 @@ export default function Settings(props: StProps): JSX.Element {
             <TitleVoice>{`Женский голос`}</TitleVoice>
           </BoxTitleSound2>
         </Item2>
-        {voiceType === "male" && (
-          <ReactAudioPlayer
-            src="src\voice\telegram_audio.ogg"
-            autoPlay
-            controls
-            style={{ display: 'none' }} // Чтобы скрыть стандартные контролы, если нужно
-          />
-        )}
         <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
       </ListSounds>
       <SectionVoiceSpeed>
