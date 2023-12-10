@@ -3,9 +3,9 @@ import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import { getUserByTelegramId} from "../apiService";
+import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
 import { useEffect, useState } from 'react';
-// import { WordEntity, WordEntityStatus } from '../apiClient';
+import { WordEntity, WordEntityStatus } from '../apiClient';
 
 import {
     Property1Default,
@@ -23,18 +23,18 @@ import {
 
 export default function ListStudiedWords(props: StProps): JSX.Element {
 
-    //const [userWords, setUserWords] = useState<WordEntity[]>([]);
-    const [firstName, setFirstName] = useState<string | null>(null);
-    const [lastName, setLastName] = useState<string | null>(null);
+    const [userWords, setUserWords] = useState<WordEntity[]>([]);
+    // const [firstName, setFirstName] = useState<string | null>(null);
+    // const [lastName, setLastName] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchWords = async () => {
             try {
                 const user = await getUserByTelegramId(props.initData, props.TelegramId);
-                setFirstName(user.firstName);
-                setLastName(user.lastName);
-                // const words = await getWordsByAccountId(props.initData, user.id);
-                // setUserWords(words);
+                // setFirstName(user.firstName);
+                // setLastName(user.lastName);
+                const words = await getWordsByAccountId(props.initData, user.id);
+                setUserWords(words);
             } catch (error) {
                 console.error('Error fetching words:', error);
             }
@@ -43,7 +43,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
         fetchWords();
     }, [props.TelegramId, props.initData]);
 
-    // const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
+    const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
 
     return (
         <Property1Default className={props.TelegramId}>
@@ -64,7 +64,9 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     </IconButtons>
                 </Content>
             </TopBar>
-            {firstName} {lastName}
+            {filteredWords.map(word => (
+                <div key={word.id}>{word.word}</div>
+            ))}
             <SelectionButton>
                 <ButtonClearList>
                     <TitleButton>{`Очистить список`}</TitleButton>
