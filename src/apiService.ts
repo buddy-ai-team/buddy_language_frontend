@@ -10,7 +10,8 @@ import {
   UpdateUserPreferencesRequest,
 } from "./apiClient/index";
 
-const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
+//const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
+const BASE_URL = "https://localhost:7264";
 
 const http = axios.create({
   baseURL: BASE_URL,

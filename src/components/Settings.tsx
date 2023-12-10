@@ -4,7 +4,6 @@ import Robot from "../images/Img/Robot.png";
 import { StProps } from "../types";
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import * as React from "react";
 import ReactAudioPlayer from 'react-audio-player';
 import {
   InputLabel,
@@ -57,12 +56,20 @@ import {
   SectionRoleBot3,
   ApplyingExistingRoles,
 } from "./StyleSettings";
+import { useEffect, useState } from "react";
+import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
+import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
 
 export default function Settings(props: StProps): JSX.Element {
-  const [nativeLanguage, setNativeLanguage] = React.useState("");
-  const [learningLanguage, setLearningLanguage] = React.useState("");
-  const [voiceType, setVoiceType] = React.useState("");
-  const [selectedRole, setSelectedRole] = React.useState("");
+  const [nativeLanguage, setNativeLanguage] = useState("");
+  const [learningLanguage, setLearningLanguage] = useState("");
+  const [voiceType, setVoiceType] = useState("");
+  const [selectedSpeed, setSelectedSpeed] = useState(0);
+  const [titleRole, setTitleRole] = useState("");
+  const [descriptionRole, setDescriptionRole] = useState("");
+  const [allRoles, setAllRoles] = useState<Role[]>([]);
+  const [selectedRoleName, setSelectedRoleName] = useState("");
+  const [user, setUser] = useState<User>();
   const marks = [
     {
       value: 0,
@@ -86,8 +93,43 @@ export default function Settings(props: StProps): JSX.Element {
     },
   ];
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setSelectedRole(event.target.value);
+  const languages = [
+    {
+      name: "Русский",
+      value: Language.NUMBER_1
+    },
+    {
+      name: "Английский",
+      value: Language.NUMBER_0
+    }
+  ];
+
+  const voices = [
+    {
+      name: "male",
+      value: Voice.NUMBER_0
+    },
+    {
+      name: "female",
+      value: Voice.NUMBER_1
+    }
+  ];
+
+
+  const handleChangeRole = (event: SelectChangeEvent) => {
+    const nameSelectedRole = event.target.value;
+    const selRole = allRoles.find(role => role.name === nameSelectedRole);
+    if (selRole) {
+      if (selRole.name) {
+        setSelectedRoleName(selRole.name);
+        setTitleRole(selRole.name);
+      }
+      if (selRole.prompt) setDescriptionRole(selRole.prompt);
+    }
+  };
+
+  const handleChangeSpeed = (event: Event, activeThumb: number | number[]) => {
+    setSelectedSpeed(activeThumb as number);
   };
 
   function valueLabelFormat(value: number) {
@@ -124,6 +166,131 @@ export default function Settings(props: StProps): JSX.Element {
     audio.play();
   };
 
+  const onSaveUsersSetings = async () => {
+
+    const newNativLanguage = languages.find((language) => language.name === nativeLanguage)?.value;
+    const newLearningLanguage = languages.find((lang) => lang.name === learningLanguage)?.value;
+    const newSpeed: TtsSpeed = selectedSpeed;
+    const newVoice = voices.find((voice) => voice.name === voiceType)?.value;
+    const newRoleId = allRoles.find((role) => role.name === selectedRoleName)?.id;
+    
+    console.log(user?.id);
+    console.log(newNativLanguage);
+    console.log(newLearningLanguage);
+    console.log(newSpeed);
+    console.log(newVoice);
+    console.log(newRoleId);
+
+    if (user && newNativLanguage && newLearningLanguage && newVoice && newRoleId) {
+      const newUserPreferences: UpdateUserPreferencesRequest = {
+        id: user.id,
+        nativeLanguage: newNativLanguage,
+        targetLanguage: newLearningLanguage,
+        selectedSpeed: newSpeed,
+        selectedVoice: newVoice,
+        assistantRoleId: newRoleId,
+      };
+      console.log(newUserPreferences);
+    
+      try {
+        const updateUser = await updateUserPreferences(props.initData, newUserPreferences);
+        console.log(updateUser);
+      } catch (error) {
+        console.error('Ошибка при обновлении пользовательских настроек:', error);
+      }
+    } else {
+      const missingData = [];
+
+      if (!user) {
+        missingData.push('пользователь');
+      }
+    
+      if (!newNativLanguage) {
+        missingData.push('родной язык');
+      }
+    
+      if (!newLearningLanguage) {
+        missingData.push('изучаемый язык');
+      }
+    
+      if (!newVoice) {
+        missingData.push('голос');
+      }
+    
+      if (!newRoleId) {
+        missingData.push('роль');
+      }
+    
+      console.error(`Некорректные данные для обновления пользовательских настроек. Отсутствуют или некорректны следующие данные: ${missingData.join(', ')}.`);
+    }
+
+  };
+
+  useEffect(() => {
+    const fetchCurrentUsersSettings = async () => {
+      try {
+        const user = await getUserByTelegramId(props.initData, props.TelegramId);
+        setUser(user);
+        console.log(user);
+        //установка языков
+        const usersNativeLanguage = user.userPreferences.nativeLanguage;
+        const currentNativeLanguage = languages.find((language) => language.value === usersNativeLanguage);
+        if (currentNativeLanguage) {
+          setNativeLanguage(currentNativeLanguage.name);
+        }
+        const usersLearningLanguage = user.userPreferences.targetLanguage;
+        const currentLearningLanguage = languages.find((language) => language.value === usersLearningLanguage);
+        if (currentLearningLanguage) {
+          setLearningLanguage(currentLearningLanguage.name);
+        }
+
+        //установка голоса
+        const usersBotVoice = user.userPreferences.selectedVoice;
+        const currentVoice = voices.find((voice) => voice.value === usersBotVoice);
+        if (currentVoice) {
+          setVoiceType(currentVoice.name);
+        }
+
+        //установка скорости речи
+        const usersTtsSpeed = user.userPreferences.selectedSpeed;
+        const currentTtsSpeed = usersTtsSpeed.valueOf();
+        setSelectedSpeed(currentTtsSpeed);
+
+        //установка роли
+
+        //получение всех существующих ролей
+        const roles = await getRoleAll(props.initData);
+        setAllRoles(roles);
+
+        if (user.userPreferences.assistantRole) {
+          const roleName = user.userPreferences.assistantRole.name;
+          if (roleName) {
+            setTitleRole(roleName);
+            setSelectedRoleName(roleName)
+          }
+
+          const roleDescription = user.userPreferences.assistantRole.prompt;
+          if (roleDescription) setDescriptionRole(roleDescription);
+        }
+        else {
+          const idRole = user.userPreferences.assistantRoleId;
+          const role = await getRole(props.initData, idRole);
+
+          if (role.name) {
+            setTitleRole(role.name);
+            setSelectedRoleName(role.name);
+          }
+          if (role.prompt) setDescriptionRole(role.prompt);
+        }
+
+      } catch (error) {
+        console.error('Error fetching words:', error);
+      }
+    };
+
+    fetchCurrentUsersSettings();
+  }, [props.TelegramId, props.initData]);
+
   return (
     <Property1Default className={props.TelegramId}>
       <ImgBigRobot src={BigRobot} loading="lazy" alt={"Big Robot"} />
@@ -148,10 +315,10 @@ export default function Settings(props: StProps): JSX.Element {
         </Text>
       </SectionTitle>
       <ListSounds>
-        <Item1 onClick={() => handleVoiceTypeChange('male')}>
+        <Item1 onClick={() => handleVoiceTypeChange("male")}>
           <BoxIconSound1
             style={{
-              backgroundColor: voiceType === 'male' ? "#204981" : "transparent",
+              backgroundColor: voiceType === "male" ? "#204981" : "transparent",
             }}
           >
             <IconSound1>{`🔊`}</IconSound1>
@@ -159,18 +326,18 @@ export default function Settings(props: StProps): JSX.Element {
           <BoxTitleSound1
             style={{
               textDecorationColor:
-                voiceType === 'male' ? "#7FFFD4" : "transparent",
+                voiceType === "male" ? "#7FFFD4" : "transparent",
             }}
           >
             <TitleVoice>{`Мужской голос`}</TitleVoice>
           </BoxTitleSound1>
         </Item1>
         <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
-        <Item2 onClick={() => handleVoiceTypeChange('female')}>
+        <Item2 onClick={() => handleVoiceTypeChange("female")}>
           <BoxIconSound2
             style={{
               backgroundColor:
-                voiceType === 'female' ? "#204981" : "transparent",
+                voiceType === "female" ? "#204981" : "transparent",
             }}
           >
             <IconSound2>{`🔊`}</IconSound2>
@@ -179,14 +346,14 @@ export default function Settings(props: StProps): JSX.Element {
             <TitleVoice>{`Женский голос`}</TitleVoice>
           </BoxTitleSound2>
         </Item2>
-        {voiceType === 'male' && (
-        <ReactAudioPlayer
-          src="src\voice\telegram_audio.ogg"
-          autoPlay
-          controls
-          style={{ display: 'none' }} // Чтобы скрыть стандартные контролы, если нужно
-        />
-      )}
+        {voiceType === "male" && (
+          <ReactAudioPlayer
+            src="src\voice\telegram_audio.ogg"
+            autoPlay
+            controls
+            style={{ display: 'none' }} // Чтобы скрыть стандартные контролы, если нужно
+          />
+        )}
         <div style={{ borderBottom: "1px solid #B1BCCD", width: "100%" }} />
       </ListSounds>
       <SectionVoiceSpeed>
@@ -194,12 +361,13 @@ export default function Settings(props: StProps): JSX.Element {
         <BoxVoiceSpeed>
           <Slider
             aria-label="Restricted values"
-            defaultValue={1}
             valueLabelFormat={valueLabelFormat}
             step={null}
             valueLabelDisplay="off"
             marks={marks}
             max={4}
+            value={selectedSpeed}
+            onChange={handleChangeSpeed}
           />
         </BoxVoiceSpeed>
       </SectionVoiceSpeed>
@@ -210,12 +378,12 @@ export default function Settings(props: StProps): JSX.Element {
       </SectionRoleBot>
       <SectionRoleBot1>
         <TitleRole>{`Название роли`}</TitleRole>
-        <InputRoleBot placeholder="Ввод роли бота" />
+        <InputRoleBot placeholder="Ввод роли бота" value={titleRole} disabled />
       </SectionRoleBot1>
       <SectionRoleBot2>
         <TitleRole>{`Описание роли`}</TitleRole>
         <GroupDescriptionRole>
-          <DescriptionRole placeholder="Ввод описания роли" />
+          <DescriptionRole placeholder="Ввод описания роли" value={descriptionRole} disabled />
         </GroupDescriptionRole>
       </SectionRoleBot2>
       <SectionRoleBot3>
@@ -225,10 +393,11 @@ export default function Settings(props: StProps): JSX.Element {
             <InputLabel>Роли</InputLabel>
             <Select
               id="SelectRole"
-              value={selectedRole}
-              onChange={handleChange}
+              value={selectedRoleName}
+              onChange={handleChangeRole}
             >
-              <MenuItem value={10}>Default</MenuItem>
+              {allRoles.map(role =>
+                <MenuItem value={role.name} key={role.id}>{role.name}</MenuItem>)}
             </Select>
           </FormControl>
         </ApplyingExistingRoles>
@@ -323,10 +492,12 @@ export default function Settings(props: StProps): JSX.Element {
         </Box>
       </SelectLanguage>
       <GroupButton>
-        <ButtonSave variant="contained" href="/">
-          <TitleButtonSave>{`Сохранить`}</TitleButtonSave>
+        <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
+          <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
       </GroupButton>
     </Property1Default>
   );
 }
+
+//href="/" 

@@ -41,11 +41,11 @@ export interface Role {
      * @type {string}
      * @memberof Role
      */
-    name?: string | null;
+    name?: string;
 
     /**
      * @type {string}
      * @memberof Role
      */
-    prompt?: string | null;
+    prompt?: string;
 }
