@@ -24,15 +24,11 @@ import {
 export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const [userWords, setUserWords] = useState<WordEntity[]>([]);
-    // const [firstName, setFirstName] = useState<string | null>(null);
-    // const [lastName, setLastName] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchWords = async () => {
             try {
                 const user = await getUserByTelegramId(props.initData, props.TelegramId);
-                // setFirstName(user.firstName);
-                // setLastName(user.lastName);
                 const words = await getWordsByAccountId(props.initData, user.id);
 
                 setUserWords(words);
@@ -42,9 +38,24 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
         };
 
         fetchWords();
+
     }, [props.TelegramId, props.initData]);
 
     const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
+
+    const handleClearList = async () => {
+        // try {
+        //     const user = await getUserByTelegramId(props.initData, props.TelegramId);
+        //     const words = await getWordsByAccountId(props.initData, user.id);
+        //     const delWords = setUserWords(words);
+        //     for (const word of delWords) {
+        //         await updateWord(props.initData, word.id);
+        //     }
+        //     setUserWords([]);
+        // } catch (error) {
+        //     console.error('Error clearing word list:', error);
+        // }
+    }
 
     return (
         <Property1Default className={props.TelegramId}>
@@ -65,18 +76,30 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     </IconButtons>
                 </Content>
             </TopBar>
-            {filteredWords.map(word => (
+            <table>
+                <thead>
+                    <tr>
+                        <th>Слово</th>
+                        <th>Перевод</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {filteredWords.map(word => (
+                        <tr key={word.id}>
+                            <td>{word.translation}</td>
+                            <td>{word.word}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            {/* {filteredWords.map(word => (
                 <div key={word.id}>{word.word}-{word.translation}</div>
-            ))}
+            ))} */}
             <SelectionButton>
-                <ButtonClearList>
+                <ButtonClearList onClick={handleClearList}>
                     <TitleButton>{`Очистить список`}</TitleButton>
                 </ButtonClearList>
             </SelectionButton>
         </Property1Default>
     );
 }
-
-/* {filteredWords.map(word => (
-    <div key={word.id}>{word.word}</div>
-    ))} */
