@@ -34,6 +34,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                 // setFirstName(user.firstName);
                 // setLastName(user.lastName);
                 const words = await getWordsByAccountId(props.initData, user.id);
+
                 setUserWords(words);
             } catch (error) {
                 console.error('Error fetching words:', error);
@@ -65,7 +66,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                 </Content>
             </TopBar>
             {filteredWords.map(word => (
-                <div key={word.id}>{word.word}</div>
+                <div key={word.id}>{word.word}-{word.translation}</div>
             ))}
             <SelectionButton>
                 <ButtonClearList>
