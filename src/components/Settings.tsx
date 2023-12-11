@@ -4,14 +4,13 @@ import Robot from "../images/Img/Robot.png";
 import { StProps } from "../types";
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import {
   InputLabel,
   MenuItem,
   FormControl,
   Box,
   Slider,
-  Snackbar,
+  Snackbar
 } from "@mui/material";
 
 import {
@@ -57,18 +56,11 @@ import {
   SectionRoleBot3,
   ApplyingExistingRoles,
 } from "./StyleSettings";
-import { useEffect, useMemo, useState, forwardRef, SyntheticEvent } from "react";
+import { useEffect, useMemo, useState, SyntheticEvent } from "react";
 import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
 import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
 import audio_man from "../voice/telegram_audio_man.ogg";
 import audio_woman from "../voice/telegram_audio_woman.ogg";
-
-const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref,
-) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 export default function Settings(props: StProps): JSX.Element {
   const [nativeLanguage, setNativeLanguage] = useState("");
@@ -80,7 +72,7 @@ export default function Settings(props: StProps): JSX.Element {
   const [allRoles, setAllRoles] = useState<Role[]>([]);
   const [selectedRoleName, setSelectedRoleName] = useState("");
   const [user, setUser] = useState<User>();
-  const [open, setOpen] = useState(false);
+  const [openSaveSuccess, setOpenSaveSuccess] = useState(false);
   const marks = [
     {
       value: 0,
@@ -201,8 +193,8 @@ export default function Settings(props: StProps): JSX.Element {
 
       try {
         const updateUser = await updateUserPreferences(props.initData, newUserPreferences);
+        setOpenSaveSuccess(true);
         console.log(updateUser);
-        setOpen(true);
       } catch (error) {
         console.error('Ошибка при обновлении пользовательских настроек:', error);
       }
@@ -212,12 +204,11 @@ export default function Settings(props: StProps): JSX.Element {
 
   };
 
-  const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
+  const handleSaveSuccessClose = (event: SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
-
-    setOpen(false);
+    setOpenSaveSuccess(false); // Закрываем уведомление
   };
 
   useEffect(() => {
@@ -452,19 +443,17 @@ export default function Settings(props: StProps): JSX.Element {
         <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
           <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'center'
-          }}>
-          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-            This is a success message!
-          </Alert>
-        </Snackbar>
       </GroupButton>
+      <Snackbar
+        open={openSaveSuccess}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center'
+        }}
+        autoHideDuration={6000}
+        onClose={handleSaveSuccessClose}
+        message="Настройки успешно сохранены"
+      />
     </Property1Default>
   );
 }
