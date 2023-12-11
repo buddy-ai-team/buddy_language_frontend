@@ -452,11 +452,18 @@ export default function Settings(props: StProps): JSX.Element {
         <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
           <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
-        </Alert>
-      </Snackbar>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center'
+          }}>
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            This is a success message!
+          </Alert>
+        </Snackbar>
       </GroupButton>
     </Property1Default>
   );
