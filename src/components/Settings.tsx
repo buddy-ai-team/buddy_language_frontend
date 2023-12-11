@@ -4,12 +4,14 @@ import Robot from "../images/Img/Robot.png";
 import { StProps } from "../types";
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import {
   InputLabel,
   MenuItem,
   FormControl,
   Box,
   Slider,
+  Snackbar,
 } from "@mui/material";
 
 import {
@@ -55,7 +57,7 @@ import {
   SectionRoleBot3,
   ApplyingExistingRoles,
 } from "./StyleSettings";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, forwardRef, SyntheticEvent } from "react";
 import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
 import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
 import audio_man from "../voice/telegram_audio_man.ogg";
@@ -71,6 +73,7 @@ export default function Settings(props: StProps): JSX.Element {
   const [allRoles, setAllRoles] = useState<Role[]>([]);
   const [selectedRoleName, setSelectedRoleName] = useState("");
   const [user, setUser] = useState<User>();
+  const [open, setOpen] = useState(false);
   const marks = [
     {
       value: 0,
@@ -114,6 +117,12 @@ export default function Settings(props: StProps): JSX.Element {
       value: Voice.NUMBER_1
     },], []);
 
+    const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
+      props,
+      ref,
+    ) {
+      return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    });
 
   const handleChangeRole = (event: SelectChangeEvent) => {
     const nameSelectedRole = event.target.value;
@@ -193,6 +202,7 @@ export default function Settings(props: StProps): JSX.Element {
       try {
         const updateUser = await updateUserPreferences(props.initData, newUserPreferences);
         console.log(updateUser);
+        setOpen(true);
       } catch (error) {
         console.error('Ошибка при обновлении пользовательских настроек:', error);
       }
@@ -200,6 +210,14 @@ export default function Settings(props: StProps): JSX.Element {
       console.error(`Некорректные данные для обновления пользовательских настроек.`);
     }
 
+  };
+
+  const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -434,6 +452,11 @@ export default function Settings(props: StProps): JSX.Element {
         <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
           <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
         </ButtonSave>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          This is a success message!
+        </Alert>
+      </Snackbar>
       </GroupButton>
     </Property1Default>
   );
