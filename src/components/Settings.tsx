@@ -63,6 +63,13 @@ import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } f
 import audio_man from "../voice/telegram_audio_man.ogg";
 import audio_woman from "../voice/telegram_audio_woman.ogg";
 
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref,
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export default function Settings(props: StProps): JSX.Element {
   const [nativeLanguage, setNativeLanguage] = useState("");
   const [learningLanguage, setLearningLanguage] = useState("");
@@ -116,13 +123,6 @@ export default function Settings(props: StProps): JSX.Element {
       name: "female",
       value: Voice.NUMBER_1
     },], []);
-
-    const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-      props,
-      ref,
-    ) {
-      return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-    });
 
   const handleChangeRole = (event: SelectChangeEvent) => {
     const nameSelectedRole = event.target.value;
