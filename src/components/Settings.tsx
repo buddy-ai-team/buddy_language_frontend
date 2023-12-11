@@ -9,7 +9,8 @@ import {
   MenuItem,
   FormControl,
   Box,
-  Slider
+  Slider,
+  Snackbar
 } from "@mui/material";
 
 import {
@@ -55,7 +56,7 @@ import {
   SectionRoleBot3,
   ApplyingExistingRoles,
 } from "./StyleSettings";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, SyntheticEvent } from "react";
 import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
 import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
 import audio_man from "../voice/telegram_audio_man.ogg";
@@ -71,7 +72,8 @@ export default function Settings(props: StProps): JSX.Element {
   const [allRoles, setAllRoles] = useState<Role[]>([]);
   const [selectedRoleName, setSelectedRoleName] = useState("");
   const [user, setUser] = useState<User>();
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [openSaveSuccess, setOpenSaveSuccess] = useState(false);
   const marks = [
     {
       value: 0,
@@ -192,10 +194,11 @@ export default function Settings(props: StProps): JSX.Element {
 
       try {
         const updateUser = await updateUserPreferences(props.initData, newUserPreferences);
-        setShowSuccessMessage(true);
-        setTimeout(() => {
-          setShowSuccessMessage(false); // скрываем уведомление через несколько секунд
-        }, 5000);
+        setOpenSaveSuccess(true);
+        // setShowSuccessMessage(true);
+        // setTimeout(() => {
+        //   setShowSuccessMessage(false); // скрываем уведомление через несколько секунд
+        // }, 5000);
         console.log(updateUser);
         console.log("Настройки успешно сохранены");
       } catch (error) {
@@ -205,6 +208,13 @@ export default function Settings(props: StProps): JSX.Element {
       console.error(`Некорректные данные для обновления пользовательских настроек.`);
     }
 
+  };
+
+  const handleSaveSuccessClose = (event?: SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSaveSuccess(false); // Закрываем уведомление
   };
 
   useEffect(() => {
@@ -435,16 +445,22 @@ export default function Settings(props: StProps): JSX.Element {
           </FormControl>
         </Box>
       </SelectLanguage>
-        {showSuccessMessage && (
+      <Snackbar
+        open={openSaveSuccess}
+        autoHideDuration={6000}
+        onClose={handleSaveSuccessClose}
+        message="Настройки успешно сохранены"
+      />
+      {/* {showSuccessMessage && (
           <div style={{ backgroundColor: 'green', color: 'white', padding: '10px', margin: '10px' }}>
             Настройки успешно сохранены
           </div>
-        )}
-        <GroupButton>
-          <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
-            <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
-          </ButtonSave>
-        </GroupButton>
+        )} */}
+      <GroupButton>
+        <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
+          <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
+        </ButtonSave>
+      </GroupButton>
     </Property1Default>
   );
 }

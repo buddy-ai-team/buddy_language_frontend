@@ -21,9 +21,20 @@ import {
     TitleButton
 } from './StyleListStudiesWords';
 
+import {
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow
+  } from '@mui/material';
+
 export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const [userWords, setUserWords] = useState<WordEntity[]>([]);
+    const [sortOrder, setSortOrder] = useState('asc');
 
     useEffect(() => {
         const fetchWords = async () => {
@@ -43,18 +54,24 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
 
+    const toggleSortOrder = () => {
+        setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+      };
+
     const handleClearList = async () => {
-        // try {
-        //     const user = await getUserByTelegramId(props.initData, props.TelegramId);
-        //     const words = await getWordsByAccountId(props.initData, user.id);
-        //     const delWords = setUserWords(words);
-        //     for (const word of delWords) {
-        //         await updateWord(props.initData, word.id);
-        //     }
-        //     setUserWords([]);
-        // } catch (error) {
-        //     console.error('Error clearing word list:', error);
-        // }
+        try {
+            // const user = await getUserByTelegramId(props.initData, props.TelegramId);
+            // const words = await getWordsByAccountId(props.initData, user.id);
+    
+            // // Отправляем запрос на удаление слов из бэкенда
+            // await deleteWordsByAccountId(props.initData, user.id);
+    
+            // // Обновляем состояние, чтобы удалить слова со страницы
+            // setUserWords([]);
+    
+        } catch (error) {
+            console.error('Error clearing word list:', error);
+        }
     }
 
     return (
@@ -76,25 +93,35 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     </IconButtons>
                 </Content>
             </TopBar>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Слово</th>
-                        <th>Перевод</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredWords.map(word => (
-                        <tr key={word.id}>
-                            <td>{word.translation}</td>
-                            <td>{word.word}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            {/* {filteredWords.map(word => (
-                <div key={word.id}>{word.word}-{word.translation}</div>
-            ))} */}
+            <Paper>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                </TableCell>
+                <TableCell>
+                  <button onClick={toggleSortOrder}>
+                    {`Сортировка: ${sortOrder === 'asc' ? 'по возрастанию' : 'по убыванию'}`}
+                  </button>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Слово</TableCell>
+                <TableCell>Перевод</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {filteredWords.map((word) => (
+                <TableRow key={word.id}>
+                  <TableCell>{word.translation}</TableCell>
+                  <TableCell>{word.word}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
             <SelectionButton>
                 <ButtonClearList onClick={handleClearList}>
                     <TitleButton>{`Очистить список`}</TitleButton>
