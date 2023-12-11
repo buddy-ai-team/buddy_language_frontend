@@ -9,8 +9,7 @@ import {
   MenuItem,
   FormControl,
   Box,
-  Slider,
-  Snackbar
+  Slider
 } from "@mui/material";
 
 import {
@@ -72,7 +71,7 @@ export default function Settings(props: StProps): JSX.Element {
   const [allRoles, setAllRoles] = useState<Role[]>([]);
   const [selectedRoleName, setSelectedRoleName] = useState("");
   const [user, setUser] = useState<User>();
-  const [openSaveSuccess, setOpenSaveSuccess] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const marks = [
     {
       value: 0,
@@ -193,8 +192,12 @@ export default function Settings(props: StProps): JSX.Element {
 
       try {
         const updateUser = await updateUserPreferences(props.initData, newUserPreferences);
-        setOpenSaveSuccess(true);
+        setShowSuccessMessage(true);
+        setTimeout(() => {
+          setShowSuccessMessage(false); // скрываем уведомление через несколько секунд
+        }, 5000);
         console.log(updateUser);
+        console.log("Настройки успешно сохранены");
       } catch (error) {
         console.error('Ошибка при обновлении пользовательских настроек:', error);
       }
@@ -202,14 +205,6 @@ export default function Settings(props: StProps): JSX.Element {
       console.error(`Некорректные данные для обновления пользовательских настроек.`);
     }
 
-  };
-
-  const handleSaveSuccessClose = (event: SyntheticEvent | Event, reason?: string) => {
-    console.log(event);
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpenSaveSuccess(false); // Закрываем уведомление
   };
 
   useEffect(() => {
@@ -440,21 +435,16 @@ export default function Settings(props: StProps): JSX.Element {
           </FormControl>
         </Box>
       </SelectLanguage>
-      <GroupButton>
-        <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
-          <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
-        </ButtonSave>
-      </GroupButton>
-      <Snackbar
-        open={openSaveSuccess}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'center'
-        }}
-        autoHideDuration={6000}
-        onClose={handleSaveSuccessClose}
-        message="Настройки успешно сохранены"
-      />
+        {showSuccessMessage && (
+          <div style={{ backgroundColor: 'green', color: 'white', padding: '10px', margin: '10px' }}>
+            Настройки успешно сохранены
+          </div>
+        )}
+        <GroupButton>
+          <ButtonSave onClick={onSaveUsersSetings} variant="contained" >
+            <TitleButtonSave >{`Сохранить`}</TitleButtonSave>
+          </ButtonSave>
+        </GroupButton>
     </Property1Default>
   );
 }
