@@ -102,14 +102,10 @@ export async function updateWord(initData: string, word: WordEntity): Promise<Wo
   return requestApi<WordEntity>("/wordentity/update", "POST", initData, word);
 }
 
-export async function addWord(
-  initData: string, 
-  addWordEntityRequest: AddWordEntityRequest
-): Promise<WordEntity> {
-  return requestApi<WordEntity>(
-    "/wordentity/add",
-    "POST",
-    initData,
-    addWordEntityRequest,
-  );
+export async function addWord(initData: string, addWordEntityRequest: AddWordEntityRequest): Promise<WordEntity> {
+  return requestApi<WordEntity>("/wordentity/add", "POST", initData, addWordEntityRequest,);
+}
+
+export async function deleteWord(initData: string,  id: string): Promise<WordEntity> {
+  return requestApi<WordEntity>(`/wordentity/delete?wordEntityId=${id}`, "POST", initData);
 }

@@ -13,9 +13,6 @@
  */
 
 import { RoleType } from './role-type';
-// import {
-//     RoleType,
-// } from ".";
 
 /**
  * 

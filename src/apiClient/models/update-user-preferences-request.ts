@@ -15,9 +15,6 @@
 import { Language } from './language';
 import { TtsSpeed } from './tts-speed';
 import { Voice } from './voice';
-// import {
-//     Language,TtsSpeed,Voice,
-// } from ".";
 
 /**
  * 
