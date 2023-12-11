@@ -213,6 +213,7 @@ export default function Settings(props: StProps): JSX.Element {
   const handleSaveSuccessClose = (event?: SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
+      console.log(event);
     }
     setOpenSaveSuccess(false); // Закрываем уведомление
   };
