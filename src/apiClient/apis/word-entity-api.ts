@@ -57,8 +57,46 @@ export const WordEntityApiAxiosParamCreator = function (configuration?: Configur
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") /*|| localVarRequestOptions.headers['Content-Type'] === 'application/json'*/;
+            const needsSerialization = (typeof body !== "string")/*  || localVarRequestOptions.headers['Content-Type'] === 'application/json'*/;
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} [wordEntityId] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        wordentityDeletePost: async (wordEntityId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/wordentity/delete`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (wordEntityId !== undefined) {
+                localVarQueryParameter['wordEntityId'] = wordEntityId;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -171,7 +209,7 @@ export const WordEntityApiAxiosParamCreator = function (configuration?: Configur
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") /*|| localVarRequestOptions.headers['Content-Type'] === 'application/json'*/;
+            const needsSerialization = (typeof body !== "string")/*  || localVarRequestOptions.headers['Content-Type'] === 'application/json'*/;
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
@@ -196,6 +234,19 @@ export const WordEntityApiFp = function(configuration?: Configuration) {
          */
         async wordentityAddPost(body?: AddWordEntityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<WordEntityResponse>>> {
             const localVarAxiosArgs = await WordEntityApiAxiosParamCreator(configuration).wordentityAddPost(body, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @param {string} [wordEntityId] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async wordentityDeletePost(wordEntityId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await WordEntityApiAxiosParamCreator(configuration).wordentityDeletePost(wordEntityId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -260,6 +311,15 @@ export const WordEntityApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
+         * @param {string} [wordEntityId] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async wordentityDeletePost(wordEntityId?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return WordEntityApiFp(configuration).wordentityDeletePost(wordEntityId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {string} [accountId] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -304,6 +364,16 @@ export class WordEntityApi extends BaseAPI {
      */
     public async wordentityAddPost(body?: AddWordEntityRequest, options?: AxiosRequestConfig) : Promise<AxiosResponse<WordEntityResponse>> {
         return WordEntityApiFp(this.configuration).wordentityAddPost(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @param {string} [wordEntityId] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof WordEntityApi
+     */
+    public async wordentityDeletePost(wordEntityId?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return WordEntityApiFp(this.configuration).wordentityDeletePost(wordEntityId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

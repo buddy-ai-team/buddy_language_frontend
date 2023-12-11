@@ -13,9 +13,6 @@
  */
 
 import { RoleType } from './role-type';
-// import {
-//     RoleType,
-// } from ".";
 
 /**
  * 
@@ -35,7 +32,7 @@ export interface Role {
      * @type {string}
      * @memberof Role
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {string}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import {
   Role,
   AddRoleRequest,
@@ -92,24 +92,17 @@ export async function getWord(initData: string, id: string): Promise<WordEntity>
 }
 
 export async function getWordsByAccountId(initData: string, accountId: string): Promise<WordEntity[]> {
-  return requestApi<WordEntity[]>(
-    `/wordentity/id-account?accountId=${accountId}`,
-    "GET", initData
-  );
+  return requestApi<WordEntity[]>(`/wordentity/id-account?accountId=${accountId}`,"GET", initData);
 }
 
 export async function updateWord(initData: string, word: WordEntity): Promise<WordEntity> {
   return requestApi<WordEntity>("/wordentity/update", "POST", initData, word);
 }
 
-export async function addWord(
-  initData: string, 
-  addWordEntityRequest: AddWordEntityRequest
-): Promise<WordEntity> {
-  return requestApi<WordEntity>(
-    "/wordentity/add",
-    "POST",
-    initData,
-    addWordEntityRequest,
-  );
+export async function addWord(initData: string, addWordEntityRequest: AddWordEntityRequest): Promise<WordEntity> {
+  return requestApi<WordEntity>("/wordentity/add", "POST", initData, addWordEntityRequest,);
+}
+
+export async function deleteWord(initData: string,  id: string): Promise<AxiosResponse<void>> {
+  return requestApi<AxiosResponse<void>>(`/wordentity/delete?wordEntityId=${id}`, "POST", initData);
 }

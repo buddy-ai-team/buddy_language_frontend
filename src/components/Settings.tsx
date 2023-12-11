@@ -98,14 +98,32 @@ export default function Settings(props: StProps): JSX.Element {
   ];
 
   const languages = useMemo(() => [
-    {
-      name: "Русский",
-      value: Language.NUMBER_1
-    },
-    {
-      name: "Английский",
-      value: Language.NUMBER_0
-    },], []);
+    { name: "Английский", value: Language.NUMBER_0 },
+    { name: "Русский", value: Language.NUMBER_1 },
+    { name: "Арабский", value: Language.NUMBER_2 },
+    { name: "Китайский традиционный", value: Language.NUMBER_3 },
+    { name: "Китайский упрощенный", value: Language.NUMBER_4 },
+    { name: "Английский Австралия", value: Language.NUMBER_5 },
+    { name: "Английский Канада", value: Language.NUMBER_6 },
+    { name: "Английский Индия", value: Language.NUMBER_7 },
+    { name: "Английский Великобритания", value: Language.NUMBER_8 },
+    { name: "Французский", value: Language.NUMBER_9 },
+    { name: "Французский Канада", value: Language.NUMBER_10 },
+    { name: "Немецкий", value: Language.NUMBER_11 },
+    { name: "Хинди Индия", value: Language.NUMBER_12 },
+    { name: "Тамильский Индия", value: Language.NUMBER_13 },
+    { name: "Итальянский", value: Language.NUMBER_14 },
+    { name: "Японский", value: Language.NUMBER_15 },
+    { name: "Корейский", value: Language.NUMBER_16 },
+    { name: "Малайский", value: Language.NUMBER_17 },
+    { name: "Норвежский", value: Language.NUMBER_18 },
+    { name: "Португальский", value: Language.NUMBER_19 },
+    { name: "Испанский", value: Language.NUMBER_20 },
+    { name: "Испанский Мексика", value: Language.NUMBER_21 },
+    { name: "Шведский", value: Language.NUMBER_22 },
+    { name: "Вьетнамский", value: Language.NUMBER_23 },
+    { name: "Казахский", value: Language.NUMBER_24 },
+    { name: "Индонезийский", value: Language.NUMBER_25 },], []);
 
   const voices = useMemo(() => [
     {
@@ -408,8 +426,8 @@ export default function Settings(props: StProps): JSX.Element {
               value={nativeLanguage}
               onChange={handleNativeLanguageChange}
             >
-              <MenuItem value={"Русский"}>Русский</MenuItem>
-              <MenuItem value={"Английский"}>Английский</MenuItem>
+              {languages.map(lang =>
+                <MenuItem value={lang.name} key={lang.value}>{lang.name}</MenuItem>)}
             </Select>
           </FormControl>
         </Box>
@@ -430,18 +448,8 @@ export default function Settings(props: StProps): JSX.Element {
               value={learningLanguage}
               onChange={handleLearningLanguageChange}
             >
-              <MenuItem
-                value={"Русский"}
-                disabled={nativeLanguage === "Русский"}
-              >
-                Русский
-              </MenuItem>
-              <MenuItem
-                value={"Английский"}
-                disabled={nativeLanguage === "Английский"}
-              >
-                Английский
-              </MenuItem>
+              {languages.map(lang =>
+                <MenuItem value={lang.name} disabled={nativeLanguage === lang.name} key={lang.value}>{lang.name}</MenuItem>)}
             </Select>
           </FormControl>
         </Box>
@@ -466,12 +474,28 @@ export default function Settings(props: StProps): JSX.Element {
   );
 }
 
-/*               <MenuItem value={"Французский"}>Французский</MenuItem>
+/*             
+              <MenuItem value={"Русский"}>Русский</MenuItem>
+              <MenuItem value={"Английский"}>Английский</MenuItem>  
+              <MenuItem value={"Французский"}>Французский</MenuItem>
               <MenuItem value={"Немецкий"}>Немецкий</MenuItem>
               <MenuItem value={"Итальянский"}>Итальянский</MenuItem>
               */
 
-/*               <MenuItem
+/*   
+              <MenuItem
+                value={"Русский"}
+                disabled={nativeLanguage === "Русский"}
+              >
+                Русский
+              </MenuItem>
+              <MenuItem
+                value={"Английский"}
+                disabled={nativeLanguage === "Английский"}
+              >
+                Английский
+              </MenuItem>
+              <MenuItem
                 value={"Французский"}
                 disabled={nativeLanguage === "Французский"}
               >

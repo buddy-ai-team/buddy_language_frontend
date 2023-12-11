@@ -14,9 +14,6 @@
 
 import { Language } from './language';
 import { WordEntityStatus } from './word-entity-status';
-// import {
-//     Language,WordEntityStatus,
-// } from ".";
 
 /**
  * 
@@ -43,6 +40,12 @@ export interface WordEntityResponse {
      * @memberof WordEntityResponse
      */
     word?: string | null;
+
+    /**
+     * @type {string}
+     * @memberof WordEntityResponse
+     */
+    translation?: string | null;
 
     /**
      * @type {Language}

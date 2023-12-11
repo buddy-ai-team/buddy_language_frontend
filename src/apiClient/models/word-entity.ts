@@ -15,9 +15,6 @@
 import { Language } from './language';
 import { User } from './user';
 import { WordEntityStatus } from './word-entity-status';
-// import {
-//     Language,User,WordEntityStatus,
-// } from ".";
 
 /**
  * 
