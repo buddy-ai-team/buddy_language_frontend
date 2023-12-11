@@ -55,7 +55,7 @@ import {
   SectionRoleBot3,
   ApplyingExistingRoles,
 } from "./StyleSettings";
-import { useEffect, useMemo, useState, SyntheticEvent } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getRole, getRoleAll, getUserByTelegramId, updateUserPreferences } from "../apiService";
 import { Language, Role, Voice, UpdateUserPreferencesRequest, User, TtsSpeed } from "../apiClient";
 import audio_man from "../voice/telegram_audio_man.ogg";
