@@ -85,7 +85,7 @@ export default function WordEditor(props: StProps): JSX.Element {
         const words = await getWordsByAccountId(props.initData, user.id);
         setAllWords(words);
 
-        if (words.length > 0) {
+        if (words.length) {
 
           const learningW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_0);
           setLearningWords(learningW);
@@ -209,20 +209,22 @@ export default function WordEditor(props: StProps): JSX.Element {
   // const onSearchWord = () => {
   //   const word = allWords.find(w => w.word === searchWord || w.translation === searchWord)
   //   if(word){
+  //     console.log(word);
   //     if(word.wordStatus === 0){
   //       setLearningWord(word.word);
   //       setlearningWordTranslation(word.translation);
-  //     }else
+  //     }
   //     if(word.wordStatus === 1){
   //       setLearnedWord(word.word);
   //       setLearnedWordTranslation(word.translation);
-  //     }else
+  //     }
   //     if(word.wordStatus === 2){
   //       setDroppedWord(word.word);
   //       setDroppedWordTranslation(word.translation);
   //     }
+  //     setSearchWord("");
   //   }
-  // }
+  // };
 
   useEffect(() => {
     const fetchUsersWords = async () => {
@@ -343,7 +345,7 @@ export default function WordEditor(props: StProps): JSX.Element {
         <TitleWord>{`Поиск слов`}</TitleWord>
           <SectionSearch>
           <TextFieldWordSearch placeholder="Введите ключевое слово" value={searchWord} onChange={handleChangeSearchWord}/>
-            <ButtonSearch variant="contained">
+            <ButtonSearch variant="contained" >
               <TitleDelete>{`Найти`}</TitleDelete>
             </ButtonSearch>
           </SectionSearch>

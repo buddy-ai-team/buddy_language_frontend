@@ -53,7 +53,7 @@ export default function ListStudingdWords(props: StProps): JSX.Element {
 
     }, [props.TelegramId, props.initData]);
 
-    const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
+    const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
 
     const sortedWords = useMemo(() => {
         if (!sortedColumn) {
