@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import { getUserByTelegramId, getWordsByAccountId, deleteWord } from "../apiService";
+import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
 import { useEffect, useState, useMemo } from 'react';
 import { WordEntity, WordEntityStatus } from '../apiClient';
 
@@ -19,7 +18,7 @@ import {
     SelectionButton,
     ButtonClearList,
     TitleButton
-} from './StyleListStudiesWords';
+} from './StyleListStudingWords';
 
 import {
     Paper,
@@ -32,7 +31,7 @@ import {
     TableSortLabel
 } from '@mui/material';
 
-export default function ListStudiedWords(props: StProps): JSX.Element {
+export default function ListStudingdWords(props: StProps): JSX.Element {
 
     const [userWords, setUserWords] = useState<WordEntity[]>([]);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
@@ -54,7 +53,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
 
     }, [props.TelegramId, props.initData]);
 
-    const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
+    const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
 
     const sortedWords = useMemo(() => {
         if (!sortedColumn) {
@@ -84,23 +83,6 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
         setSortedColumn(column);
     };
 
-    const handleClearList = async () => {
-        try {
-            const user = await getUserByTelegramId(props.initData, props.TelegramId);
-            const words = await getWordsByAccountId(props.initData, user.id);
-
-            for (const item of words) {
-                if (item.id) {
-                    await deleteWord(props.initData, item.id);
-                }
-            }
-            setUserWords([]);
-
-        } catch (error) {
-            console.error('Error clearing word list:', error);
-        }
-    }
-
     return (
         <Property1Default className={props.TelegramId}>
             <TopBar>
@@ -110,7 +92,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                             <Shape src={Arrow} loading="lazy" alt={'Arrow'} />
                         </IcLeft>
                     </Link>
-                    <Title>{`Список изученных слов`}</Title>
+                    <Title>{`Список изучаемых слов`}</Title>
                     <IconButtons>
                         <IconRobot
                             src={Robot}
@@ -125,7 +107,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>
+                            <TableCell>
                                     <TableSortLabel
                                         active={sortedColumn === 'translation'}
                                         direction={sortOrder}
@@ -157,7 +139,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                 </TableContainer>
             </Paper>
             <SelectionButton>
-                <ButtonClearList onClick={handleClearList}>
+                <ButtonClearList>
                     <TitleButton>{`Очистить список`}</TitleButton>
                 </ButtonClearList>
             </SelectionButton>

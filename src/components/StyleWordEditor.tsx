@@ -508,10 +508,26 @@ export const SectionWordSearch = styled('div')({
     flexDirection: `column`,
     justifyContent: `center`,
     alignItems: `flex-start`,
-    padding: `11px 12px`,
+    padding: `7px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `5px 0px 0px 0px`,
+    overflow: `hidden`,
+    height: `150px`,
+});
+
+export const SectionSearch = styled('div')({
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `center`,
+    alignItems: `flex-start`,
+    padding: `0px`,
+    boxSizing: `border-box`,
+    alignSelf: `stretch`,
+    margin: `0px`,
     overflow: `hidden`,
 });
 
@@ -526,13 +542,37 @@ export const TextFieldWordSearch = styled('input')({
     flexDirection: `row`,
     justifyContent: `flex-start`,
     alignItems: `center`,
+    flex: `1`,
     padding: `8px 12px`,
     alignSelf: `stretch`,
-    margin: `4px 0px 0px 0px`,
+    margin: `4px 7px 0px 0px`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
     fontSize: `14px`,
+    // width: `200px`,
     lineHeight: `20px`,
+    height: `37px`,
+});
+
+export const ButtonSearch = styled(Button)({
+    backgroundColor: `rgba(177, 188, 205, 1)`,
+    border: `1px solid rgba(0, 20, 52, 1)`,
+    boxSizing: `border-box`,
+    borderRadius: `8px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `column`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    padding: `10px 12px`,
+    // flex: `1`,
+    height: `37px`,
+    width: `155px`,
+    marginTop: `5px`,
+    '&:hover': {
+        backgroundColor: '#D3D3D3',
+    }
 });
 
 export const GroupButtons = styled('div')({
@@ -543,10 +583,10 @@ export const GroupButtons = styled('div')({
     flexDirection: `row`,
     justifyContent: `flex-start`,
     alignItems: `flex-start`,
-    padding: `13px 12px`,
+    padding: `10px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `12px 0px 0px 0px`,
+    margin: `0px 0px 7px 0px`,
     overflow: `hidden`,
 });
 

@@ -47,7 +47,9 @@ import {
   SectionWordSearch,
   TextFieldWordSearch,
   SectionSelectStatus,
-  TextFieldSelectStatus
+  TextFieldSelectStatus,
+    ButtonSearch,
+    SectionSearch
 } from './StyleWordEditor';
 import { AddWordEntityRequest, UpdateWordEntityRequest, User, WordEntity, WordEntityStatus } from '../apiClient';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -339,7 +341,12 @@ export default function WordEditor(props: StProps): JSX.Element {
       </SectionSelectStatus>
       <SectionWordSearch>
         <TitleWord>{`Поиск слов`}</TitleWord>
-        <TextFieldWordSearch placeholder="Введите ключевое слово" value={searchWord} onChange={handleChangeSearchWord}/>
+          <SectionSearch>
+          <TextFieldWordSearch placeholder="Введите ключевое слово" value={searchWord} onChange={handleChangeSearchWord}/>
+            <ButtonSearch variant="contained">
+              <TitleDelete>{`Найти`}</TitleDelete>
+            </ButtonSearch>
+          </SectionSearch>
         <Info>{`Выполните поиск слов в списке`}</Info>
       </SectionWordSearch>
       <GroupButtons>
