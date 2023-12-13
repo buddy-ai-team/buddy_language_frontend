@@ -28,25 +28,25 @@ export interface WordEntity {
      * @type {string}
      * @memberof WordEntity
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {Language}
      * @memberof WordEntity
      */
-    language?: Language;
+    language: Language;
 
     /**
      * @type {WordEntityStatus}
      * @memberof WordEntity
      */
-    wordStatus?: WordEntityStatus;
+    wordStatus: WordEntityStatus;
 
     /**
      * @type {string}
      * @memberof WordEntity
      */
-    userId?: string;
+    userId: string;
 
     /**
      * @type {User}
@@ -58,11 +58,11 @@ export interface WordEntity {
      * @type {string}
      * @memberof WordEntity
      */
-    word?: string | null;
+    word: string;
 
     /**
      * @type {string}
      * @memberof WordEntity
      */
-    translation?: string | null;
+    translation: string;
 }
