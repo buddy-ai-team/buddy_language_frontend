@@ -61,13 +61,6 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
         setSortedColumn(column);
     };
 
-    // const getSortIndicator = (column: string) => {
-    //     if (column === sortedColumn) {
-    //         return sortOrder === 'asc' ? '↑' : '↓';
-    //     }
-    //     return null;
-    // };
-
     const handleClearList = async () => {
         try {
             const user = await getUserByTelegramId(props.initData, props.TelegramId);
