@@ -48,7 +48,9 @@ import {
     SectionWordSearch,
     TextFieldWordSearch,
     SectionSelectStatus,
-    TextFieldSelectStatus
+    TextFieldSelectStatus,
+    ButtonSearch,
+    SectionSearch
 } from './StyleWordEditor';
 
 export default function WordEditor(props: StProps): JSX.Element {
@@ -161,7 +163,12 @@ export default function WordEditor(props: StProps): JSX.Element {
         </SectionSelectStatus>
         <SectionWordSearch>
           <TitleWord>{`Поиск слов`}</TitleWord>
-          <TextFieldWordSearch placeholder="Введите ключевое слово" />
+          <SectionSearch>
+            <TextFieldWordSearch placeholder="Введите ключевое слово" />
+            <ButtonSearch variant="contained">
+              <TitleDelete>{`Найти`}</TitleDelete>
+            </ButtonSearch>
+          </SectionSearch>
           <Info>{`Выполните поиск слов в списке`}</Info>
         </SectionWordSearch>
         <GroupButtons>
@@ -175,6 +182,3 @@ export default function WordEditor(props: StProps): JSX.Element {
       </Property1Default>
     );
 }
-
-
-//{`Слово 1`}
