@@ -130,7 +130,6 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                                         active={sortedColumn === 'translation'}
                                         direction={sortOrder}
                                         onClick={() => handleSort('translation')}
-                                        style={{position: `sticky`}}
                                     >
                                         Слово
                                     </TableSortLabel>
@@ -140,7 +139,6 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                                         active={sortedColumn === 'word'}
                                         direction={sortOrder}
                                         onClick={() => handleSort('word')}
-                                        style={{position: `sticky`}}
                                     >
                                         Перевод
                                     </TableSortLabel>

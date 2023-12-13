@@ -31,7 +31,7 @@ import {
     TableSortLabel
 } from '@mui/material';
 
-export default function ListStudiedWords(props: StProps): JSX.Element {
+export default function ListStudingdWords(props: StProps): JSX.Element {
 
     const [userWords, setUserWords] = useState<WordEntity[]>([]);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
