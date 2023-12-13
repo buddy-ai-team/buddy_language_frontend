@@ -3,7 +3,7 @@ import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
+import { getUserByTelegramId, getWordsByAccountId, deleteWord } from "../apiService";
 import { useEffect, useState } from 'react';
 import { WordEntity, WordEntityStatus } from '../apiClient';
 
@@ -28,13 +28,15 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow
+    TableRow,
+    TableSortLabel
 } from '@mui/material';
 
 export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const [userWords, setUserWords] = useState<WordEntity[]>([]);
-    const [sortOrder, setSortOrder] = useState('asc');
+    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+    const [sortedColumn, setSortedColumn] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchWords = async () => {
@@ -54,20 +56,29 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
 
-    const toggleSortOrder = () => {
-        setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+    const handleSort = (column: string) => {
+        setSortOrder((prevSortOrder) => (prevSortOrder === 'asc' ? 'desc' : 'asc'));
+        setSortedColumn(column);
     };
+
+    // const getSortIndicator = (column: string) => {
+    //     if (column === sortedColumn) {
+    //         return sortOrder === 'asc' ? '↑' : '↓';
+    //     }
+    //     return null;
+    // };
 
     const handleClearList = async () => {
         try {
-            // const user = await getUserByTelegramId(props.initData, props.TelegramId);
-            // const words = await getWordsByAccountId(props.initData, user.id);
+            const user = await getUserByTelegramId(props.initData, props.TelegramId);
+            const words = await getWordsByAccountId(props.initData, user.id);
 
-            // // Отправляем запрос на удаление слов из бэкенда
-            // await deleteWordsByAccountId(props.initData, user.id);
-
-            // // Обновляем состояние, чтобы удалить слова со страницы
-            // setUserWords([]);
+            for (const item of words) {
+                if (item.id) {
+                    await deleteWord(props.initData, item.id);
+                }
+            }
+            setUserWords([]);
 
         } catch (error) {
             console.error('Error clearing word list:', error);
@@ -93,22 +104,29 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     </IconButtons>
                 </Content>
             </TopBar>
-            <Paper>
+            <Paper style={{margin: `10px`, height: `600px`}}>
                 <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
                             <TableRow>
                                 <TableCell>
+                                    <TableSortLabel
+                                        active={sortedColumn === 'translation'}
+                                        direction={sortOrder}
+                                        onClick={() => handleSort('translation')}
+                                    >
+                                        Слово
+                                    </TableSortLabel>
                                 </TableCell>
                                 <TableCell>
-                                    <button onClick={toggleSortOrder}>
-                                        {`Сортировка: ${sortOrder === 'asc' ? 'по возрастанию' : 'по убыванию'}`}
-                                    </button>
+                                    <TableSortLabel
+                                        active={sortedColumn === 'word'}
+                                        direction={sortOrder}
+                                        onClick={() => handleSort('word')}
+                                    >
+                                        Перевод
+                                    </TableSortLabel>
                                 </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell>Слово</TableCell>
-                                <TableCell>Перевод</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
