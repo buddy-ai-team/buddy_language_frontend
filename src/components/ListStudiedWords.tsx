@@ -4,7 +4,7 @@ import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 import { getUserByTelegramId, getWordsByAccountId, deleteWord } from "../apiService";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { WordEntity, WordEntityStatus } from '../apiClient';
 
 import {
@@ -56,6 +56,29 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const filteredWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
 
+    const sortedWords = useMemo(() => {
+        if (!sortedColumn) {
+            return filteredWords;
+        }
+
+        return [...filteredWords].sort((a, b) => {
+            const columnA = a[sortedColumn as keyof WordEntity];
+            const columnB = b[sortedColumn as keyof WordEntity];
+
+            if (columnA != null && columnB != null && columnA !== undefined && columnB !== undefined) {
+                if (columnA < columnB) {
+                    return sortOrder === 'asc' ? -1 : 1;
+                }
+                if (columnA > columnB) {
+                    return sortOrder === 'asc' ? 1 : -1;
+                }
+                return 0;
+            } else {
+                return 0;
+            }
+        });
+    }, [filteredWords, sortedColumn, sortOrder]);
+
     const handleSort = (column: string) => {
         setSortOrder((prevSortOrder) => (prevSortOrder === 'asc' ? 'desc' : 'asc'));
         setSortedColumn(column);
@@ -98,7 +121,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                 </Content>
             </TopBar>
             <Paper style={{margin: `10px`, height: `600px`}}>
-                <TableContainer component={Paper}>
+                <TableContainer component={Paper} style={{ maxHeight: '500px', overflowY: 'auto' }}>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -123,7 +146,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {filteredWords.map((word) => (
+                            {sortedWords.map((word) => (
                                 <TableRow key={word.id}>
                                     <TableCell>{word.translation}</TableCell>
                                     <TableCell>{word.word}</TableCell>
