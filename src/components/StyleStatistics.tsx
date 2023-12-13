@@ -334,7 +334,7 @@ export const Group = styled('div')({
     padding: `0px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `30px 0px 32px 0px`,
+    margin: `40px 0px 50px 0px`,
 });
   
 export const SectionLearnedWords = styled(Link)({
@@ -347,7 +347,7 @@ export const SectionLearnedWords = styled(Link)({
     alignItems: `center`,
     padding: `12px 0px`,
     boxSizing: `border-box`,
-    height: `56px`,
+    height: `60px`,
     alignSelf: `stretch`,
     margin: `0px`,
     textDecoration: `none`,
@@ -437,7 +437,7 @@ export const LabelViewList = styled('div')({
     margin: `0px 0px 0px 8px`,
 });
   
-export const SectionDurationOfMessages = styled('div')({
+export const SectionLearningdWords = styled(Link)({
     borderRadius: `0px`,
     display: `flex`,
     position: `relative`,
@@ -448,55 +448,9 @@ export const SectionDurationOfMessages = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    height: `56px`,
+    height: `60px`,
     margin: `0px`,
-});
-  
-export const OutputDurationOfMessages = styled('div')({
-    textAlign: `right`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
     textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    margin: `0px 0px 0px 8px`,
-});
-  
-export const SectionNumberConsecutiveCommunicationDays = styled('div')({
-    borderRadius: `0px`,
-    display: `flex`,
-    position: `relative`,
-    isolation: `isolate`,
-    flexDirection: `row`,
-    justifyContent: `center`,
-    alignItems: `center`,
-    padding: `12px 0px`,
-    boxSizing: `border-box`,
-    alignSelf: `stretch`,
-    height: `56px`,
-    margin: `0px`,
-});
-  
-export const OutputNumberConsecutiveCommunicationDays = styled('div')({
-    textAlign: `right`,
-    whiteSpace: `pre-wrap`,
-    fontSynthesis: `none`,
-    color: `rgba(0, 20, 52, 1)`,
-    fontStyle: `normal`,
-    fontFamily: `Roboto`,
-    fontWeight: `500`,
-    fontSize: `14px`,
-    letterSpacing: `0px`,
-    textDecoration: `none`,
-    lineHeight: `20px`,
-    textTransform: `none`,
-    margin: `0px 0px 0px 8px`,
 });
   
 export const SectionNumberDaysCommunication = styled('div')({
@@ -510,7 +464,7 @@ export const SectionNumberDaysCommunication = styled('div')({
     padding: `12px 0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    height: `56px`,
+    height: `60px`,
     margin: `0px`,
 });
   
@@ -543,7 +497,8 @@ export const BottomNav = styled('div')({
     padding: `0px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    margin: `0px 0px 0px 0px`,
+    height: `65px`,
+    margin: `0px`,
 });
   
 export const IconNav = styled('div')({
@@ -554,13 +509,13 @@ export const IconNav = styled('div')({
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
-    fontSize: `20px`,
+    fontSize: `28px`,
     letterSpacing: `0px`,
     textDecoration: `none`,
     lineHeight: `28px`,
     textTransform: `none`,
     width: `28px`,
-    margin: `0px`,
+    margin: `5px`,
 });
   
 export const TitleIcon = styled('div')({
@@ -571,7 +526,7 @@ export const TitleIcon = styled('div')({
     fontStyle: `normal`,
     fontFamily: `Roboto`,
     fontWeight: `400`,
-    fontSize: `10px`,
+    fontSize: `13px`,
     letterSpacing: `0px`,
     textDecoration: `none`,
     lineHeight: `14px`,
@@ -596,10 +551,10 @@ export const ButtonWordEditor = styled(Link)({
 });
   
 export const IconWordEditor = styled('img')({
-    height: `23px`,
-    width: `21px`,
+    height: `30px`,
+    width: `28px`,
     objectFit: `cover`,
-    margin: `0px`,
+    margin: `5px`,
 });
   
 export const ButtonSettings = styled(Link)({
@@ -610,7 +565,7 @@ export const ButtonSettings = styled(Link)({
     flexDirection: `column`,
     justifyContent: `center`,
     alignItems: `center`,
-    padding: `4px`,
+    padding: `5px`,
     boxSizing: `border-box`,
     flex: `1`,
     textDecoration: `none`,

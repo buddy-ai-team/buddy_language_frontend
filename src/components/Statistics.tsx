@@ -29,12 +29,9 @@ import {
   Label,
   Title3,
   LabelViewList,
-  SectionDurationOfMessages,
-  OutputDurationOfMessages,
+  SectionLearningdWords,
   SectionNumberDaysCommunication,
   OutputNumberDaysCommunication,
-  SectionNumberConsecutiveCommunicationDays,
-  OutputNumberConsecutiveCommunicationDays,
   BottomNav,
   IconNav,
   TitleIcon,
@@ -115,25 +112,15 @@ export default function Statistics(props: StProps): JSX.Element | null {
           <LabelViewList>{`Просмотреть список`}</LabelViewList>
         </SectionLearnedWords>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-        <SectionDurationOfMessages>
+        <SectionLearningdWords to="/get_list_studing_words">
           <BoxIcon>
             <Icon>{`⏱️`}</Icon>
           </BoxIcon>
           <Label>
-            <Title3>{`Общая продолжительность сообщений`}</Title3>
+            <Title3>{`Слова на изучении`}</Title3>
           </Label>
-          <OutputDurationOfMessages>{`3ч 15мин`}</OutputDurationOfMessages>
-        </SectionDurationOfMessages>
-        <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
-        <SectionNumberConsecutiveCommunicationDays>
-          <BoxIcon>
-            <Icon>{`🔥`}</Icon>
-          </BoxIcon>
-          <Label>
-            <Title3>{`Сумма дней общения подряд `}</Title3>
-          </Label>
-          <OutputNumberConsecutiveCommunicationDays>{`5`}</OutputNumberConsecutiveCommunicationDays>
-        </SectionNumberConsecutiveCommunicationDays>
+          <LabelViewList>{`Просмотреть список`}</LabelViewList>
+        </SectionLearningdWords>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <SectionNumberDaysCommunication>
           <BoxIcon>

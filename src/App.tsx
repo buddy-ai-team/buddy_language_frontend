@@ -6,6 +6,7 @@ import WordEditor from "./components/WordEditor";
 import Settings from "./components/Settings";
 import Notification from './components/Notification';
 import ListStudiedWords from './components/ListStudiedWords';
+import ListStudingdWords from './components/ListStudingWords';
 import { SDKProvider} from '@tma.js/sdk-react';
 import { getInitData } from "./initData";
 import { useEffect, useState } from 'react';
@@ -44,6 +45,7 @@ export default function App() {
               <Route path="/get_word_editor" element={<WordEditor TelegramId={TelegramId} initData={initData}/>} />
               <Route path="/get_settings" element={<Settings TelegramId={TelegramId} initData={initData}/>} />
               <Route path="/get_list_studied_words" element={<ListStudiedWords TelegramId={TelegramId} initData={initData}/>} />
+              <Route path="/get_list_studing_words" element={<ListStudingdWords TelegramId={TelegramId} initData={initData}/>} />
             </Routes>
         </StyledEngineProvider>
       </HelmetProvider>
