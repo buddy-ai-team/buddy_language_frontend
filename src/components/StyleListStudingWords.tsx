@@ -117,7 +117,7 @@ export const SelectionButton = styled('div')({
     padding: `13px 12px`,
     boxSizing: `border-box`,
     alignSelf: `stretch`,
-    marginBottom: `38px`,
+    marginBottom: `5px`,
     overflow: `hidden`,
 });
 

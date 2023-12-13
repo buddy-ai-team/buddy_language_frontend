@@ -120,8 +120,8 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                     </IconButtons>
                 </Content>
             </TopBar>
-            <Paper style={{margin: `10px`, height: `600px`}}>
-                <TableContainer component={Paper} style={{ maxHeight: '500px', overflowY: 'auto' }}>
+            <Paper style={{margin: `10px`, maxHeight: `600px`, overflowY: 'auto'}}>
+                <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -130,6 +130,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                                         active={sortedColumn === 'translation'}
                                         direction={sortOrder}
                                         onClick={() => handleSort('translation')}
+                                        style={{position: `sticky`}}
                                     >
                                         Слово
                                     </TableSortLabel>
@@ -139,6 +140,7 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
                                         active={sortedColumn === 'word'}
                                         direction={sortOrder}
                                         onClick={() => handleSort('word')}
+                                        style={{position: `sticky`}}
                                     >
                                         Перевод
                                     </TableSortLabel>
