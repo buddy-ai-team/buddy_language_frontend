@@ -8,6 +8,8 @@ import {
   WordEntity,
   AddWordEntityRequest,
   UpdateUserPreferencesRequest,
+  UpdateWordEntityRequest,
+  WordEntityResponse,
 } from "./apiClient/index";
 
 const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
@@ -95,8 +97,8 @@ export async function getWordsByAccountId(initData: string, accountId: string): 
   return requestApi<WordEntity[]>(`/wordentity/id-account?accountId=${accountId}`,"GET", initData);
 }
 
-export async function updateWord(initData: string, word: WordEntity): Promise<WordEntity> {
-  return requestApi<WordEntity>("/wordentity/update", "POST", initData, word);
+export async function updateWord(initData: string, word: UpdateWordEntityRequest): Promise<WordEntityResponse> {
+  return requestApi<WordEntityResponse>("/wordentity/update", "POST", initData, word);
 }
 
 export async function addWord(initData: string, addWordEntityRequest: AddWordEntityRequest): Promise<WordEntity> {

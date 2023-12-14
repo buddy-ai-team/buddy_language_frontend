@@ -27,35 +27,35 @@ export interface WordEntityResponse {
      * @type {string}
      * @memberof WordEntityResponse
      */
-    id?: string;
+    id: string;
 
     /**
      * @type {string}
      * @memberof WordEntityResponse
      */
-    accountId?: string;
+    accountId: string;
 
     /**
      * @type {string}
      * @memberof WordEntityResponse
      */
-    word?: string | null;
+    word: string;
 
     /**
      * @type {string}
      * @memberof WordEntityResponse
      */
-    translation?: string | null;
+    translation: string;
 
     /**
      * @type {Language}
      * @memberof WordEntityResponse
      */
-    language?: Language;
+    language: Language;
 
     /**
      * @type {WordEntityStatus}
      * @memberof WordEntityResponse
      */
-    status?: WordEntityStatus;
+    status: WordEntityStatus;
 }

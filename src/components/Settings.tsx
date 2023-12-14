@@ -293,7 +293,7 @@ export default function Settings(props: StProps): JSX.Element {
         }
 
       } catch (error) {
-        console.error('Error fetching words:', error);
+        console.error('Error fetching user`s settings:', error);
       }
     };
 
@@ -473,45 +473,3 @@ export default function Settings(props: StProps): JSX.Element {
     </Property1Default>
   );
 }
-
-/*             
-              <MenuItem value={"Русский"}>Русский</MenuItem>
-              <MenuItem value={"Английский"}>Английский</MenuItem>  
-              <MenuItem value={"Французский"}>Французский</MenuItem>
-              <MenuItem value={"Немецкий"}>Немецкий</MenuItem>
-              <MenuItem value={"Итальянский"}>Итальянский</MenuItem>
-              */
-
-/*   
-              <MenuItem
-                value={"Русский"}
-                disabled={nativeLanguage === "Русский"}
-              >
-                Русский
-              </MenuItem>
-              <MenuItem
-                value={"Английский"}
-                disabled={nativeLanguage === "Английский"}
-              >
-                Английский
-              </MenuItem>
-              <MenuItem
-                value={"Французский"}
-                disabled={nativeLanguage === "Французский"}
-              >
-                Французский
-              </MenuItem>
-              <MenuItem
-                value={"Немецкий"}
-                disabled={nativeLanguage === "Немецкий"}
-              >
-                Немецкий
-              </MenuItem>
-              <MenuItem
-                value={"Итальянский"}
-                disabled={nativeLanguage === "Итальянский"}
-              >
-                Итальянский
-              </MenuItem>
-              */
-
