@@ -1,6 +1,7 @@
 import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import PencilEdit from '../images/ImgWordEditor/free-icon-edit-420140 1.png';
+import DiskSave from '../images/ImgWordEditor/icons-save.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -49,7 +50,11 @@ import {
   SectionSelectStatus,
   TextFieldSelectStatus,
     ButtonSearch,
-    SectionSearch
+    SectionSearch,
+    ButtonStudyToSave,
+    IconDiskToSave,
+    ButtonSkippedToSave,
+    ButtonStudiedToSave
 } from './StyleWordEditor';
 import { AddWordEntityRequest, UpdateWordEntityRequest, User, WordEntity, WordEntityStatus } from '../apiClient';
 import { useEffect, useMemo, useState } from 'react';

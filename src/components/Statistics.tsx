@@ -1,9 +1,9 @@
 import Robot from '../images/Img/Robot.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-// import apiService from "../apiService";
-// import { useEffect, useState } from 'react';
-// import { User } from '../apiClient';
+import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
+import { useEffect, useState } from 'react';
+import { WordEntity, WordEntityStatus } from '../apiClient';
 
 import {
   Property1Default,
@@ -46,16 +46,26 @@ import {
 } from './StyleStatistics';
 
 export default function Statistics(props: StProps): JSX.Element | null {
-  // const [userData, setUserData] = useState<User | null>(null);
+  const [userWords, setUserWords] = useState<WordEntity[]>([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const user = await apiService.getUserByTelegramId(props.TelegramId);
-  //     setUserData(user);
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchWords = async () => {
+      try {
+        const user = await getUserByTelegramId(props.initData, props.TelegramId);
+        const words = await getWordsByAccountId(props.initData, user.id);
 
+        setUserWords(words);
+      } catch (error) {
+        console.error('Error fetching words:', error);
+      }
+    };
+
+    fetchWords();
+
+  }, [props.TelegramId, props.initData]);
+
+  const studingWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
+  const studiedWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
 
   return (
     <Property1Default className={props.TelegramId}>
@@ -93,11 +103,11 @@ export default function Statistics(props: StProps): JSX.Element | null {
         <GroupLanguage>
           <NumberOfWordsStudied>
             <Title2>{`Количество изученных слов`}</Title2>
-            <OutputNumberOfWordsStudied>{`500`}</OutputNumberOfWordsStudied>
+            <OutputNumberOfWordsStudied>{studiedWords.length}</OutputNumberOfWordsStudied>
           </NumberOfWordsStudied>
           <NumberOfLearningWords>
             <Title2>{`Слова, которые изучаются`}</Title2>
-            <OutputNumberOfLearningWords>{`100`}</OutputNumberOfLearningWords>
+            <OutputNumberOfLearningWords>{studingWords.length}</OutputNumberOfLearningWords>
           </NumberOfLearningWords>
         </GroupLanguage>
       </List2>
