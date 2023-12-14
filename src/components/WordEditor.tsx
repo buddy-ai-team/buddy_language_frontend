@@ -5,7 +5,7 @@ import DiskSave from '../images/ImgWordEditor/icons-save.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { InputLabel, MenuItem, FormControl } from '@mui/material';
+import { InputLabel, MenuItem, FormControl, Snackbar } from '@mui/material';
 
 import {
   Property1Default,
@@ -49,12 +49,12 @@ import {
   TextFieldWordSearch,
   SectionSelectStatus,
   TextFieldSelectStatus,
-    ButtonSearch,
-    SectionSearch,
-    ButtonStudyToSave,
-    IconDiskToSave,
-    ButtonSkippedToSave,
-    ButtonStudiedToSave
+  ButtonSearch,
+  SectionSearch,
+  ButtonStudyToSave,
+  IconDiskToSave,
+  ButtonSkippedToSave,
+  ButtonStudiedToSave
 } from './StyleWordEditor';
 import { AddWordEntityRequest, UpdateWordEntityRequest, User, WordEntity, WordEntityStatus } from '../apiClient';
 import { useEffect, useMemo, useState } from 'react';
@@ -77,12 +77,21 @@ export default function WordEditor(props: StProps): JSX.Element {
   const [editWord, setEditWord] = useState("");
   const [editTranslation, setEditTranslation] = useState("");
   const [searchWord, setSearchWord] = useState("");
-  const [clicked, setClicked] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [messageSnackbar, setMessageSnackbar] = useState("");
 
   const wordStatus = useMemo(() => [
     { name: "На изучении", value: WordEntityStatus.NUMBER_0 },
     { name: "Изучено", value: WordEntityStatus.NUMBER_1 },
     { name: "Пропущено", value: WordEntityStatus.NUMBER_2 },], []);
+
+  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    console.log(event);
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
 
   const getAdnInstalUserWods = async () => {
     try {
@@ -161,7 +170,6 @@ export default function WordEditor(props: StProps): JSX.Element {
     } else {
       cleanEditForm();
     }
-    setClicked(true);
   }
 
   const onSaveChanges = async (word: string, translation: string, status: string) => {
@@ -180,24 +188,26 @@ export default function WordEditor(props: StProps): JSX.Element {
       const newWord = await updateWord(props.initData, newWordRequest);
       console.log(newWord);
       await getAdnInstalUserWods();
-
       cleanEditForm();
-      setClicked(false);
+      setOpenSnackbar(true);
+      setMessageSnackbar("Изменения сохранены!");
     }
   }
 
   const onDeleteWord = async () => {
     const delWord = allWords.find(w => w.word === editWord);
-    if(delWord){
+    if (delWord) {
       await deleteWord(props.initData, delWord.id);
       await getAdnInstalUserWods();
       cleanEditForm();
+      setOpenSnackbar(true);
+      setMessageSnackbar("Слово удалено!");
     }
   }
 
   const onAddWord = async () => {
     const addWordStatus = wordStatus.find(st => st.name === status);
-    if(user && addWordStatus && editWord != "" && editTranslation != ""){
+    if (user && addWordStatus && editWord != "" && editTranslation != "") {
       const addWordRequest: AddWordEntityRequest = {
         accountId: user.id,
         word: editWord,
@@ -208,26 +218,32 @@ export default function WordEditor(props: StProps): JSX.Element {
       await addWord(props.initData, addWordRequest);
       await getAdnInstalUserWods();
       cleanEditForm();
+      setOpenSnackbar(true);
+      setMessageSnackbar("Слово успешно добавлено!");
     }
   }
 
   const onSearchWord = () => {
     const word = allWords.find(w => w.word === searchWord || w.translation === searchWord)
-    if(word){
+    if (word) {
       console.log(word);
-      if(word.wordStatus === 0){
+      if (word.wordStatus === 0) {
         setLearningWord(word.word);
         setlearningWordTranslation(word.translation);
       }
-      if(word.wordStatus === 1){
+      if (word.wordStatus === 1) {
         setLearnedWord(word.word);
         setLearnedWordTranslation(word.translation);
       }
-      if(word.wordStatus === 2){
+      if (word.wordStatus === 2) {
         setDroppedWord(word.word);
         setDroppedWordTranslation(word.translation);
       }
       setSearchWord("");
+    }
+    else{
+      setOpenSnackbar(true);
+      setMessageSnackbar("Слово не найдено! Проверьте правильность ввода!");
     }
   };
 
@@ -239,23 +255,23 @@ export default function WordEditor(props: StProps): JSX.Element {
         if (user) {
           const words = await getWordsByAccountId(props.initData, user.id);
           setAllWords(words);
-  
+
           if (words.length) {
-  
+
             const learningW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_0);
             setLearningWords(learningW);
             if (learningW.length) {
               setLearningWord(learningW[0].word);
               setlearningWordTranslation(learningW[0].translation);
             }
-  
+
             const learnedW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_1);
             setLearnedWords(learnedW);
             if (learnedW.length) {
               setLearnedWord(learnedW[0].word);
               setLearnedWordTranslation(learnedW[0].translation);
             }
-  
+
             const droppedW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_2);
             setDroppedWords(droppedW);
             if (droppedW.length) {
@@ -311,14 +327,18 @@ export default function WordEditor(props: StProps): JSX.Element {
           <Status>
             {`На изучении`}
           </Status>
-          <IconButtonToStudy>
+          <IconButtonToStudy onClick={() => onEditWord(learningWords, learningWord)}>
             <IconPencilToStudy
               src={PencilEdit}
               loading="lazy"
-              alt={'Pencil'}
-              onClick={!clicked ? () => onEditWord(learningWords, learningWord) : () => onSaveChanges(editWord, editTranslation, status)}
-            />
+              alt={'Pencil'} />
           </IconButtonToStudy>
+          <ButtonStudyToSave onClick={() => onSaveChanges(editWord, editTranslation, status)}>
+            <IconDiskToSave
+              src={DiskSave}
+              loading="lazy"
+              alt={'Disk'} />
+          </ButtonStudyToSave>
         </ItemToStudy>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <ItemSkipped>
@@ -327,14 +347,18 @@ export default function WordEditor(props: StProps): JSX.Element {
             {droppedWords.length ? <TitleTranslationSecond>{droppedWordTranslation}</TitleTranslationSecond> : <TitleTranslationSecond></TitleTranslationSecond>}
           </SecondWordInList>
           <Status>{`Пропущено`}</Status>
-          <IconButtonSkipped>
+          <IconButtonSkipped onClick={() => onEditWord(droppedWords, droppedWord)}>
             <IconPencilToStudy
               src={PencilEdit}
               loading="lazy"
-              alt={'Edit'}
-              onClick={!clicked ? () => onEditWord(droppedWords, droppedWord) : () => onSaveChanges(editWord, editTranslation, status)}
-            />
+              alt={'Edit'} />
           </IconButtonSkipped>
+          <ButtonSkippedToSave onClick={() => onSaveChanges(editWord, editTranslation, status)}>
+            <IconDiskToSave
+              src={DiskSave}
+              loading="lazy"
+              alt={'Disk'} />
+          </ButtonSkippedToSave>
         </ItemSkipped>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
         <ItemStudied>
@@ -343,14 +367,23 @@ export default function WordEditor(props: StProps): JSX.Element {
             {learnedWords.length ? <TitleTranslationThird>{learnedWordTranslation}</TitleTranslationThird> : <TitleWordThird></TitleWordThird>}
           </ThirdWordInList>
           <Status>{`Изучено`}</Status>
-          <IconButtonStudied>
+          <IconButtonStudied >
             <IconPencilToStudy
               src={PencilEdit}
               loading="lazy"
               alt={'Pencil'}
-              onClick={!clicked ? () => onEditWord(learnedWords, learnedWord) : () => onSaveChanges(editWord, editTranslation, status)}
+              onClick={() => onEditWord(learnedWords, learnedWord)}
             />
           </IconButtonStudied>
+          <ButtonStudiedToSave onClick={() => onSaveChanges(editWord, editTranslation, status)}>
+            <IconDiskToSave
+              src={DiskSave}
+              loading="lazy"
+              alt={
+                'Disk'
+              }
+            />
+          </ButtonStudiedToSave>
         </ItemStudied>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
       </List>
@@ -383,14 +416,20 @@ export default function WordEditor(props: StProps): JSX.Element {
       </SectionSelectStatus>
       <SectionWordSearch>
         <TitleWord>{`Поиск слов`}</TitleWord>
-          <SectionSearch>
-          <TextFieldWordSearch placeholder="Введите ключевое слово" value={searchWord} onChange={handleChangeSearchWord}/>
-            <ButtonSearch variant="contained" onClick={onSearchWord}>
-              <TitleDelete>{`Найти`}</TitleDelete>
-            </ButtonSearch>
-          </SectionSearch>
+        <SectionSearch>
+          <TextFieldWordSearch placeholder="Введите ключевое слово" value={searchWord} onChange={handleChangeSearchWord} />
+          <ButtonSearch variant="contained" onClick={onSearchWord}>
+            <TitleDelete>{`Найти`}</TitleDelete>
+          </ButtonSearch>
+        </SectionSearch>
         <Info>{`Выполните поиск слов в списке`}</Info>
       </SectionWordSearch>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={5000}
+        onClose={handleCloseSnackbar}
+        message={messageSnackbar}
+      />
       <GroupButtons>
         <ButtonDelete variant="contained" onClick={onDeleteWord}>
           <TitleDelete>{`Удалить слово`}</TitleDelete>
