@@ -2,7 +2,7 @@ import Arrow from '../images/Img/Arrow.png';
 import Robot from '../images/Img/Robot.png';
 import { StProps } from '../types';
 import { Link } from 'react-router-dom';
-import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
+import { deleteWord, getUserByTelegramId, getWordsByAccountId } from "../apiService";
 import { useEffect, useState, useMemo } from 'react';
 import { WordEntity, WordEntityStatus } from '../apiClient';
 
@@ -83,6 +83,17 @@ export default function ListStudingdWords(props: StProps): JSX.Element {
         setSortedColumn(column);
     };
 
+    const handleClearList = async () => {
+        try {
+            for (const item of filteredWords) {
+                await deleteWord(props.initData, item.id);
+            }
+            setUserWords([]);
+        } catch (error) {
+            console.error('Error clearing word list:', error);
+        }
+    }
+
     return (
         <Property1Default className={props.TelegramId}>
             <TopBar>
@@ -139,7 +150,7 @@ export default function ListStudingdWords(props: StProps): JSX.Element {
                 </TableContainer>
             </Paper>
             <SelectionButton>
-                <ButtonClearList>
+                <ButtonClearList onClick={handleClearList}>
                     <TitleButton>{`Очистить список`}</TitleButton>
                 </ButtonClearList>
             </SelectionButton>

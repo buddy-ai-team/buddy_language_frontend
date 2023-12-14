@@ -86,16 +86,10 @@ export default function ListStudiedWords(props: StProps): JSX.Element {
 
     const handleClearList = async () => {
         try {
-            const user = await getUserByTelegramId(props.initData, props.TelegramId);
-            const words = await getWordsByAccountId(props.initData, user.id);
-
-            for (const item of words) {
-                if (item.id) {
-                    await deleteWord(props.initData, item.id);
-                }
+            for (const item of filteredWords) {
+                await deleteWord(props.initData, item.id);
             }
             setUserWords([]);
-
         } catch (error) {
             console.error('Error clearing word list:', error);
         }

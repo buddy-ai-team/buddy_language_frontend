@@ -184,10 +184,12 @@ export default function WordEditor(props: StProps): JSX.Element {
         language: w.language,
         status: st.value,
       }
-
-      const newWord = await updateWord(props.initData, newWordRequest);
-      console.log(newWord);
-      await getAdnInstalUserWods();
+      try {
+        await updateWord(props.initData, newWordRequest);
+        await getAdnInstalUserWods();
+      } catch (error) {
+        console.error(error);
+      }
       cleanEditForm();
       setOpenSnackbar(true);
       setMessageSnackbar("Изменения сохранены!");
@@ -197,8 +199,13 @@ export default function WordEditor(props: StProps): JSX.Element {
   const onDeleteWord = async () => {
     const delWord = allWords.find(w => w.word === editWord);
     if (delWord) {
-      await deleteWord(props.initData, delWord.id);
-      await getAdnInstalUserWods();
+      try {
+        await deleteWord(props.initData, delWord.id);
+        await getAdnInstalUserWods();
+      } catch (error) {
+        console.error(error);
+      }
+
       cleanEditForm();
       setOpenSnackbar(true);
       setMessageSnackbar("Слово удалено!");
@@ -206,26 +213,38 @@ export default function WordEditor(props: StProps): JSX.Element {
   }
 
   const onAddWord = async () => {
-    const addWordStatus = wordStatus.find(st => st.name === status);
-    if (user && addWordStatus && editWord != "" && editTranslation != "") {
-      const addWordRequest: AddWordEntityRequest = {
-        accountId: user.id,
-        word: editWord,
-        translation: editTranslation,
-        language: user.userPreferences.targetLanguage,
-        status: addWordStatus.value,
-      }
-      await addWord(props.initData, addWordRequest);
-      await getAdnInstalUserWods();
+    const word = allWords.find(w => w.word === editWord);
+    if (word) {
       cleanEditForm();
       setOpenSnackbar(true);
-      setMessageSnackbar("Слово успешно добавлено!");
+      setMessageSnackbar("Слово нельзя добавить! Такое слово уже существует!");
+    }
+    else {
+      const addWordStatus = wordStatus.find(st => st.name === status);
+      if (user && addWordStatus && editWord != "" && editTranslation != "") {
+        const addWordRequest: AddWordEntityRequest = {
+          accountId: user.id,
+          word: editWord,
+          translation: editTranslation,
+          language: user.userPreferences.targetLanguage,
+          status: addWordStatus.value,
+        } 
+        try {
+          await addWord(props.initData, addWordRequest);
+          await getAdnInstalUserWods();
+        } catch (error) {
+          console.error(error);
+        }
+        cleanEditForm();
+        setOpenSnackbar(true);
+        setMessageSnackbar("Слово успешно добавлено!");
+      }
     }
   }
 
   const onSearchWord = () => {
-    const word = allWords.find(w => w.word.toLowerCase().includes(searchWord.toLowerCase()) 
-                                 || w.translation.toLowerCase().includes(searchWord.toLowerCase()))
+    const word = allWords.find(w => w.word.toLowerCase().includes(searchWord.toLowerCase())
+      || w.translation.toLowerCase().includes(searchWord.toLowerCase()));
     if (word) {
       console.log(word);
       if (word.wordStatus === 0) {
@@ -242,7 +261,7 @@ export default function WordEditor(props: StProps): JSX.Element {
       }
       setSearchWord("");
     }
-    else{
+    else {
       setOpenSnackbar(true);
       setMessageSnackbar("Слово не найдено! Проверьте правильность ввода!");
     }
