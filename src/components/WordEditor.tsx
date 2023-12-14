@@ -224,7 +224,8 @@ export default function WordEditor(props: StProps): JSX.Element {
   }
 
   const onSearchWord = () => {
-    const word = allWords.find(w => w.word === searchWord || w.translation === searchWord)
+    const word = allWords.find(w => w.word.toLowerCase().includes(searchWord.toLowerCase()) 
+                                 || w.translation.toLowerCase().includes(searchWord.toLowerCase()))
     if (word) {
       console.log(word);
       if (word.wordStatus === 0) {
@@ -388,14 +389,14 @@ export default function WordEditor(props: StProps): JSX.Element {
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
       </List>
       <SectionAddWord>
-        <TitleWord>{`Добавить слово`}</TitleWord>
-        <TextFieldAddWord placeholder="Вводите слова, разделенные запятыми" value={editWord} onChange={handleChangeEditWord} />
-        <Info>{`Слова будут добавлены в список изучения`}</Info>
+        <TitleWord>{`Слово`}</TitleWord>
+        <TextFieldAddWord placeholder="Введите слово" value={editWord} onChange={handleChangeEditWord} />
+        <Info>{`Слово будет добавлено в список изучения`}</Info>
       </SectionAddWord>
       <SectionWordTranslation>
-        <TitleWord>{`Перевод слов`}</TitleWord>
-        <TextFieldWordTranslation placeholder="Вводите перевод слов" value={editTranslation} onChange={handleChangeEditTranslation} />
-        <Info>{`Перевод появится под словами в списке изучения`}</Info>
+        <TitleWord>{`Перевод`}</TitleWord>
+        <TextFieldWordTranslation placeholder="Введите перевод" value={editTranslation} onChange={handleChangeEditTranslation} />
+        <Info>{`Перевод появится под словом в списке изучения`}</Info>
       </SectionWordTranslation>
       <SectionSelectStatus>
         <TextFieldSelectStatus>
