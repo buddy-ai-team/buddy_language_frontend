@@ -52,7 +52,7 @@ import {
     SectionSearch
 } from './StyleWordEditor';
 import { AddWordEntityRequest, UpdateWordEntityRequest, User, WordEntity, WordEntityStatus } from '../apiClient';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { addWord, deleteWord, getUserByTelegramId, getWordsByAccountId, updateWord } from '../apiService';
 
 export default function WordEditor(props: StProps): JSX.Element {
@@ -79,7 +79,7 @@ export default function WordEditor(props: StProps): JSX.Element {
     { name: "Изучено", value: WordEntityStatus.NUMBER_1 },
     { name: "Пропущено", value: WordEntityStatus.NUMBER_2 },], []);
 
-  const getAdnInstalUserWods = useCallback(async () => {
+  const getAdnInstalUserWods = async () => {
     try {
       if (user) {
         const words = await getWordsByAccountId(props.initData, user.id);
@@ -120,7 +120,7 @@ export default function WordEditor(props: StProps): JSX.Element {
     } catch (error) {
       console.error('Error fetching words:', error);
     }
-  }, [props.initData, user]);
+  };
 
   const handleChangeStatusWord = (event: SelectChangeEvent) => {
     setStatus(event.target.value);
@@ -206,32 +206,67 @@ export default function WordEditor(props: StProps): JSX.Element {
     }
   }
 
-  // const onSearchWord = () => {
-  //   const word = allWords.find(w => w.word === searchWord || w.translation === searchWord)
-  //   if(word){
-  //     console.log(word);
-  //     if(word.wordStatus === 0){
-  //       setLearningWord(word.word);
-  //       setlearningWordTranslation(word.translation);
-  //     }
-  //     if(word.wordStatus === 1){
-  //       setLearnedWord(word.word);
-  //       setLearnedWordTranslation(word.translation);
-  //     }
-  //     if(word.wordStatus === 2){
-  //       setDroppedWord(word.word);
-  //       setDroppedWordTranslation(word.translation);
-  //     }
-  //     setSearchWord("");
-  //   }
-  // };
+  const onSearchWord = () => {
+    const word = allWords.find(w => w.word === searchWord || w.translation === searchWord)
+    if(word){
+      console.log(word);
+      if(word.wordStatus === 0){
+        setLearningWord(word.word);
+        setlearningWordTranslation(word.translation);
+      }
+      if(word.wordStatus === 1){
+        setLearnedWord(word.word);
+        setLearnedWordTranslation(word.translation);
+      }
+      if(word.wordStatus === 2){
+        setDroppedWord(word.word);
+        setDroppedWordTranslation(word.translation);
+      }
+      setSearchWord("");
+    }
+  };
 
   useEffect(() => {
     const fetchUsersWords = async () => {
       try {
         const user = await getUserByTelegramId(props.initData, props.TelegramId);
         setUser(user);
-        await getAdnInstalUserWods();
+        if (user) {
+          const words = await getWordsByAccountId(props.initData, user.id);
+          setAllWords(words);
+  
+          if (words.length) {
+  
+            const learningW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_0);
+            setLearningWords(learningW);
+            if (learningW.length) {
+              setLearningWord(learningW[0].word);
+              setlearningWordTranslation(learningW[0].translation);
+            }
+  
+            const learnedW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_1);
+            setLearnedWords(learnedW);
+            if (learnedW.length) {
+              setLearnedWord(learnedW[0].word);
+              setLearnedWordTranslation(learnedW[0].translation);
+            }
+  
+            const droppedW = words.filter(w => w.wordStatus === WordEntityStatus.NUMBER_2);
+            setDroppedWords(droppedW);
+            if (droppedW.length) {
+              setDroppedWord(droppedW[0].word);
+              setDroppedWordTranslation(droppedW[0].translation);
+            }
+          }
+          else {
+            setLearningWord("");
+            setlearningWordTranslation("");
+            setLearnedWord("");
+            setLearnedWordTranslation("");
+            setDroppedWord("");
+            setDroppedWordTranslation("");
+          }
+        }
 
       } catch (error) {
         console.error('Error fetching words:', error);
@@ -239,7 +274,7 @@ export default function WordEditor(props: StProps): JSX.Element {
     };
 
     fetchUsersWords();
-  }, [getAdnInstalUserWods, props.TelegramId, props.initData, wordStatus]);
+  }, [props.TelegramId, props.initData, wordStatus]);
 
 
 
@@ -345,7 +380,7 @@ export default function WordEditor(props: StProps): JSX.Element {
         <TitleWord>{`Поиск слов`}</TitleWord>
           <SectionSearch>
           <TextFieldWordSearch placeholder="Введите ключевое слово" value={searchWord} onChange={handleChangeSearchWord}/>
-            <ButtonSearch variant="contained" >
+            <ButtonSearch variant="contained" onClick={onSearchWord}>
               <TitleDelete>{`Найти`}</TitleDelete>
             </ButtonSearch>
           </SectionSearch>
