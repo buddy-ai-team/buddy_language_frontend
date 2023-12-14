@@ -208,11 +208,33 @@ export const IconButtonToStudy = styled(Button)({
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px`,
+    minWidth: `30px`,
     boxSizing: `border-box`,
     margin: `0px 0px 0px 8px`,
 });
 
 export const IconPencilToStudy = styled('img')({
+    height: `30px`,
+    width: `29px`,
+    margin: `0px`,
+});
+
+export const ButtonStudyToSave = styled(Button)({
+    background: `transparent`,
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    padding: `0px`,
+    minWidth: `30px`,
+    boxSizing: `border-box`,
+    margin: `0px 0px 0px 8px`,
+});
+
+export const IconDiskToSave = styled('img')({
     height: `30px`,
     width: `29px`,
     margin: `0px`,
@@ -289,6 +311,22 @@ export const IconButtonSkipped = styled(Button)({
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px`,
+    minWidth: `30px`,
+    boxSizing: `border-box`,
+    margin: `0px 0px 0px 8px`,
+});
+
+export const ButtonSkippedToSave = styled(Button)({
+    background: `transparent`,
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    padding: `0px`,
+    minWidth: `30px`,
     boxSizing: `border-box`,
     margin: `0px 0px 0px 8px`,
 });
@@ -364,6 +402,22 @@ export const IconButtonStudied = styled(Button)({
     justifyContent: `flex-start`,
     alignItems: `center`,
     padding: `0px`,
+    minWidth: `30px`,
+    boxSizing: `border-box`,
+    margin: `0px 0px 0px 8px`,
+});
+
+export const ButtonStudiedToSave = styled(Button)({
+    background: `transparent`,
+    borderRadius: `0px`,
+    display: `flex`,
+    position: `relative`,
+    isolation: `isolate`,
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    padding: `0px`,
+    minWidth: `30px`,
     boxSizing: `border-box`,
     margin: `0px 0px 0px 8px`,
 });
@@ -566,7 +620,6 @@ export const ButtonSearch = styled(Button)({
     justifyContent: `center`,
     alignItems: `center`,
     padding: `10px 12px`,
-    // flex: `1`,
     height: `37px`,
     width: `155px`,
     marginTop: `5px`,
