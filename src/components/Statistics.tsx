@@ -64,8 +64,8 @@ export default function Statistics(props: StProps): JSX.Element | null {
 
   }, [props.TelegramId, props.initData]);
 
-  const studingWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
-  const studiedWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
+  const studingWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_0);
+  const studiedWords = userWords.filter(word => word.wordStatus === WordEntityStatus.NUMBER_1);
 
   return (
     <Property1Default className={props.TelegramId}>
