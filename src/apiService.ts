@@ -10,6 +10,7 @@ import {
   UpdateUserPreferencesRequest,
   UpdateWordEntityRequest,
   WordEntityResponse,
+  StatisticsResponse,
 } from "./apiClient/index";
 
 const BASE_URL = "https://buddylanguageapi.azurewebsites.net";
@@ -107,4 +108,9 @@ export async function addWord(initData: string, addWordEntityRequest: AddWordEnt
 
 export async function deleteWord(initData: string,  id: string): Promise<AxiosResponse<void>> {
   return requestApi<AxiosResponse<void>>(`/wordentity/delete?wordEntityId=${id}`, "POST", initData);
+}
+
+//Statistic
+export async function getStatistic(initData: string, id: string): Promise<StatisticsResponse> {
+  return requestApi<StatisticsResponse>(`/statistics/get_statistics?id=${id}`, "GET", initData);
 }

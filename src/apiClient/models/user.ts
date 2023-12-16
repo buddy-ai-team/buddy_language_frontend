@@ -51,7 +51,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    telegramId?: string | null;
+    telegramId: string;
 
     /**
      * @type {Preferences}

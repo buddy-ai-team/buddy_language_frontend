@@ -1,7 +1,7 @@
 import Robot from '../images/Img/Robot.png';
 import FreeIconScrabble7880Image from '../images/ImgStatictics/Component1_free_icon_scrabble_7880465_1.png';
 import { StProps } from '../types';
-import { getUserByTelegramId, getWordsByAccountId } from "../apiService";
+import { getStatistic, getUserByTelegramId, getWordsByAccountId } from "../apiService";
 import { useEffect, useState } from 'react';
 import { WordEntity, WordEntityStatus } from '../apiClient';
 
@@ -47,14 +47,19 @@ import {
 
 export default function Statistics(props: StProps): JSX.Element | null {
   const [userWords, setUserWords] = useState<WordEntity[]>([]);
+  const [totalMessages, setTotalMessages] = useState(0);
+  const [numbersDaysCommunication, setNumbersDaysCommunication] = useState(0);
 
   useEffect(() => {
     const fetchWords = async () => {
       try {
         const user = await getUserByTelegramId(props.initData, props.TelegramId);
         const words = await getWordsByAccountId(props.initData, user.id);
+        const statistic = await getStatistic(props.initData, user.telegramId);
 
         setUserWords(words);
+        setTotalMessages(statistic.totalMessages);
+        setNumbersDaysCommunication(statistic.numbersDaysCommunication);
       } catch (error) {
         console.error('Error fetching words:', error);
       }
@@ -90,7 +95,7 @@ export default function Statistics(props: StProps): JSX.Element | null {
         <GroupNumberOfMessages>
           <NumberOfMessages>
             <Title1>{`Общее количество`}</Title1>
-            <OutputNumberOfMessages>{`150`}</OutputNumberOfMessages>
+            <OutputNumberOfMessages>{totalMessages}</OutputNumberOfMessages>
           </NumberOfMessages>
         </GroupNumberOfMessages>
       </List1>
@@ -139,7 +144,7 @@ export default function Statistics(props: StProps): JSX.Element | null {
           <Label>
             <Title3>{`Сумма дней общения всего`}</Title3>
           </Label>
-          <OutputNumberDaysCommunication>{`30`}</OutputNumberDaysCommunication>
+          <OutputNumberDaysCommunication>{numbersDaysCommunication}</OutputNumberDaysCommunication>
         </SectionNumberDaysCommunication>
         <div style={{ borderBottom: '1px solid #B1BCCD', width: '100%' }} />
       </Group>

@@ -11,8 +11,28 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/role-api';
-export * from './apis/statistics-api';
-export * from './apis/user-api';
-export * from './apis/word-entity-api';
 
+import {
+    
+} from ".";
+
+/**
+ * 
+ *
+ * @export
+ * @interface StatisticsResponse
+ */
+export interface StatisticsResponse {
+
+    /**
+     * @type {number}
+     * @memberof StatisticsResponse
+     */
+    totalMessages: number;
+
+    /**
+     * @type {number}
+     * @memberof StatisticsResponse
+     */
+    numbersDaysCommunication: number;
+}

@@ -6,6 +6,7 @@ export * from './preferences';
 export * from './role';
 export * from './role-response';
 export * from './role-type';
+export * from './statistics-response';
 export * from './tts-speed';
 export * from './update-role-request';
 export * from './update-role-response';
